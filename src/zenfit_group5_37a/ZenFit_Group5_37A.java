@@ -4,6 +4,9 @@
  */
 package zenfit_group5_37a;
 import database.*;
+import view.SignUp;
+import controller.SignUpController;
+import controller.LoginController;
 /**
  *
  * @author ACER
@@ -13,16 +16,12 @@ public class ZenFit_Group5_37A {
     /**
      * @param args the command line arguments
      */
- 
+         public static void main(String[] args) {
         // TODO code application logic here
-        public static void main(String[] args) {
-        Database db = new MySqlConnection(); 
-        if (db.openConnection() != null) {
-            System.out.println("Database connected successfully!");
-        } else {
-            System.out.println("Failed connect to database!");
-        
+        SignUp signUpForm = new SignUp();
+        SignUpController controller = new SignUpController(signUpForm);
+        controller.open();
     }
-    }
+    
     
 }

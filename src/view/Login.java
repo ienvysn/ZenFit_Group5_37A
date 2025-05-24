@@ -11,13 +11,14 @@ package view;
  * @author HP
  */
 import javax.swing.JOptionPane;
+import java.awt.event.ActionListener;
 
-public class Login_Application extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form Login_Application
      */
-    public Login_Application() {
+    public Login() {
         initComponents();
     }
 
@@ -233,20 +234,20 @@ public class Login_Application extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login_Application.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login_Application.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login_Application.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login_Application.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login_Application().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }
@@ -266,7 +267,22 @@ public class Login_Application extends javax.swing.JFrame {
     private javax.swing.JTextField usernameText;
     private javax.swing.JLabel zenfit;
     // End of variables declaration//GEN-END:variables
+
+
+
+
+    public void addAddUserListener(ActionListener listener){
+    LoginBtn.addActionListener(listener);
+}
+    public void addLoginListener(ActionListener listener){
+    LoginBtn.addActionListener(listener);
 }
 
+public javax.swing.JPasswordField getPasswordField(){
+    return passwordText;
+}
 
-
+public javax.swing.JTextField getUsernameField(){
+    return usernameText;
+}
+}
