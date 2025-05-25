@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/zenfit_group5_37a/ZenFit_Group5_37A.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/database/Database.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/database/MySqlConnection.java</file>
@@ -11,6 +12,14 @@
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/controller/NewClass.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/dao/NewClass.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Login_Application.java</file>
+=======
+            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/ZenFit_Group5_37A/src/database/Database.java</file>
+            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/ZenFit_Group5_37A/src/controller/LoginController.java</file>
+            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/ZenFit_Group5_37A/src/controller/SignUpController.java</file>
+            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/SignUp.java</file>
+            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Login.java</file>
+            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Dashbaord.java</file>
+>>>>>>> 3ffa6d9c14be9c2dd1349091bc0ea174bc681a3d
         </group>
     </open-files>
 </project-private>
