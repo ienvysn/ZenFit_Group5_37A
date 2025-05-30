@@ -61,12 +61,20 @@ public class LoginController {
                             "Success",
                             JOptionPane.INFORMATION_MESSAGE);
 
-                    // Dashboard controller
-                    view.Dashboard dashboardView = new view.Dashboard();
-                    controller.DashboardController dashboardController = new controller.DashboardController(
-                            dashboardView);
-                    dashboardController.initializeDashboard(username);
-                    dashboardController.open();
+                   
+                    if ("ADMIN".equals(userData.getRole())) {
+                        // Open admin dashboard
+                        view.Dashboard adminDashboard = new view.Dashboard();
+                        controller.DashboardController adminController = new controller.DashboardController(adminDashboard);
+                        adminController.initializeDashboard(username);
+                        adminController.open();
+                    } else {
+                        // Open user dashboard
+                        view.UserDashboard userDashboard = new view.UserDashboard();
+                        controller.UserDashboardController userController = new controller.UserDashboardController(userDashboard);
+                        userController.initializeDashboard(username);
+                        userController.open();
+                    }
                     close();
                 } else {
                     JOptionPane.showMessageDialog(userView,

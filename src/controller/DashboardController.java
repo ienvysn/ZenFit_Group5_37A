@@ -7,6 +7,7 @@ import java.util.List;
 import dao.UserDao;
 import view.Dashboard;
 import model.UserData;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,19 +30,29 @@ public class DashboardController {
     }
 
     public void initializeDashboard(String username) {
-        List<UserData> allUser= userDao.getAllUsers();
-        System.out.println(allUser);
-        for (UserData user : allUser) {
-            System.out.println(user.getUsername());
-        }
         UserData currentUser = userDao.getUserByUsername(username);
         if (currentUser != null) {
-            System.out.println("User Details:");
+            // Verify admin role
+            if (!"admin".equals(currentUser.getRole())) {
+                JOptionPane.showMessageDialog(dashboardView,
+                        "Access denied. Admin privileges required.",
+                        "Authorization Error",
+                        JOptionPane.ERROR_MESSAGE);
+                close();
+                return;
+            }
+
+            // Load all members for admin view
+            List<UserData> allUsers = userDao.getAllUsers();
+            System.out.println("All Users:");
+            for (UserData user : allUsers) {
+                System.out.println("Username: " + user.getUsername());
+                System.out.println("Role: " + user.getRole());
+                System.out.println("Membership: " + user.getMembershipType());
+            }
+
+            System.out.println("\nAdmin Details:");
             System.out.println("Username: " + currentUser.getUsername());
-            System.out.println("Password: " + currentUser.getPassword());
-            System.out.println("Joined Date: " + currentUser.getJoinedDate());
-            System.out.println("Expiry Date: " + currentUser.getExpiryDate());
-            System.out.println("Membership Type: " + currentUser.getMembershipType());
             System.out.println("Role: " + currentUser.getRole());
         }
     }
