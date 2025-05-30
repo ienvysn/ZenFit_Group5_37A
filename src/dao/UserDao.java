@@ -27,7 +27,7 @@ public class UserDao {
 
     public void signup(UserData user) {
         Connection conn = mysql.openConnection();
-        String sql = "INSERT INTO users(username,password,joined_date,expiry_date,membership_type,role) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO users(username,password,joined_date,expiry_date,membership_type,role,image) VALUES(?,?,?,?,?,?,?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, user.getUsername());
             pstmt.setString(2, user.getPassword());
@@ -35,6 +35,7 @@ public class UserDao {
             pstmt.setDate(4, new Date(user.getExpiryDate().getTime()));
             pstmt.setString(5, user.getMembershipType());
             pstmt.setString(6, "member");
+            pstmt.setBytes(7, user.getImage());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -102,7 +103,9 @@ public class UserDao {
                         result.getDate("joined_date"),
                         result.getDate("expiry_date"),
                         result.getString("membership_type"),
-                        result.getString("role"));
+                        result.getString("role"),
+                        result.getBytes("image")
+                        );
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -120,13 +123,14 @@ public class UserDao {
             ResultSet result = pstmt.executeQuery();
             while (result.next()) {
                 users.add(new UserData(
-                    result.getString("username"),
-                    result.getString("password"),
-                    result.getDate("joined_date"),
-                    result.getDate("expiry_date"),
-                    result.getString("membership_type"),
-                    result.getString("role")
-                ));
+                 result.getString("username"),
+                 result.getString("password"),
+                result.getDate("joined_date"),
+                 result.getDate("expiry_date"),
+                 result.getString("membership_type"),
+                 result.getString("role"),
+                 result.getBytes("image")
+  ));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);

@@ -13,15 +13,15 @@ import java.util.Date;
 public class UserData {
     private int id;
     private String username;
-
     private String password;
     private Date joinedDate;
     private Date expiryDate;
     private String membershipType;
     private String role;
+    private byte[] image;
 
     public UserData(String username, String password, Date joinedDate, Date expiryDate, String membershipType,
-            String role) {
+            String role,byte[] image) {
 
         this.username = username;
         this.password = password;
@@ -29,6 +29,7 @@ public class UserData {
         this.expiryDate = expiryDate;
         this.membershipType = membershipType;
         this.role = role;
+        this.image = image;
     }
 
     public int getId() {
@@ -62,6 +63,10 @@ public class UserData {
     public String getMembershipType() {
         return membershipType;
     }
+       public byte[] getImage() {
+        return image;
+    }
+
 
     public void setMembershipType(String membershipType) {
         this.membershipType = membershipType;
@@ -85,5 +90,8 @@ public class UserData {
 
     public void setRole(String role) {
         this.role = role;
+    }
+     public void setImage(byte[] image) {
+        this.image = image;
     }
 }

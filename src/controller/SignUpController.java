@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.Calendar;
 import view.Dashboard;
 import controller.DashboardController;
+import java.nio.file.Files;
 
 public class SignUpController {
     private final UserDao userDao = new UserDao();
@@ -45,7 +46,20 @@ public class SignUpController {
                 String username = userView.getUsernameField().getText().trim();
                 String password = userView.getPasswordField().getText();
                 String membershipType = userView.getSelectedMembership();
-
+                java.io.File imgFile = userView.getSelectedImageFile();
+                byte[] image = null;
+                if (imgFile != null) {
+                    try {
+                        image = Files.readAllBytes(imgFile.toPath());
+                    } catch (java.io.IOException ioEx) {
+                        JOptionPane.showMessageDialog(userView,
+                                "Failed to read image file: " + ioEx.getMessage(),
+                                "File Error",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                }
+                    
                 if (username.isEmpty() || password.isEmpty()) {
                     JOptionPane.showMessageDialog(userView,
                             "All fields are required",
@@ -74,7 +88,7 @@ public class SignUpController {
                 }
                 Date expiryDate = cal.getTime();
 
-                UserData user = new UserData(username, password, joinedDate, expiryDate, membershipType, "member");
+                UserData user = new UserData(username, password, joinedDate, expiryDate, membershipType, "member",image);
 
                 boolean userExists = userDao.checkUser(user);
                 if (userExists) {
@@ -92,8 +106,8 @@ public class SignUpController {
                     close(); // this will close the signup tab and new open hunxa
                        Login loginView = new Login();
                         LoginController loginController = new LoginController(loginView);
-                        loginController.open();
-                }
+                        loginController.open();}
+                
             } catch (HeadlessException ex) {
                 JOptionPane.showMessageDialog(userView,
                         "An error occurred: " + ex.getMessage(),
