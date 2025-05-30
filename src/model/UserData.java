@@ -18,17 +18,19 @@ public class UserData {
     private Date joinedDate;
     private Date expiryDate;
     private String membershipType;
+    private String role;
 
-    public UserData( String username, String password, Date joinedDate, Date expiryDate, String membershipType){
-       
+    public UserData(String username, String password, Date joinedDate, Date expiryDate, String membershipType,
+            String role) {
+
         this.username = username;
         this.password = password;
         this.joinedDate = joinedDate;
         this.expiryDate = expiryDate;
         this.membershipType = membershipType;
+        this.role = role;
     }
 
-    
     public int getId() {
         return id;
     }
@@ -37,7 +39,6 @@ public class UserData {
         return username;
     }
 
- 
     public String getPassword() {
         return password;
     }
@@ -66,7 +67,6 @@ public class UserData {
         this.membershipType = membershipType;
     }
 
-   
     public void setId(int id) {
         this.id = id;
     }
@@ -75,12 +75,15 @@ public class UserData {
         this.username = username;
     }
 
-   
-
     public void setPassword(String password) {
         this.password = password;
     }
 
-    
-}
+    public String getRole() {
+        return role;
+    }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
+}
