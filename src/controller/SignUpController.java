@@ -46,6 +46,7 @@ public class SignUpController {
                 String username = userView.getUsernameField().getText().trim();
                 String password = userView.getPasswordField().getText();
                 String membershipType = userView.getSelectedMembership();
+                String phone = userView.getPhone().getText().trim();
                 java.io.File imgFile = userView.getSelectedImageFile();
                 byte[] image = null;
                 if (imgFile != null) {
@@ -60,7 +61,7 @@ public class SignUpController {
                     }
                 }
                     
-                if (username.isEmpty() || password.isEmpty()) {
+                if (username.isEmpty() || password.isEmpty() || phone.isEmpty()) {
                     JOptionPane.showMessageDialog(userView,
                             "All fields are required",
                             "Validation Error",
@@ -88,7 +89,7 @@ public class SignUpController {
                 }
                 Date expiryDate = cal.getTime();
 
-                UserData user = new UserData(username, password, joinedDate, expiryDate, membershipType, "member",image);
+                UserData user = new UserData(username, phone, password, joinedDate, expiryDate, membershipType, "member", image);
 
                 boolean userExists = userDao.checkUser(user);
                 if (userExists) {

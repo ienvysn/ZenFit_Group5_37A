@@ -401,4 +401,7 @@ public class SignUp extends javax.swing.JFrame {
   public File getSelectedImageFile() {
         return selectedFile;
     }
+    public javax.swing.JTextField getPhone() {
+        return emailText;
+    }
 }

@@ -138,6 +138,11 @@ public class Dashboard extends javax.swing.JFrame {
         Searchbutton.setActionCommand("🔍");
         Searchbutton.setBackground(new java.awt.Color(204, 204, 255));
         Searchbutton.setLabel("+");
+        Searchbutton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SearchbuttonMouseClicked(evt);
+            }
+        });
         Searchbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchbuttonActionPerformed(evt);
@@ -278,6 +283,32 @@ if(Search.getText().equals("Enter Id ")){
         if(Search.getText().equals("")){
     Search.setText("Enter Id ");}
     }//GEN-LAST:event_SearchFocusLost
+
+    private void SearchbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchbuttonMouseClicked
+        String idText = Search.getText();
+        if (!idText.equals("Enter Id ")) {
+            try {
+                int id = Integer.parseInt(idText);
+                dao.UserDao userDao = new dao.UserDao();
+                model.UserData user = userDao.getUserById(id);
+                if (user != null) {
+                    Usercard userCard = new Usercard();
+                    userCard.updateUserData(user);
+                    userCard.setVisible(true);
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(this,
+                        "User not found",
+                        "Search Error",
+                        javax.swing.JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (NumberFormatException e) {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                    "Please enter a valid ID number",
+                    "Invalid Input",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_SearchbuttonMouseClicked
 
     /**
      * @param args the command line arguments

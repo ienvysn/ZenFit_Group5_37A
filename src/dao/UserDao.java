@@ -27,7 +27,7 @@ public class UserDao {
 
     public void signup(UserData user) {
         Connection conn = mysql.openConnection();
-        String sql = "INSERT INTO users(username,password,joined_date,expiry_date,membership_type,role,image) VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO users(username,password,joined_date,expiry_date,membership_type,role,image,phone) VALUES(?,?,?,?,?,?,?,?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, user.getUsername());
             pstmt.setString(2, user.getPassword());
@@ -36,6 +36,9 @@ public class UserDao {
             pstmt.setString(5, user.getMembershipType());
             pstmt.setString(6, "member");
             pstmt.setBytes(7, user.getImage());
+            pstmt.setString(8, user.getPhone());
+
+            
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -99,6 +102,7 @@ public class UserDao {
                 // Construct UserData from result set
                 return new UserData(
                         result.getString("username"),
+                        result.getString("phone"),
                         result.getString("password"),
                         result.getDate("joined_date"),
                         result.getDate("expiry_date"),
@@ -106,6 +110,35 @@ public class UserDao {
                         result.getString("role"),
                         result.getBytes("image")
                         );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            mysql.CloseConnection(conn);
+        }
+        return null;
+    }
+
+    public UserData getUserById(int id) {
+        Connection conn = mysql.openConnection();
+        String sql = "SELECT * FROM users WHERE id=?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            ResultSet result = pstmt.executeQuery();
+            if (result.next()) {
+                // Construct UserData from result set
+                UserData user = new UserData(
+                        result.getString("username"),
+                        result.getString("phone"),
+                        result.getString("password"),
+                        result.getDate("joined_date"),
+                        result.getDate("expiry_date"),
+                        result.getString("membership_type"),
+                        result.getString("role"),
+                        result.getBytes("image")
+                );
+                user.setId(result.getInt("id"));
+                return user;
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -124,6 +157,7 @@ public class UserDao {
             while (result.next()) {
                 users.add(new UserData(
                  result.getString("username"),
+                 result.getString("phone"),
                  result.getString("password"),
                 result.getDate("joined_date"),
                  result.getDate("expiry_date"),

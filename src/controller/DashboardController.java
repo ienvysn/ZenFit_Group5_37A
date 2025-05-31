@@ -42,7 +42,7 @@ public class DashboardController {
                 return;
             }
 
-            // Load all members for admin view
+            
             List<UserData> allUsers = userDao.getAllUsers();
             System.out.println("All Users:");
             for (UserData user : allUsers) {

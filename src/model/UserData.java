@@ -19,17 +19,19 @@ public class UserData {
     private String membershipType;
     private String role;
     private byte[] image;
+    private String phone;
 
-    public UserData(String username, String password, Date joinedDate, Date expiryDate, String membershipType,
-            String role,byte[] image) {
+    public UserData(String username, String phone,String password, Date joinedDate, Date expiryDate, String membershipType,String role,byte[] image) {
 
         this.username = username;
+        this.phone= phone;
         this.password = password;
         this.joinedDate = joinedDate;
         this.expiryDate = expiryDate;
         this.membershipType = membershipType;
         this.role = role;
         this.image = image;
+        
     }
 
     public int getId() {
@@ -63,9 +65,14 @@ public class UserData {
     public String getMembershipType() {
         return membershipType;
     }
-       public byte[] getImage() {
+
+    public byte[] getImage() {
         return image;
     }
+    public String getPhone() {
+        return phone;
+    }
+
 
 
     public void setMembershipType(String membershipType) {
@@ -94,4 +101,8 @@ public class UserData {
      public void setImage(byte[] image) {
         this.image = image;
     }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }
+

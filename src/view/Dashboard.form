@@ -317,6 +317,7 @@
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="\ud83d\udd0d" containsInvalidXMLChars="true"/>
           </AccessibilityProperties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="SearchbuttonMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SearchbuttonActionPerformed"/>
           </Events>
         </Component>
