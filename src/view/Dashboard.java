@@ -129,6 +129,16 @@ public class Dashboard extends javax.swing.JFrame {
         Addnew.setActionCommand("Add new");
         Addnew.setBackground(new java.awt.Color(255, 255, 204));
         Addnew.setLabel("Add new");
+        Addnew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddnewActionPerformed(evt);
+            }
+        });
+        Addnew.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AddnewKeyPressed(evt);
+            }
+        });
 
         Profile.setBackground(new java.awt.Color(153, 204, 255));
         Profile.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
@@ -309,6 +319,16 @@ if(Search.getText().equals("Enter Id ")){
             }
         }
     }//GEN-LAST:event_SearchbuttonMouseClicked
+
+    private void AddnewActionPerformed(java.awt.event.ActionEvent evt) {
+        view.SignUp signUpView = new view.SignUp();
+        controller.SignUpController signUpController = new controller.SignUpController(signUpView);
+        signUpController.open();
+    }
+
+    private void AddnewKeyPressed(java.awt.event.KeyEvent evt) {
+        // TODO add your handling code here:
+    }
 
     /**
      * @param args the command line arguments

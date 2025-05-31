@@ -18,6 +18,7 @@ public class Usercard extends javax.swing.JFrame {
     }
 
     public void updateUserData(model.UserData user) {
+        currentUsername = user.getUsername();
         jLabel3.setText(user.getUsername()); // Member ID
         jLabel5.setText(user.getPhone()); // Number
         jLabel10.setText(user.getUsername()); // Name
@@ -110,6 +111,11 @@ public class Usercard extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
         jButton1.setText("Remove");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -245,5 +251,35 @@ public class Usercard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private String currentUsername;
     // End of variables declaration//GEN-END:variables
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        int confirm = javax.swing.JOptionPane.showConfirmDialog(
+            this,
+            "Are you sure you want to remove this user?",
+            "Confirm Deletion",
+            javax.swing.JOptionPane.YES_NO_OPTION
+        );
+        
+        if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+            dao.UserDao userDao = new dao.UserDao();
+            if (userDao.deleteUser(currentUsername)) {
+                javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "User successfully removed",
+                    "Success",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+                );
+                this.dispose();
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Failed to remove user",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+                );
+            }
+        }
+    }
 }

@@ -286,6 +286,9 @@
             </Property>
             <Property name="label" type="java.lang.String" value="Add new"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AddnewKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Profile">
           <Properties>

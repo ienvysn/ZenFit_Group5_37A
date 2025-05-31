@@ -173,4 +173,19 @@ public class UserDao {
         }
         return users;
     }
+
+    public boolean deleteUser(String username) {
+        Connection conn = mysql.openConnection();
+        String sql = "DELETE FROM users WHERE username=?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, username);
+            int affectedRows = pstmt.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        } finally {
+            mysql.CloseConnection(conn);
+        }
+    }
 }
