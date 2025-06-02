@@ -43,7 +43,16 @@ public class SignUp extends javax.swing.JFrame {
         journey = new javax.swing.JLabel();
         Fitness = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+<<<<<<< Updated upstream
         emailText = new javax.swing.JTextField();
+=======
+        phoneText = new javax.swing.JTextField();
+        Membership = new javax.swing.JLabel();
+        jmembership = new javax.swing.JComboBox<>();
+        imgBtn = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        alredyHaveAccount = new javax.swing.JLabel();
+>>>>>>> Stashed changes
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(java.awt.Color.orange);
@@ -94,6 +103,16 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< Updated upstream
+=======
+        SignUp.setText("Signup");
+        SignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignUpActionPerformed(evt);
+            }
+        });
+
+>>>>>>> Stashed changes
         start.setFont(new java.awt.Font("Segoe UI", 1, 52)); // NOI18N
         start.setText("START YOUR");
 
@@ -111,10 +130,53 @@ public class SignUp extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         jLabel5.setText("Phone:");
 
+<<<<<<< Updated upstream
         emailText.setText("jTextField1");
         emailText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailTextActionPerformed(evt);
+=======
+        phoneText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneTextActionPerformed(evt);
+            }
+        });
+
+        Membership.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        Membership.setText("Membership:");
+
+        jmembership.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 Month", "3 Month", "6 Month", "1 Year" }));
+        jmembership.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmembershipActionPerformed(evt);
+            }
+        });
+
+        imgBtn.setText("Choose Image");
+        imgBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgBtnMouseClicked(evt);
+            }
+        });
+        imgBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imgBtnActionPerformed(evt);
+            }
+        });
+        imgBtn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                imgBtnKeyPressed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        jLabel7.setText("Picture:");
+
+        alredyHaveAccount.setText("alredy have account?");
+        alredyHaveAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                alredyHaveAccountMouseClicked(evt);
+>>>>>>> Stashed changes
             }
         });
 
@@ -139,8 +201,18 @@ public class SignUp extends javax.swing.JFrame {
                                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(53, 53, 53)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+<<<<<<< Updated upstream
                                             .addComponent(emailText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(usernameText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+=======
+                                            .addComponent(phoneText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(imgBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                                .addComponent(jmembership, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(alredyHaveAccount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(usernameText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+>>>>>>> Stashed changes
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(256, 256, 256)
                                 .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -188,10 +260,35 @@ public class SignUp extends javax.swing.JFrame {
                                     .addComponent(emailText, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(9, 9, 9)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+<<<<<<< Updated upstream
                                     .addComponent(jLabel4)
                                     .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(96, 96, 96)
                                 .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                                    .addComponent(phoneText, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Membership)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel7)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jmembership)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(imgBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(alredyHaveAccount)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> Stashed changes
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -218,7 +315,73 @@ public class SignUp extends javax.swing.JFrame {
 
     private void emailTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextActionPerformed
         // TODO add your handling code here:
+<<<<<<< Updated upstream
     }//GEN-LAST:event_emailTextActionPerformed
+=======
+          JFileChooser fileChooser = new JFileChooser();
+            fileChooser
+                    .setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Images", "jpg", "png", "jpeg"));
+
+            int option = fileChooser.showOpenDialog(null);
+            if (option == JFileChooser.APPROVE_OPTION) {
+             this.selectedFile = fileChooser.getSelectedFile();
+                System.out.println("Image path: " + selectedFile.getAbsolutePath());
+            }
+    }//GEN-LAST:event_imgBtnMouseClicked
+
+    private void alredyHaveAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alredyHaveAccountMouseClicked
+        // TODO add your handling code here:
+    Login loginForm = new Login();
+    loginForm.setVisible(true);
+    loginForm.pack();
+    loginForm.setLocationRelativeTo(null); // Center the window
+
+    // Close the current window (optional)
+    this.dispose(); 
+    }//GEN-LAST:event_alredyHaveAccountMouseClicked
+
+    private void usernameTextActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_usernameTextActionPerformed
+        // TODO add your handling code here:
+        if (usernameText.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "please fill out username");
+        }
+        else{
+            phoneText.requestFocusInWindow();
+        }
+
+    }// GEN-LAST:event_usernameTextActionPerformed
+
+
+
+    private void phoneTextActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        if (phoneText.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "please fill out phone number");
+        }
+        else{
+            passwordText.requestFocusInWindow();
+        }
+    }
+
+    
+
+    private void jmembershipActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+
+    }// GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_passwordTextActionPerformed
+        // TODO add your handling code here:
+        if (passwordText.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "please fill out password");
+        }
+        else{
+            SignUp.doClick();
+        }
+        
+
+    }// GEN-LAST:event_passwordTextActionPerformed
+>>>>>>> Stashed changes
 
     /**
      * @param args the command line arguments
@@ -259,15 +422,26 @@ public class SignUp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fitness;
     private javax.swing.JButton SignUp;
+<<<<<<< Updated upstream
     private javax.swing.JTextField emailText;
+=======
+    private javax.swing.JLabel alredyHaveAccount;
+    private javax.swing.JButton imgBtn;
+>>>>>>> Stashed changes
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+<<<<<<< Updated upstream
+=======
+    private javax.swing.JLabel jLabel7;
+>>>>>>> Stashed changes
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> jmembership;
     private javax.swing.JLabel journey;
     private javax.swing.JPasswordField passwordText;
+    private javax.swing.JTextField phoneText;
     private javax.swing.JLabel start;
     private javax.swing.JTextField usernameText;
     private javax.swing.JLabel zenfit;
@@ -290,5 +464,21 @@ public javax.swing.JTextField getUsernameField(){
     return usernameText;
 }
 
+<<<<<<< Updated upstream
    
+=======
+    public javax.swing.JTextField getUsernameField() {
+        return usernameText;
+    }
+
+    public String getSelectedMembership() {
+        return (String) jmembership.getSelectedItem();
+    }
+  public File getSelectedImageFile() {
+        return selectedFile;
+    }
+    public javax.swing.JTextField getPhone() {
+        return phoneText;
+    }
+>>>>>>> Stashed changes
 }
