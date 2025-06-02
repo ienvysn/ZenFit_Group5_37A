@@ -4,10 +4,12 @@
  */
 package view;
 
-//import controller.SignUpController;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.io.File;
+import controller.LoginController;
+import controller.SignUpController;
+
 /**
  *
  * @author ACER
@@ -46,8 +48,8 @@ public class SignUp extends javax.swing.JFrame {
         journey = new javax.swing.JLabel();
         Fitness = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        emailText = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        phoneText = new javax.swing.JTextField();
+        redirectLogin = new javax.swing.JLabel();
         Membership = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         imgBtn = new javax.swing.JButton();
@@ -99,7 +101,11 @@ public class SignUp extends javax.swing.JFrame {
         });
 
         SignUp.setText("Signup");
-       
+        SignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignUpActionPerformed(evt);
+            }
+        });
 
         start.setFont(new java.awt.Font("Segoe UI", 1, 52)); // NOI18N
         start.setText("START YOUR");
@@ -118,16 +124,16 @@ public class SignUp extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         jLabel5.setText("Phone:");
 
-        emailText.addActionListener(new java.awt.event.ActionListener() {
+        phoneText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTextActionPerformed(evt);
+                phoneTextActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Already have an account?");
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        redirectLogin.setText("Already have an account?");
+        redirectLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+                redirectLoginMouseClicked(evt);
             }
         });
 
@@ -181,18 +187,18 @@ public class SignUp extends javax.swing.JFrame {
                                             .addComponent(jLabel7))
                                         .addGap(54, 54, 54)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(emailText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(phoneText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(imgBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                    .addComponent(jLabel6)
-                                                    .addGap(11, 11, 11)))))
+                                                .addComponent(imgBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                                .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                     .addComponent(usernameText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(258, 258, 258)
-                                .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(redirectLogin)))
                         .addGap(180, 180, 180)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -233,26 +239,23 @@ public class SignUp extends javax.swing.JFrame {
                                     .addComponent(jLabel3))
                                 .addGap(9, 9, 9)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(emailText, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(phoneText, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBox1)
+                                    .addComponent(Membership, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Membership)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel7)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jComboBox1)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(imgBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(imgBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(redirectLogin)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -293,33 +296,40 @@ public class SignUp extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_imgBtnMouseClicked
 
-    private void usernameTextActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_usernameTextActionPerformed
-        // TODO add your handling code here:
-        emailText.requestFocusInWindow();
-
-    }// GEN-LAST:event_usernameTextActionPerformed
-
-
-
-    private void emailTextActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        passwordText.requestFocusInWindow();
+    private void usernameTextActionPerformed(java.awt.event.ActionEvent evt) {
+        // Move focus to phone field
+        phoneText.requestFocusInWindow();
     }
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel6MouseClicked
-        // TODO add your handling code here:
-    }// GEN-LAST:event_jLabel6MouseClicked
+    private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {
+        // Signup button action will be handled by the controller
+        SignUp.doClick();
+    }
+
+    private void redirectLoginMouseClicked(java.awt.event.MouseEvent evt) {
+        // Hide signup window and show login window
+        this.setVisible(false);
+        Login loginView = new Login();
+        LoginController loginController = new LoginController(loginView);
+        loginController.open();
+        this.dispose(); // Dispose the signup window
+    }
+
+    private void SignUpActionPerformed(java.awt.event.ActionEvent evt) {
+        // Signup button action will be handled by the controller
+        SignUpController signUpController = new SignUpController(this);
+        signUpController.open();
+    }
+
+    private void phoneTextActionPerformed(java.awt.event.ActionEvent evt) {
+        // Move focus to password field
+        passwordText.requestFocusInWindow();
+    }
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
 
     }// GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_passwordTextActionPerformed
-        // TODO add your handling code here:
-        SignUp.doClick();
-
-    }// GEN-LAST:event_passwordTextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,7 +375,6 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JLabel Fitness;
     private javax.swing.JLabel Membership;
     private javax.swing.JButton SignUp;
-    private javax.swing.JTextField emailText;
     private javax.swing.JButton imgBtn;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -373,11 +382,12 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel journey;
     private javax.swing.JPasswordField passwordText;
+    private javax.swing.JTextField phoneText;
+    private javax.swing.JLabel redirectLogin;
     private javax.swing.JLabel start;
     private javax.swing.JTextField usernameText;
     private javax.swing.JLabel zenfit;
@@ -402,6 +412,6 @@ public class SignUp extends javax.swing.JFrame {
         return selectedFile;
     }
     public javax.swing.JTextField getPhone() {
-        return emailText;
+        return phoneText;
     }
 }

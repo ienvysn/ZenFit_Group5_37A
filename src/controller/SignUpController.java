@@ -104,10 +104,11 @@ public class SignUpController {
                             "Success",
                             JOptionPane.INFORMATION_MESSAGE);
 
-                    close(); // this will close the signup tab and new open hunxa
-                       Login loginView = new Login();
-                        LoginController loginController = new LoginController(loginView);
-                        loginController.open();}
+                    close(); // Close the signup window
+                    Login loginView = new Login();
+                    LoginController loginController = new LoginController(loginView);
+                    loginController.open();
+                }
                 
             } catch (HeadlessException ex) {
                 JOptionPane.showMessageDialog(userView,
