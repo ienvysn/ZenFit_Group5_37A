@@ -4,6 +4,8 @@
  */
 package view;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Salifa
@@ -37,7 +39,7 @@ public class UserDashboard extends javax.swing.JFrame {
         Equipment = new javax.swing.JButton();
         Feedback = new javax.swing.JButton();
         Addnew = new java.awt.Button();
-        Profile = new javax.swing.JButton();
+        Profilebtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         popupMenu1.setLabel("popupMenu1");
@@ -118,10 +120,15 @@ public class UserDashboard extends javax.swing.JFrame {
         Addnew.setBackground(new java.awt.Color(255, 255, 204));
         Addnew.setLabel("Add new");
 
-        Profile.setBackground(new java.awt.Color(153, 204, 255));
-        Profile.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        Profile.setText("Profile");
-        Profile.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Profilebtn.setBackground(new java.awt.Color(153, 204, 255));
+        Profilebtn.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        Profilebtn.setText("Profile");
+        Profilebtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Profilebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProfilebtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,11 +142,11 @@ public class UserDashboard extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(Equipment, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                             .addComponent(Feedback, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(Profile))
+                        .addComponent(Profilebtn))
                     .addComponent(Trainer, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(239, 239, 239)
+                .addGap(167, 167, 167)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,7 +154,7 @@ public class UserDashboard extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(MembersText)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 386, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 519, Short.MAX_VALUE)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -178,7 +185,7 @@ public class UserDashboard extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addComponent(Feedback)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Profile)
+                .addComponent(Profilebtn)
                 .addGap(23, 23, 23))
         );
 
@@ -205,6 +212,10 @@ public class UserDashboard extends javax.swing.JFrame {
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EquipmentActionPerformed
+
+    private void ProfilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfilebtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ProfilebtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,7 +266,7 @@ public class UserDashboard extends javax.swing.JFrame {
     private javax.swing.JButton Equipment;
     private javax.swing.JButton Feedback;
     private javax.swing.JLabel MembersText;
-    private javax.swing.JButton Profile;
+    private javax.swing.JButton Profilebtn;
     private javax.swing.JButton Trainer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -265,4 +276,8 @@ public class UserDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private java.awt.PopupMenu popupMenu1;
     // End of variables declaration//GEN-END:variables
+
+    public void addADDprofilelistener(ActionListener listener){
+        Profilebtn.addActionListener(listener);
+}
 }

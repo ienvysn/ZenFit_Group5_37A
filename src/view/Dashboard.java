@@ -4,6 +4,8 @@
  */
 package view;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Salifa
@@ -15,6 +17,7 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
+        
     }
 
     /**
@@ -38,7 +41,7 @@ public class Dashboard extends javax.swing.JFrame {
         Equipment = new javax.swing.JButton();
         Feedback = new javax.swing.JButton();
         Addnew = new java.awt.Button();
-        Profile = new javax.swing.JButton();
+        Profilebtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Searchbutton = new java.awt.Button();
         Search = new javax.swing.JTextField();
@@ -129,21 +132,21 @@ public class Dashboard extends javax.swing.JFrame {
         Addnew.setActionCommand("Add new");
         Addnew.setBackground(new java.awt.Color(255, 255, 204));
         Addnew.setLabel("Add new");
-        Addnew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddnewActionPerformed(evt);
-            }
-        });
         Addnew.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 AddnewKeyPressed(evt);
             }
         });
 
-        Profile.setBackground(new java.awt.Color(153, 204, 255));
-        Profile.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        Profile.setText("Profile");
-        Profile.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Profilebtn.setBackground(new java.awt.Color(153, 204, 255));
+        Profilebtn.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        Profilebtn.setText("Profile");
+        Profilebtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Profilebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProfilebtnActionPerformed(evt);
+            }
+        });
 
         Searchbutton.setActionCommand("🔍");
         Searchbutton.setBackground(new java.awt.Color(204, 204, 255));
@@ -180,14 +183,15 @@ public class Dashboard extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel1)
-                        .addComponent(Members, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Trainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Equipment, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                        .addComponent(Feedback, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(Profile))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel1)
+                    .addComponent(Members, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Trainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Equipment, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                    .addComponent(Feedback, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Profilebtn)
+                        .addGap(32, 32, 32)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(239, 239, 239)
@@ -240,8 +244,8 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addComponent(Feedback)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Profile)
-                .addGap(23, 23, 23))
+                .addComponent(Profilebtn)
+                .addGap(18, 18, 18))
         );
 
         Searchbutton.getAccessibleContext().setAccessibleName("🔍");
@@ -319,6 +323,14 @@ if(Search.getText().equals("Enter Id ")){
             }
         }
     }//GEN-LAST:event_SearchbuttonMouseClicked
+    
+   
+       
+    private void ProfilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfilebtnActionPerformed
+        // TODO add your handling code here:
+       
+
+    }//GEN-LAST:event_ProfilebtnActionPerformed
 
     private void AddnewActionPerformed(java.awt.event.ActionEvent evt) {
         view.SignUp signUpView = new view.SignUp();
@@ -376,7 +388,7 @@ if(Search.getText().equals("Enter Id ")){
     private javax.swing.JButton Feedback;
     private javax.swing.JButton Members;
     private javax.swing.JLabel MembersText;
-    private javax.swing.JButton Profile;
+    private javax.swing.JButton Profilebtn;
     private javax.swing.JTextField Search;
     private java.awt.Button Searchbutton;
     private javax.swing.JButton Trainer;
@@ -388,4 +400,9 @@ if(Search.getText().equals("Enter Id ")){
     private javax.swing.JPanel jPanel4;
     private java.awt.PopupMenu popupMenu1;
     // End of variables declaration//GEN-END:variables
+
+
+public void addADDprofilelistener(ActionListener listener){
+    Profilebtn.addActionListener(listener);
+}
 }

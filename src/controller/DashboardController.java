@@ -5,9 +5,12 @@
 package controller;
 import java.util.List;
 import dao.UserDao;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import view.Dashboard;
 import model.UserData;
 import javax.swing.JOptionPane;
+import view.Usercard1;
 
 /**
  *
@@ -19,6 +22,7 @@ public class DashboardController {
 
     public DashboardController(Dashboard dashboardView) {
         this.dashboardView = dashboardView;
+        dashboardView.addADDprofilelistener(new profilelistener());
     }
 
     public void open() {
@@ -55,5 +59,14 @@ public class DashboardController {
             System.out.println("Username: " + currentUser.getUsername());
             System.out.println("Role: " + currentUser.getRole());
         }
+    }
+    class profilelistener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Usercard1 usercard1 = new Usercard1();
+            usercard1.setVisible(true);
+        }
+        
     }
 }
