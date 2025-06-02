@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import view.Dashboard;
 import model.UserData;
 import javax.swing.JOptionPane;
-import view.Usercard1;
+import view.UsercardNoRemove;
 
 /**
  *
@@ -64,7 +64,7 @@ public class DashboardController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Usercard1 usercard1 = new Usercard1();
+            UsercardNoRemove usercard1 = new UsercardNoRemove();
             usercard1.setVisible(true);
         }
         

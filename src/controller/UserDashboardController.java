@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.UserDashboard;
 import model.UserData;
-import view.Usercard3;
+import view.TrainercardNoRemove;
 
 public class UserDashboardController {
     private final UserDao userDao = new UserDao();
@@ -39,7 +39,7 @@ public class UserDashboardController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Usercard3 usercard3 = new Usercard3();
+            TrainercardNoRemove usercard3 = new TrainercardNoRemove();
             usercard3.setVisible(true);
         }
         
