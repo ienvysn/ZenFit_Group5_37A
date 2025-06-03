@@ -104,10 +104,20 @@ public class SignUpController {
                             "Success",
                             JOptionPane.INFORMATION_MESSAGE);
 
-                    close(); // Close the signup window
-                    Login loginView = new Login();
-                    LoginController loginController = new LoginController(loginView);
-                    loginController.open();
+                  
+                    model.CurrentUser.set(user);
+                    
+               
+                    view.UserDashboard userDashboard = new view.UserDashboard();
+                    controller.UserDashboardController userController = new controller.UserDashboardController(userDashboard);
+                    userController.initializeDashboard(username);
+                    
+                   
+                    userView.setVisible(false);
+                    userView.dispose();
+                    
+                    // Open dashboard
+                    userController.open();
                 }
                 
             } catch (HeadlessException ex) {
