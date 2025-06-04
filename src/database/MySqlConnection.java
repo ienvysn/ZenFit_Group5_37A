@@ -18,7 +18,11 @@ public class MySqlConnection implements Database {
     public Connection openConnection() {
         try {
             String username = "root";
+<<<<<<< HEAD
             String password = "salifa11";
+=======
+            String password = "lavnik@2063";
+>>>>>>> a26ef1053c54b07276cc3215bb0caa6226787276
             String database = "zenfit";
 
             Connection connection;

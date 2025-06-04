@@ -4,10 +4,12 @@
  */
 package view;
 
-//import controller.SignUpController;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.io.File;
+import controller.LoginController;
+import controller.SignUpController;
+
 /**
  *
  * @author ACER
@@ -47,6 +49,10 @@ public class SignUp extends javax.swing.JFrame {
         Fitness = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         phoneText = new javax.swing.JTextField();
+<<<<<<< HEAD
+=======
+        redirectLogin = new javax.swing.JLabel();
+>>>>>>> a26ef1053c54b07276cc3215bb0caa6226787276
         Membership = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         imgBtn = new javax.swing.JButton();
@@ -125,6 +131,16 @@ public class SignUp extends javax.swing.JFrame {
         phoneText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phoneTextActionPerformed(evt);
+<<<<<<< HEAD
+=======
+            }
+        });
+
+        redirectLogin.setText("Already have an account?");
+        redirectLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                redirectLoginMouseClicked(evt);
+>>>>>>> a26ef1053c54b07276cc3215bb0caa6226787276
             }
         });
 
@@ -194,10 +210,23 @@ public class SignUp extends javax.swing.JFrame {
                                             .addComponent(phoneText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+<<<<<<< HEAD
                                                 .addComponent(imgBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                                                 .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                     .addComponent(usernameText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(189, 189, 189)))
+=======
+                                                .addComponent(imgBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                                .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(usernameText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(258, 258, 258)
+                                .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(redirectLogin)))
+                        .addGap(180, 180, 180)
+>>>>>>> a26ef1053c54b07276cc3215bb0caa6226787276
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,8 +273,13 @@ public class SignUp extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBox1)
+                                    .addComponent(Membership, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(Membership)
                                         .addGap(18, 18, 18)
@@ -264,6 +298,16 @@ public class SignUp extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(22, 22, 22))))))
+=======
+                                    .addComponent(imgBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(redirectLogin)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+>>>>>>> a26ef1053c54b07276cc3215bb0caa6226787276
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(start)
@@ -301,6 +345,7 @@ public class SignUp extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_imgBtnMouseClicked
 
+<<<<<<< HEAD
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
         Login loginForm = new Login();
@@ -338,12 +383,44 @@ public class SignUp extends javax.swing.JFrame {
 //    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel6MouseClicked
 //        // TODO add your handling code here:
 //    }// GEN-LAST:event_jLabel6MouseClicked
+=======
+    private void usernameTextActionPerformed(java.awt.event.ActionEvent evt) {
+        // Move focus to phone field
+        phoneText.requestFocusInWindow();
+    }
+
+    private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {
+        // Signup button action will be handled by the controller
+        SignUp.doClick();
+    }
+
+    private void redirectLoginMouseClicked(java.awt.event.MouseEvent evt) {
+        // Hide signup window and show login window
+        this.setVisible(false);
+        Login loginView = new Login();
+        LoginController loginController = new LoginController(loginView);
+        loginController.open();
+        this.dispose(); // Dispose the signup window
+    }
+
+    private void SignUpActionPerformed(java.awt.event.ActionEvent evt) {
+        // Signup button action will be handled by the controller
+        SignUpController signUpController = new SignUpController(this);
+        signUpController.open();
+    }
+
+    private void phoneTextActionPerformed(java.awt.event.ActionEvent evt) {
+        // Move focus to password field
+        passwordText.requestFocusInWindow();
+    }
+>>>>>>> a26ef1053c54b07276cc3215bb0caa6226787276
 
 //    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jComboBox1ActionPerformed
 //        // TODO add your handling code here:
 
     }// GEN-LAST:event_jComboBox1ActionPerformed
 
+<<<<<<< HEAD
     private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_passwordTextActionPerformed
         // TODO add your handling code here:
         if (passwordText.getText().equals("")){
@@ -355,6 +432,8 @@ public class SignUp extends javax.swing.JFrame {
 
     }// GEN-LAST:event_passwordTextActionPerformed
 
+=======
+>>>>>>> a26ef1053c54b07276cc3215bb0caa6226787276
     /**
      * @param args the command line arguments
      */
@@ -391,6 +470,7 @@ public class SignUp extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SignUp().setVisible(true);
+               
             }
         });
     }
@@ -412,6 +492,10 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JLabel journey;
     private javax.swing.JPasswordField passwordText;
     private javax.swing.JTextField phoneText;
+<<<<<<< HEAD
+=======
+    private javax.swing.JLabel redirectLogin;
+>>>>>>> a26ef1053c54b07276cc3215bb0caa6226787276
     private javax.swing.JLabel start;
     private javax.swing.JTextField usernameText;
     private javax.swing.JLabel zenfit;

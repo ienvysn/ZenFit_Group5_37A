@@ -37,7 +37,7 @@ public class DashboardController {
         UserData currentUser = userDao.getUserByUsername(username);
         if (currentUser != null) {
             // Verify admin role
-            if (!"admin".equals(currentUser.getRole())) {
+            if (!"ADMIN".equals(currentUser.getRole())) {
                 JOptionPane.showMessageDialog(dashboardView,
                         "Access denied. Admin privileges required.",
                         "Authorization Error",
@@ -60,13 +60,20 @@ public class DashboardController {
             System.out.println("Role: " + currentUser.getRole());
         }
     }
-    class profilelistener implements ActionListener{
-
+    class profilelistener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
             Usercard usercard1 = new Usercard();
             usercard1.setVisible(true);
+=======
+            UserData currentUser = userDao.getUserByUsername(model.CurrentUser.get().getUsername());
+            if (currentUser != null) {
+                Usercard usercard1 = new Usercard();
+                usercard1.updateUserData(currentUser);
+                usercard1.setVisible(true);
+            }
+>>>>>>> a26ef1053c54b07276cc3215bb0caa6226787276
         }
-        
     }
 }

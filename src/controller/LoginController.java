@@ -61,6 +61,7 @@ public class LoginController {
                             "Success",
                             JOptionPane.INFORMATION_MESSAGE);
 
+                    close(); // Close the login window before opening dashboard
                    
                     if ("ADMIN".equals(userData.getRole())) {
                         // Open admin dashboard
@@ -75,7 +76,6 @@ public class LoginController {
                         userController.initializeDashboard(username);
                         userController.open();
                     }
-                    close();
                 } else {
                     JOptionPane.showMessageDialog(userView,
                             "Invalid username or password",
