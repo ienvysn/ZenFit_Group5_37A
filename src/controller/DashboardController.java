@@ -20,6 +20,8 @@ import javax.imageio.ImageIO;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.awt.image.BufferedImage;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  *
@@ -88,6 +90,34 @@ public class DashboardController {
                 }
             }
             panel.updateUserData(user);
+
+            // Add mouse click listener to open Usercard (panel click)
+            panel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    UserData clickedUser = userDao.getUserByUsername(panel.getUsername());
+                    if (clickedUser != null) {
+                        view.Usercard usercard = new view.Usercard();
+                        usercard.updateUserData(clickedUser);
+                        usercard.setVisible(true);
+                    }
+                }
+            });
+
+            // Add mouse click listener to open Usercard (image click)
+            javax.swing.JTabbedPane imageComponent = panel.getUserImageComponent();
+            imageComponent.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    UserData clickedUser = userDao.getUserByUsername(panel.getUsername());
+                    if (clickedUser != null) {
+                        view.Usercard usercard = new view.Usercard();
+                        usercard.updateUserData(clickedUser);
+                        usercard.setVisible(true);
+                    }
+                }
+            });
+
             userPanelContainer.add(panel);
         }
         userPanelContainer.revalidate();

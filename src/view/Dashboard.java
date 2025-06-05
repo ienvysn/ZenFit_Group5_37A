@@ -31,6 +31,7 @@ public class Dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -181,6 +182,8 @@ public class Dashboard extends javax.swing.JFrame {
         });
 
         jPanel5.setBackground(new java.awt.Color(4, 39, 56));
+
+        userpannel.setBackground(new java.awt.Color(4, 39, 56));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
