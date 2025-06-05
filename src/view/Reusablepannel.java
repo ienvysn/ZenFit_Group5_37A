@@ -36,12 +36,13 @@ public class Reusablepannel extends javax.swing.JPanel {
     private void initComponents() {
 
         userImage = new javax.swing.JTabbedPane();
+        imageLabel = new javax.swing.JLabel(); // Add this line
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(4, 39, 56));
 
-        userImage.setBackground(new java.awt.Color(0, 204, 204));
-        userImage.setForeground(new java.awt.Color(0, 204, 204));
+        imageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER); // Center image
+        imageLabel.setPreferredSize(new java.awt.Dimension(100, 100)); // Optional: set size
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -51,15 +52,13 @@ public class Reusablepannel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(userImage, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1)
-                                .addGap(69, 69, 69)));
+                        .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.CENTER));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(userImage, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel1)
                                 .addGap(12, 12, 12)));
@@ -79,6 +78,8 @@ public class Reusablepannel extends javax.swing.JPanel {
             } catch (Exception e) {
                 System.out.println("Error loading image: " + e.getMessage());
             }
+        } else {
+            imageLabel.setIcon(null); // Or set a default icon
         }
     }
 
@@ -88,6 +89,7 @@ public class Reusablepannel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel imageLabel; // Add this line
     private javax.swing.JTabbedPane userImage;
     // End of variables declaration//GEN-END:variables
 
