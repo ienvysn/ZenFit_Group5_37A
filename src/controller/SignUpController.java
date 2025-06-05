@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.UserData;
+
 import java.util.Date;
 import java.util.Calendar;
 import view.Dashboard;
@@ -60,7 +61,7 @@ public class SignUpController {
                         return;
                     }
                 }
-                    
+
                 if (username.isEmpty() || password.isEmpty() || phone.isEmpty()) {
                     JOptionPane.showMessageDialog(userView,
                             "All fields are required",
@@ -89,7 +90,8 @@ public class SignUpController {
                 }
                 Date expiryDate = cal.getTime();
 
-                UserData user = new UserData(username, phone, password, joinedDate, expiryDate, membershipType, "member", image);
+                UserData user = new UserData(username, phone, password, joinedDate, expiryDate, membershipType,
+                        "member", image);
 
                 boolean userExists = userDao.checkUser(user);
                 if (userExists) {
@@ -104,22 +106,18 @@ public class SignUpController {
                             "Success",
                             JOptionPane.INFORMATION_MESSAGE);
 
-                  
-                    model.CurrentUser.set(user);
-                    
-               
                     view.UserDashboard userDashboard = new view.UserDashboard();
-                    controller.UserDashboardController userController = new controller.UserDashboardController(userDashboard);
+                    controller.UserDashboardController userController = new controller.UserDashboardController(
+                            userDashboard);
                     userController.initializeDashboard(username);
-                    
-                   
+
                     userView.setVisible(false);
                     userView.dispose();
-                    
+
                     // Open dashboard
                     userController.open();
                 }
-                
+
             } catch (HeadlessException ex) {
                 JOptionPane.showMessageDialog(userView,
                         "An error occurred: " + ex.getMessage(),

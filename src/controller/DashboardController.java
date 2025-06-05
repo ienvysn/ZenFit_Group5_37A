@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
+
 import java.util.List;
 import dao.UserDao;
 import java.awt.event.ActionEvent;
@@ -11,6 +12,14 @@ import view.Dashboard;
 import model.UserData;
 import javax.swing.JOptionPane;
 import view.Usercard;
+import javax.swing.JPanel;
+import java.awt.GridLayout;
+import java.io.File;
+import java.nio.file.Files;
+import javax.imageio.ImageIO;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -22,7 +31,7 @@ public class DashboardController {
 
     public DashboardController(Dashboard dashboardView) {
         this.dashboardView = dashboardView;
-        dashboardView.addADDprofilelistener(new profilelistener());
+        // dashboardView.addADDprofilelistener(new profilelistener());
     }
 
     public void open() {
@@ -46,29 +55,63 @@ public class DashboardController {
                 return;
             }
 
-            
-            List<UserData> allUsers = userDao.getAllUsers();
-            System.out.println("All Users:");
-            for (UserData user : allUsers) {
-                System.out.println("Username: " + user.getUsername());
-                System.out.println("Role: " + user.getRole());
-                System.out.println("Membership: " + user.getMembershipType());
-            }
+            // Populate dashboard with user panels
+            populateUserPanels();
 
             System.out.println("\nAdmin Details:");
             System.out.println("Username: " + currentUser.getUsername());
             System.out.println("Role: " + currentUser.getRole());
         }
     }
-    class profilelistener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            UserData currentUser = userDao.getUserByUsername(model.CurrentUser.get().getUsername());
-            if (currentUser != null) {
-                Usercard usercard1 = new Usercard();
-                usercard1.updateUserData(currentUser);
-                usercard1.setVisible(true);
+
+    private void populateUserPanels() {
+        List<UserData> allUsers = userDao.getAllUsers();
+        JPanel userPanelContainer = dashboardView.getUserPanelContainer();
+
+        userPanelContainer.removeAll(); // Clear previous panels
+        userPanelContainer.setLayout(new GridLayout(0, 3, 10, 10)); // 3 columns, 10px gap
+
+        for (UserData user : allUsers) {
+            view.Reusablepannel panel = new view.Reusablepannel();
+
+            // Remove or comment out the preferred size line:
+            // panel.setPreferredSize(new java.awt.Dimension(200, 200));
+
+            // Set user data and handle default image
+            if (user.getImage() == null || user.getImage().length == 0) {
+                try {
+                    File defaultImg = new File("src/img/defaultprofile.jpg");
+                    byte[] imgBytes = Files.readAllBytes(defaultImg.toPath());
+                    user.setImage(imgBytes);
+                } catch (Exception ex) {
+                    System.out.println("Default image not found: " + ex.getMessage());
+                }
             }
+            panel.updateUserData(user);
+            userPanelContainer.add(panel);
+        }
+        userPanelContainer.revalidate();
+        userPanelContainer.repaint();
+
+        // Debug print moved here
+        System.out.println("All Users:");
+        for (UserData user : allUsers) {
+            System.out.println("Username: " + user.getUsername());
+            System.out.println("Role: " + user.getRole());
+            System.out.println("Membership: " + user.getMembershipType());
         }
     }
+
+    // class profilelistener implements ActionListener {
+    // @Override
+    // public void actionPerformed(ActionEvent e) {
+    // UserData currentUser =
+    // userDao.getUserByUsername(model.CurrentUser.get().getUsername());
+    // if (currentUser != null) {
+    // Usercard usercard1 = new Usercard();
+    // usercard1.updateUserData(currentUser);
+    // usercard1.setVisible(true);
+    // }
+    // }
+    // }
 }

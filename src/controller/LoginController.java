@@ -56,23 +56,25 @@ public class LoginController {
                 if (loginSuccessful) {
                     // Fetch user data from DB
                     UserData userData = userDao.getUserByUsername(username);
-                    model.CurrentUser.set(userData);
+                    // model.CurrentUser.set(userData);
                     JOptionPane.showMessageDialog(userView, "Login successful!",
                             "Success",
                             JOptionPane.INFORMATION_MESSAGE);
 
                     close(); // Close the login window before opening dashboard
-                   
+
                     if ("ADMIN".equals(userData.getRole())) {
                         // Open admin dashboard
                         view.Dashboard adminDashboard = new view.Dashboard();
-                        controller.DashboardController adminController = new controller.DashboardController(adminDashboard);
+                        controller.DashboardController adminController = new controller.DashboardController(
+                                adminDashboard);
                         adminController.initializeDashboard(username);
                         adminController.open();
                     } else {
                         // Open user dashboard
                         view.UserDashboard userDashboard = new view.UserDashboard();
-                        controller.UserDashboardController userController = new controller.UserDashboardController(userDashboard);
+                        controller.UserDashboardController userController = new controller.UserDashboardController(
+                                userDashboard);
                         userController.initializeDashboard(username);
                         userController.open();
                     }
