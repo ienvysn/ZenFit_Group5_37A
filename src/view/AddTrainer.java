@@ -236,15 +236,15 @@ public class AddTrainer extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Images", "jpg", "png", "jpeg"));
+ JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Images", "jpg", "png", "jpeg"));
 
-        int option = fileChooser.showOpenDialog(null);
-        if (option == JFileChooser.APPROVE_OPTION) {
-            this.selectedFile = fileChooser.getSelectedFile();
-            System.out.println("Image path: " + selectedFile.getAbsolutePath());
-        }
-        // TODO add your handling code here:
+            int option = fileChooser.showOpenDialog(null);
+            if (option == JFileChooser.APPROVE_OPTION) {
+             this.selectedFile = fileChooser.getSelectedFile();
+                System.out.println("Image path: " + selectedFile.getAbsolutePath());
+            }
+            // TODO add your handling code here:
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
