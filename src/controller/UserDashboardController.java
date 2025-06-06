@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.UserDashboard;
 import model.UserData;
-import view.Usercard;
+import view.UsercardNoRemove;
 
 public class UserDashboardController {
     private final UserDao userDao = new UserDao();
@@ -43,7 +43,7 @@ public class UserDashboardController {
         public void actionPerformed(ActionEvent e) {
             UserData user = userDao.getUserByUsername(username);
             if (user != null) {
-                Usercard usercard3 = new Usercard();
+                UsercardNoRemove usercard3 = new UsercardNoRemove();
                 usercard3.updateUserData(user);
                 usercard3.setVisible(true);
             } else {
