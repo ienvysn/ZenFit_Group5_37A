@@ -74,7 +74,7 @@ public class LoginController {
                         // Open user dashboard
                         view.UserDashboard userDashboard = new view.UserDashboard();
                         controller.UserDashboardController userController = new controller.UserDashboardController(
-                                userDashboard);
+                                userDashboard, username);
                         userController.initializeDashboard(username);
                         userController.open();
                     }

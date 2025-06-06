@@ -69,17 +69,11 @@ public class DashboardController {
     private void populateUserPanels() {
         List<UserData> allUsers = userDao.getAllUsers();
         JPanel userPanelContainer = dashboardView.getUserPanelContainer();
-
         userPanelContainer.removeAll(); // Clear previous panels
-        userPanelContainer.setLayout(new GridLayout(0, 3, 10, 10)); // 3 columns, 10px gap
-
+        userPanelContainer.setLayout(new GridLayout(0, 3, 10, 10));
         for (UserData user : allUsers) {
             view.Reusablepannel panel = new view.Reusablepannel();
 
-            // Remove or comment out the preferred size line:
-            // panel.setPreferredSize(new java.awt.Dimension(200, 200));
-
-            // Set user data and handle default image
             if (user.getImage() == null || user.getImage().length == 0) {
                 try {
                     File defaultImg = new File("src/img/defaultprofile.jpg");
@@ -91,7 +85,6 @@ public class DashboardController {
             }
             panel.updateUserData(user);
 
-            // Add mouse click listener to open Usercard
             panel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {

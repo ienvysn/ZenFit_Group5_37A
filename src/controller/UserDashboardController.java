@@ -10,9 +10,11 @@ import view.Usercard;
 public class UserDashboardController {
     private final UserDao userDao = new UserDao();
     private final UserDashboard dashboardView;
+    private String username; // Store the logged-in username
 
-    public UserDashboardController(UserDashboard dashboardView) {
+    public UserDashboardController(UserDashboard dashboardView, String username) {
         this.dashboardView = dashboardView;
+        this.username = username;
         dashboardView.addADDprofilelistener(new profilelistener());
     }
 
@@ -35,13 +37,19 @@ public class UserDashboardController {
             System.out.println("Role: " + currentUser.getRole());
         }
     }
-    class profilelistener implements ActionListener{
 
+    class profilelistener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Usercard usercard3 = new Usercard();
-            usercard3.setVisible(true);
+            UserData user = userDao.getUserByUsername(username);
+            if (user != null) {
+                Usercard usercard3 = new Usercard();
+                usercard3.updateUserData(user);
+                usercard3.setVisible(true);
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(dashboardView, "User not found!", "Error",
+                        javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
         }
-        
     }
-} 
+}

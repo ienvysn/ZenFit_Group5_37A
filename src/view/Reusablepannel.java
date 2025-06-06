@@ -70,13 +70,14 @@ public class Reusablepannel extends javax.swing.JPanel {
 
         // Display user image
         byte[] imageData = user.getImage();
-        if (imageData != null) {
+        if (imageData != null && imageData.length > 0) {
             try {
                 BufferedImage img = ImageIO.read(new ByteArrayInputStream(imageData));
                 Image scaledImg = img.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
                 imageLabel.setIcon(new ImageIcon(scaledImg));
             } catch (Exception e) {
                 System.out.println("Error loading image: " + e.getMessage());
+                imageLabel.setIcon(null);
             }
         } else {
             imageLabel.setIcon(null); // Or set a default icon
