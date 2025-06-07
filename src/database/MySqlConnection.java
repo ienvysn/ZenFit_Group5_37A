@@ -18,7 +18,7 @@ public class MySqlConnection implements Database {
     public Connection openConnection() {
         try {
             String username = "root";
-            String password = "salifa11";
+            String password = "#manishchhora";
             String database = "zenfit";
 
             Connection connection;
@@ -78,5 +78,15 @@ public class MySqlConnection implements Database {
     }
     }
     
+     public static void main(String[] args) {
+        Database db = new MySqlConnection(); // Interface reference to implementation
+        Connection conn = db.openConnection(); // Try to open connection
+
+        if (conn != null) {
+            System.out.println("Connection is open. Ready to use backend.");
+        } else {
+            System.out.println("Connection failed.");
+        }
+    }
     
 }
