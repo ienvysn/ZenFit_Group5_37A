@@ -5,7 +5,22 @@
         <group>
             <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/database/MySqlConnection.java</file>
             <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/database/Database.java</file>
-            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/database/TestConnection.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/AddTrainer.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/dao/TrainerDao.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/TrainercardNoRemove.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/TrainerCard.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/SignUp.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/img/defaultprofile.jpg</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/UserDashboard.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/controller/TrainerDashboardController.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/model/Trainer.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Usercard.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/controller/DashboardController.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Dashboard.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/controller/LoginController.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/controller/SignUpController.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Usercardnoremove.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/TrainerDashboardadmin.java</file>
         </group>
     </open-files>
 </project-private>
