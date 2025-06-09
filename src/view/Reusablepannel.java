@@ -23,6 +23,8 @@ public class Reusablepannel extends javax.swing.JPanel {
      */
     public Reusablepannel() {
         initComponents();
+        this.setBorder(null); // Remove borders
+        this.setBackground(new java.awt.Color(4, 39, 56)); // Match container background color
     }
 
     /**
@@ -81,6 +83,19 @@ public class Reusablepannel extends javax.swing.JPanel {
             }
         } else {
             imageLabel.setIcon(null); // Or set a default icon
+        }
+    }
+
+    public void updateTrainerData(model.Trainer trainer) {
+        jLabel1.setText(trainer.getName()); // Update name
+        if (trainer.getImage() != null) {
+            try {
+                java.awt.Image img = javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream(trainer.getImage()));
+                imageLabel.setIcon(
+                        new javax.swing.ImageIcon(img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH)));
+            } catch (Exception e) {
+                System.out.println("Error loading image: " + e.getMessage());
+            }
         }
     }
 
