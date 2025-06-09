@@ -16,6 +16,7 @@ public class TrainerDashboardadmin extends javax.swing.JFrame {
     public TrainerDashboardadmin() {
         initComponents();
     }
+    private String currentSearchMode = "member"; 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -280,6 +281,9 @@ public class TrainerDashboardadmin extends javax.swing.JFrame {
 
     private void MembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MembersActionPerformed
         // TODO add your handling code here:
+    currentSearchMode = "member";
+    MembersText.setText("Members"); 
+    Search.setText("Enter Id ");
     }//GEN-LAST:event_MembersActionPerformed
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
@@ -300,29 +304,47 @@ public class TrainerDashboardadmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ProfilebtnActionPerformed
 
     private void SearchbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchbuttonMouseClicked
-        String idText = Search.getText();
-        if (!idText.equals("Enter Id ")) {
-            try {
-                int id = Integer.parseInt(idText);
-                dao.UserDao userDao = new dao.UserDao();
-                model.UserData user = userDao.getUserById(id);
-                if (user != null) {
-                    Usercard userCard = new Usercard();
-                    userCard.updateUserData(user);
-                    userCard.setVisible(true);
-                } else {
-                    javax.swing.JOptionPane.showMessageDialog(this,
-                        "User not found",
-                        "Search Error",
-                        javax.swing.JOptionPane.ERROR_MESSAGE);
-                }
-            } catch (NumberFormatException e) {
+         String idText = Search.getText();
+if (!idText.equals("Enter Id ")) {
+    try {
+        int id = Integer.parseInt(idText);
+
+        if ("member".equals(currentSearchMode)) {
+            // Member search logic
+            dao.UserDao userDao = new dao.UserDao();
+            model.UserData user = userDao.getUserById(id);
+            if (user != null) {
+                Usercard userCard = new Usercard();
+                userCard.updateUserData(user);
+                userCard.setVisible(true);
+            } else {
                 javax.swing.JOptionPane.showMessageDialog(this,
-                    "Please enter a valid ID number",
-                    "Invalid Input",
+                    "Member not found",
+                    "Search Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            // Trainer search logic
+            dao.TrainerDao trainerDao = new dao.TrainerDao();
+            model.Trainer trainer = trainerDao.getTrainerById(id);
+            if (trainer != null) {
+                TrainerCard trainerCard = new TrainerCard();
+                trainerCard.updateTrainer(trainer);
+                trainerCard.setVisible(true);
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                    "Trainer not found",
+                    "Search Error",
                     javax.swing.JOptionPane.ERROR_MESSAGE);
             }
         }
+    } catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+            "Please enter a valid ID number",
+            "Invalid Input",
+            javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
+}
     }//GEN-LAST:event_SearchbuttonMouseClicked
 
     private void SearchbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchbuttonActionPerformed
@@ -347,6 +369,10 @@ public class TrainerDashboardadmin extends javax.swing.JFrame {
 
     private void TrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrainerActionPerformed
         // TODO add your handling code here:
+    currentSearchMode = "trainer";
+    MembersText.setText("Trainers"); 
+    // You might also want to clear the search field or update other UI elements
+    Search.setText("Enter Id ");
     }//GEN-LAST:event_TrainerActionPerformed
 
     private void AddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddnewActionPerformed

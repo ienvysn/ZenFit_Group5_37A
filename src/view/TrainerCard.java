@@ -16,6 +16,15 @@ public class TrainerCard extends javax.swing.JFrame {
     public TrainerCard() {
         initComponents();
     }
+     public void updateTrainer(model.Trainer trainer) {
+    jLabel3.setText(String.valueOf(trainer.getId()));        // Trainer ID
+    jLabel10.setText(trainer.getName());                     // Name
+    jLabel5.setText("98********");                           // You can mask or add actual number if available
+    jLabel7.setText(trainer.getAddress());                   // Address
+    jLabel9.setText(trainer.getShift());                     // Shift
+    jLabel12.setText(trainer.getSpeciality());               // Specialty
+    // If you plan to show image, add image handling here (optional)
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
