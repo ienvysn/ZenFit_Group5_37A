@@ -99,7 +99,7 @@ public class TrainerDao {
             stmt.setString(1, trainer.getName());
             stmt.setString(2, trainer.getAddress());
             stmt.setString(3, trainer.getShift());
-            stmt.setString(4, trainer.getSpeciality());
+            stmt.setString(4, trainer.getSpeciality()); 
             stmt.setBytes(5, trainer.getImage());
             stmt.setInt(6, trainer.getId());
             

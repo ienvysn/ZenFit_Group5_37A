@@ -206,6 +206,26 @@ public class TrainercardNoRemove extends javax.swing.JFrame {
         });
     }
 
+    public void updateTrainer(model.Trainer trainer) {
+        jLabel3.setText(String.valueOf(trainer.getId())); // Trainer ID
+        jLabel10.setText(trainer.getName()); // Name
+        jLabel5.setText("98********"); // Placeholder for phone number
+        jLabel7.setText(trainer.getAddress()); // Address
+        jLabel9.setText(trainer.getShift()); // Shift
+        jLabel12.setText(trainer.getSpeciality()); // Specialty
+        // Add image handling if you have an image label
+        // if (trainer.getImage() != null && trainer.getImage().length > 0) {
+        //     try {
+        //         java.awt.Image img = javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream(trainer.getImage()));
+        //         imageLabel.setIcon(new javax.swing.ImageIcon(img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH)));
+        //     } catch (Exception e) {
+        //         imageLabel.setIcon(null);
+        //     }
+        // } else {
+        //     imageLabel.setIcon(null); // or set a default image
+        // }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

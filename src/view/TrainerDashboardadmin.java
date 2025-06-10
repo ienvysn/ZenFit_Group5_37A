@@ -10,7 +10,7 @@ import controller.TrainerDashboardController;
  *
  * @author Salifa
  */
-public class TrainerDashboardadmin extends javax.swing.JFrame {
+public class TrainerDashboardadmin extends javax.swing.JFrame implements TrainerPanelContainer {
 
     private TrainerDashboardController controller; // Declare at the class level
 
@@ -492,7 +492,6 @@ public class TrainerDashboardadmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    public javax.swing.JPanel getTrainerPanelContainer() {
-        return jPanel5; // Ensure trainer panels are added to jPanel5 inside the scroll pane
+    public javax.swing.JPanel getTrainerPanelContainer() {        return jPanel5; // Ensure trainer panels are added to jPanel5 inside the scroll pane
     }
 }

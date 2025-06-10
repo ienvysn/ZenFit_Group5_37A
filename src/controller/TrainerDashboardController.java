@@ -8,6 +8,7 @@ import dao.TrainerDao;
 import model.Trainer;
 import view.TrainerDashboardadmin;
 import view.AddTrainer;
+import view.TrainerPanelContainer;
 import java.util.List;
 
 /**
@@ -16,15 +17,15 @@ import java.util.List;
  */
 public class TrainerDashboardController {
     private TrainerDao trainerDao;
-    private TrainerDashboardadmin view;
+    private TrainerPanelContainer view;
 
     // Constructor for when we don't have a view (like from Dashboard)
     public TrainerDashboardController() {
         trainerDao = new TrainerDao();
     }
 
-    // Constructor for when we have a view (like from TrainerDashboardadmin)
-    public TrainerDashboardController(TrainerDashboardadmin view) {
+    // Constructor for when we have a view (like from TrainerDashboardadmin or UserDashboard)
+    public TrainerDashboardController(TrainerPanelContainer view) {
         this.view = view;
         trainerDao = new TrainerDao();
     }
@@ -96,7 +97,7 @@ public class TrainerDashboardController {
             panel.addMouseListener(new java.awt.event.MouseAdapter() {
                 @Override
                 public void mouseClicked(java.awt.event.MouseEvent e) {
-                    view.TrainerCard trainerCard = new view.TrainerCard();
+                    view.TrainercardNoRemove trainerCard = new view.TrainercardNoRemove();
                     trainerCard.updateTrainer(trainer);
                     trainerCard.setVisible(true);
                 }
