@@ -11,7 +11,7 @@ package view;
 public class Workout extends javax.swing.JFrame {
 
     /**
-     * Creates new form wj
+     * Creates new form Workout
      */
     public Workout() {
         initComponents();
@@ -234,7 +234,9 @@ public class Workout extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrainerActionPerformed
-        // TODO add your handling code here:
+       view.UserDashboard trainerdashboard = new view.UserDashboard();
+       trainerdashboard.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_TrainerActionPerformed
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
@@ -250,7 +252,9 @@ public class Workout extends javax.swing.JFrame {
     }//GEN-LAST:event_ProfilebtnActionPerformed
 
     private void WorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WorkoutActionPerformed
-        // TODO add your handling code here:
+       view.Workout workoutdashboard = new view.Workout();
+       workoutdashboard.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_WorkoutActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

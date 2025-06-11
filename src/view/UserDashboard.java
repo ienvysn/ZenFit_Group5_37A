@@ -8,12 +8,12 @@ package view;
  *
  * @author Salifa
  */
-public class dashboarduser extends javax.swing.JFrame {
+public class UserDashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form dashboarduser
      */
-    public dashboarduser() {
+    public UserDashboard() {
         initComponents();
     }
 
@@ -230,7 +230,7 @@ public class dashboarduser extends javax.swing.JFrame {
     }//GEN-LAST:event_ProfilebtnActionPerformed
 
     private void TrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrainerActionPerformed
-       view.dashboarduser trainerdashboard = new view.dashboarduser();
+       view.UserDashboard trainerdashboard = new view.UserDashboard();
        trainerdashboard.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_TrainerActionPerformed
@@ -258,20 +258,21 @@ public class dashboarduser extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dashboarduser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dashboarduser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dashboarduser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dashboarduser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new dashboarduser().setVisible(true);
+                new UserDashboard().setVisible(true);
             }
         });
     }
