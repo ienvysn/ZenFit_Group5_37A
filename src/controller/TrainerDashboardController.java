@@ -45,8 +45,8 @@ public class TrainerDashboardController {
     }
 
     // Add new trainer
-    public boolean addTrainer(String name, String address, String shift, String speciality, byte[] image) {
-        Trainer trainer = new Trainer(name, address, shift, speciality, image);
+    public boolean addTrainer(String name, String address, String shift, String speciality, byte[] image,String phone) {
+        Trainer trainer = new Trainer(name, address, shift, speciality, image,phone);
         return trainerDao.addTrainer(trainer);
     }
 
@@ -61,8 +61,8 @@ public class TrainerDashboardController {
     }
 
     // Update trainer
-    public boolean updateTrainer(int id, String name, String address, String shift, String speciality, byte[] image) {
-        Trainer trainer = new Trainer(name, address, shift, speciality, image);
+    public boolean updateTrainer(int id, String name, String address, String shift, String speciality, byte[] image,String phone) {
+        Trainer trainer = new Trainer(name, address, shift, speciality, image,phone);
         trainer.setId(id);
         return trainerDao.updateTrainer(trainer);
     }

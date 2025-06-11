@@ -253,6 +253,7 @@ public class AddTrainer extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String name = jTextField2.getText();
+        String phone = jTextField3.getText();
         String address = jTextField4.getText();
         String shift = (String) jComboBox1.getSelectedItem();
         String speciality = (String) jComboBox2.getSelectedItem();
@@ -261,6 +262,11 @@ public class AddTrainer extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter a valid name", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        if (phone.equals("enter phone number") || phone.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please enter a valid phone number", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
         
         if (address.equals("enter address") || address.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter a valid address", "Error", JOptionPane.ERROR_MESSAGE);
@@ -278,7 +284,7 @@ public class AddTrainer extends javax.swing.JFrame {
             fis.read(image);
             fis.close();
             
-            boolean success = controller.addTrainer(name, address, shift, speciality, image);
+            boolean success = controller.addTrainer(name, address, shift, speciality, image,phone);
             
             if (success) {
                 JOptionPane.showMessageDialog(this, "Trainer added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);

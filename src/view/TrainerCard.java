@@ -207,7 +207,7 @@ public class TrainerCard extends javax.swing.JFrame {
     public void updateTrainer(model.Trainer trainer) {
         jLabel3.setText(String.valueOf(trainer.getId())); // Trainer ID
         jLabel10.setText(trainer.getName()); // Name
-        jLabel5.setText("98********"); // Placeholder for phone number
+        jLabel5.setText(trainer.getPhone()); // Placeholder for phone number
         jLabel7.setText(trainer.getAddress()); // Address
         jLabel9.setText(trainer.getShift()); // Shift
         jLabel12.setText(trainer.getSpeciality()); // Specialty

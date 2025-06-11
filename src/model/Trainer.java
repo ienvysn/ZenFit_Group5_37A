@@ -16,18 +16,20 @@ public class Trainer {
     private String shift;
     private String speciality;
     private byte[] image;
+    private String phone;
     
     // Default constructor
     public Trainer() {
     }
     
     // Parameterized constructor
-    public Trainer(String name, String address, String shift, String speciality, byte[] image) {
+    public Trainer(String name, String address, String shift, String speciality, byte[] image,String phone) {
         this.name = name;
         this.address = address;
         this.shift = shift;
         this.speciality = speciality;
         this.image = image;
+        this.phone = phone;
     }
     
     // Getters and Setters
@@ -78,4 +80,11 @@ public class Trainer {
     public void setImage(byte[] image) {
         this.image = image;
     }
+    public String getPhone() {
+    return phone;
+}
+
+public void setPhone(String phone) {
+    this.phone = phone;
+}
 }

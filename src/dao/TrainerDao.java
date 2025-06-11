@@ -30,13 +30,15 @@ public class TrainerDao {
     
     // Add new trainer
     public boolean addTrainer(Trainer trainer) {
-        String sql = "INSERT INTO trainers (name, address, shift, speciality, image) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO trainers (name, address, shift, speciality, image,phone) VALUES (?, ?, ?, ?, ?,?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, trainer.getName());
             stmt.setString(2, trainer.getAddress());
             stmt.setString(3, trainer.getShift());
             stmt.setString(4, trainer.getSpeciality());
             stmt.setBytes(5, trainer.getImage());
+            stmt.setString(6, trainer.getPhone());
+            
             
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
@@ -61,6 +63,7 @@ public class TrainerDao {
                 trainer.setShift(rs.getString("shift"));
                 trainer.setSpeciality(rs.getString("speciality"));
                 trainer.setImage(rs.getBytes("image"));
+                trainer.setPhone(rs.getString("phone"));
                 trainers.add(trainer);
             }
         } catch (SQLException e) {
@@ -84,6 +87,7 @@ public class TrainerDao {
                 trainer.setShift(rs.getString("shift"));
                 trainer.setSpeciality(rs.getString("speciality"));
                 trainer.setImage(rs.getBytes("image"));
+                trainer.setPhone(rs.getString("phone"));
                 return trainer;
             }
         } catch (SQLException e) {
@@ -94,14 +98,15 @@ public class TrainerDao {
     
     // Update trainer
     public boolean updateTrainer(Trainer trainer) {
-        String sql = "UPDATE trainers SET name=?, address=?, shift=?, speciality=?, image=? WHERE id=?";
+        String sql = "UPDATE trainers SET name=?, address=?, shift=?, speciality=?, image=?,phone =? WHERE id=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, trainer.getName());
             stmt.setString(2, trainer.getAddress());
             stmt.setString(3, trainer.getShift());
             stmt.setString(4, trainer.getSpeciality()); 
             stmt.setBytes(5, trainer.getImage());
-            stmt.setInt(6, trainer.getId());
+            stmt.setString(6, trainer.getPhone());
+            stmt.setInt(7, trainer.getId());
             
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
