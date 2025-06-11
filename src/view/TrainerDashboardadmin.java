@@ -346,7 +346,9 @@ public class TrainerDashboardadmin extends javax.swing.JFrame implements Trainer
     }// </editor-fold>//GEN-END:initComponents
 
     private void MembersActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MembersActionPerformed
-        // TODO add your handling code here:
+        view.Dashboard memberdashboard = new view.Dashboard();
+        memberdashboard.setVisible(true);
+        this.dispose();
     }// GEN-LAST:event_MembersActionPerformed
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_EquipmentActionPerformed
