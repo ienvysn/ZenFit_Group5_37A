@@ -15,7 +15,7 @@ public class UserDashboardController {
     public UserDashboardController(UserDashboard dashboardView, String username) {
         this.dashboardView = dashboardView;
         this.username = username;
-        dashboardView.addADDprofilelistener(new profilelistener());
+        // dashboardView.addADDprofilelistener(new profilelistener());
     }
 
     public void open() {

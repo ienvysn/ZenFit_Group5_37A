@@ -4,6 +4,13 @@
  */
 package view;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Acer
@@ -212,6 +219,37 @@ public class TrainerCard extends javax.swing.JFrame {
         jLabel9.setText(trainer.getShift()); // Shift
         jLabel12.setText(trainer.getSpeciality()); // Specialty
         // Add image handling if needed
+         byte[] imageData = trainer.getImage();
+        System.out.println("Image data length: " + (imageData != null ? imageData.length : "null"));
+
+        try {
+            BufferedImage img;
+            if (imageData != null && imageData.length > 0) {
+                img = ImageIO.read(new ByteArrayInputStream(imageData));
+            } else {
+                // Load default image from img folder
+                img = ImageIO.read(new File("src/img/defaultprofile.jpg"));
+            }
+            if (img != null) {
+                Image scaledImg = img.getScaledInstance(60, 60, Image.SCALE_SMOOTH); // smaller size
+                // Replace 'profileImageLabel' with your actual JLabel in jPanel3
+                jPanel3.removeAll();
+                javax.swing.JLabel profileImageLabel = new javax.swing.JLabel(new ImageIcon(scaledImg));
+                profileImageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                profileImageLabel.setVerticalAlignment(javax.swing.SwingConstants.CENTER);
+                jPanel3.setLayout(new java.awt.BorderLayout());
+                jPanel3.add(profileImageLabel, java.awt.BorderLayout.CENTER);
+                jPanel3.revalidate();
+                jPanel3.repaint();
+            } else {
+                jPanel3.removeAll();
+                jPanel3.repaint();
+            }
+        } catch (Exception e) {
+            System.out.println("Error loading image: " + e.getMessage());
+            jPanel3.removeAll();
+            jPanel3.repaint();
+        }
     }
 
     /**

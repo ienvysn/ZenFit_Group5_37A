@@ -76,6 +76,7 @@ public class LoginController {
                         controller.UserDashboardController userController = new controller.UserDashboardController(
                                 userDashboard, username);
                         userController.initializeDashboard(username);
+                        userDashboard.setCurrentUsername(username);  // Set the current username
                         userController.open();
                     }
                 } else {
