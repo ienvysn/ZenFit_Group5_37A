@@ -33,6 +33,22 @@ public class UserData {
         this.image = image;
         
     }
+//
+//    UserData() {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+    
+    public UserData() {
+    // Empty constructor for temporary users
+    this.username = "temp_user";
+    this.phone = "0000000000";
+    this.password = "temp_pass";
+    this.joinedDate = new Date(); // Current date
+    this.expiryDate = new Date(System.currentTimeMillis() + 365L * 24 * 60 * 60 * 1000); // 1 year from now
+    this.membershipType = "Temporary";
+    this.role = "MEMBER";
+    this.image = new byte[0];
+}
 
     public int getId() {
         return id;
@@ -104,5 +120,6 @@ public class UserData {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+    
 }
 
