@@ -22,8 +22,8 @@ public class MySqlConnection implements Database {
             String database = "zenfit";
 
             Connection connection;
-            connection= DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/" + database, username, password);
+            connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/" + database, username, password);
 
             if (connection == null) {
                 System.out.println("Database not connected");
@@ -33,50 +33,50 @@ public class MySqlConnection implements Database {
 
             return connection;
 
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             System.out.print(e);
             return null;
         }
-            
-        }
+
+    }
 
     @Override
     public void CloseConnection(Connection conn) {
-        try{
-            if(conn !=null && !conn.isClosed()){
+        try {
+            if (conn != null && !conn.isClosed()) {
                 conn.close();
                 System.out.println("Database closed");
 
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.print(e);
         }
     }
 
     @Override
     public ResultSet runQuery(Connection conn, String query) {
-        try{
-        Statement stmp= conn.createStatement();
-        ResultSet result= stmp.executeQuery(query);
-        return result;
-        
-    }catch(SQLException e){
-        System.out.println(e);
-        return null;
+        try {
+            Statement stmp = conn.createStatement();
+            ResultSet result = stmp.executeQuery(query);
+            return result;
+
+        } catch (SQLException e) {
+            System.out.println(e);
+            return null;
+        }
     }
-    }
+
     @Override
     public int executeUpdate(Connection conn, String query) {
-        try{
-        Statement stmp= conn.createStatement();
-        int result= stmp.executeUpdate(query);
-        return result;
-        
-    }catch(SQLException e){
-        System.out.println(e);
-        return -1;
+        try {
+            Statement stmp = conn.createStatement();
+            int result = stmp.executeUpdate(query);
+            return result;
+
+        } catch (SQLException e) {
+            System.out.println(e);
+            return -1;
+        }
     }
-    }
-    
-    
+
 }
