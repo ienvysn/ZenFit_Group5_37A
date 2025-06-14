@@ -4,17 +4,31 @@
  */
 package view;
 
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.CurrentUser;
+import model.UserData;
+import model.WorkoutData;
+import dao.WorkoutDAO;
+import controller.WorkoutController;
+
 /**
  *
  * @author Salifa
  */
 public class Workout extends javax.swing.JFrame {
 
+    private WorkoutController workoutController;
+
     /**
      * Creates new form Workout
      */
     public Workout() {
         initComponents();
+        customizeTable();
+        workoutController = new WorkoutController(jTable1);
+        loadWorkoutData();
     }
 
     /**
@@ -38,9 +52,9 @@ public class Workout extends javax.swing.JFrame {
         Profilebtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Workout = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,14 +151,6 @@ public class Workout extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jTextField1.setText("AddNew");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -157,6 +163,13 @@ public class Workout extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+
+        jButton1.setText("Add");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout addnewtextLayout = new javax.swing.GroupLayout(addnewtext);
         addnewtext.setLayout(addnewtextLayout);
@@ -179,21 +192,18 @@ public class Workout extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(addnewtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addnewtextLayout.createSequentialGroup()
-                        .addGroup(addnewtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(addnewtextLayout.createSequentialGroup()
-                                .addGap(369, 369, 369)
-                                .addComponent(MembersText))
-                            .addGroup(addnewtextLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(66, 66, 66)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2))
+                        .addGap(369, 369, 369)
+                        .addComponent(MembersText))
                     .addGroup(addnewtextLayout.createSequentialGroup()
-                        .addGap(775, 775, 775)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addnewtextLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
+                .addGap(66, 66, 66)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
                 .addContainerGap())
         );
         addnewtextLayout.setVerticalGroup(
@@ -215,18 +225,18 @@ public class Workout extends javax.swing.JFrame {
                 .addGroup(addnewtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(addnewtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(addnewtextLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(addnewtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(MembersText))
-                            .addGap(18, 18, 18)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addnewtextLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(addnewtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(MembersText))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -261,7 +271,18 @@ public class Workout extends javax.swing.JFrame {
     }//GEN-LAST:event_FeedbackActionPerformed
 
     private void ProfilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfilebtnActionPerformed
-        // TODO add your handling code here:
+        try {
+            // Get current user
+            UserData currentUser = CurrentUser.get();
+            
+            // Create and show user profile card
+            view.UsercardNoRemove userCard = new view.UsercardNoRemove();
+            userCard.updateUserData(currentUser);
+            userCard.setVisible(true);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error loading profile: " + e.getMessage());
+        }
     }//GEN-LAST:event_ProfilebtnActionPerformed
 
     private void WorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WorkoutActionPerformed
@@ -270,9 +291,76 @@ public class Workout extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_WorkoutActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        view.AddWorkout AddWorkout = new view.AddWorkout();
+        AddWorkout.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void loadWorkoutData() {
+        try {
+            workoutController.loadWorkoutData();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error loading workouts: " + e.getMessage());
+        }
+    }
+
+    private void customizeTable() {
+        // Set table header properties
+        jTable1.getTableHeader().setFont(new java.awt.Font("Segoe UI", 1, 14));
+        jTable1.getTableHeader().setBackground(new java.awt.Color(4, 39, 56));
+        jTable1.getTableHeader().setForeground(new java.awt.Color(255, 255, 255));
+        
+        // Set table properties
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 12));
+        jTable1.setRowHeight(30);
+        jTable1.setGridColor(new java.awt.Color(204, 204, 204));
+        jTable1.setShowGrid(true);
+        jTable1.setShowHorizontalLines(true);
+        jTable1.setShowVerticalLines(true);
+        
+        // Set alternating row colors
+        jTable1.setFillsViewportHeight(true);
+        jTable1.setSelectionBackground(new java.awt.Color(153, 204, 255));
+        jTable1.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        
+        // Center align all columns
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        for (int i = 0; i < model.getColumnCount(); i++) {
+            jTable1.getColumnModel().getColumn(i).setHeaderValue(model.getColumnName(i));
+        }
+        
+        // Set column widths
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(200); // Workout name
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(100); // Sets
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(100); // Reps
+        jTable1.getColumnModel().getColumn(3).setPreferredWidth(100); // Weight
+        
+        // Add custom renderer for better cell appearance
+        jTable1.setDefaultRenderer(Object.class, new javax.swing.table.DefaultTableCellRenderer() {
+            @Override
+            public java.awt.Component getTableCellRendererComponent(
+                    javax.swing.JTable table, Object value, boolean isSelected, boolean hasFocus,
+                    int row, int column) {
+                java.awt.Component comp = super.getTableCellRendererComponent(
+                        table, value, isSelected, hasFocus, row, column);
+                
+                // Set alternating row colors with more distinct colors
+                if (!isSelected) {
+                    if (row % 2 == 0) {
+                        comp.setBackground(new java.awt.Color(240, 248, 255)); // Light blue
+                    } else {
+                        comp.setBackground(new java.awt.Color(255, 255, 255)); // White
+                    }
+                }
+                
+                // Center align all cells
+                ((javax.swing.JLabel) comp).setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                
+                return comp;
+            }
+        });
+    }
 
     /**
      * @param args the command line arguments
@@ -318,6 +406,7 @@ public class Workout extends javax.swing.JFrame {
     private javax.swing.JButton Trainer;
     private javax.swing.JButton Workout;
     private javax.swing.JPanel addnewtext;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
@@ -325,6 +414,5 @@ public class Workout extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

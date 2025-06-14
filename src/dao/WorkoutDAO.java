@@ -7,6 +7,8 @@ import database.Database;
 import database.MySqlConnection;
 import model.WorkoutData;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -75,5 +77,37 @@ public class WorkoutDAO {
                 db.CloseConnection(conn);
             }
         }
+    }
+
+    public List<WorkoutData> getWorkoutsByUserId(int userId) {
+        List<WorkoutData> workouts = new ArrayList<>();
+        Connection conn = null;
+        try {
+            conn = db.openConnection();
+            String sql = "SELECT * FROM workouts WHERE user_id = ? ORDER BY workout_date DESC";
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                WorkoutData workout = new WorkoutData(
+                    rs.getInt("user_id"),
+                    rs.getString("workout_date"),
+                    rs.getString("workout_name"),
+                    rs.getInt("reps"),
+                    rs.getInt("sets"),
+                    rs.getInt("weight_kg")
+                );
+                workouts.add(workout);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (conn != null) {
+                db.CloseConnection(conn);
+            }
+        }
+        return workouts;
     }
 }

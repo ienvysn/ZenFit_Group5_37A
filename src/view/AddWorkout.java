@@ -29,21 +29,20 @@ public class AddWorkout extends javax.swing.JFrame {
      */
     public AddWorkout() {
         initComponents();
-        // TEMPORARY: Hardcode user ID (use an ID that exists in your database)
-//    CurrentUser.setTemporaryUser(1); // Change 1 to an actual user ID from your users table
-//    
-//    // Verify
-//    if (CurrentUser.isLoggedIn()) {
-//        System.out.println("TEMP: Testing with user ID: " + CurrentUser.get().getId());
-//    }
-    UserData tempUser = new UserData(); // Uses the empty constructor
-    tempUser.setId(1); // Set to an actual user ID from your database
-    
-    CurrentUser.set(tempUser);
-    
-    System.out.println("TEMP: Testing with user ID: " + CurrentUser.get().getId());
-    
-    
+        // Set current date in YYYY-MM-DD format
+        java.time.LocalDate today = java.time.LocalDate.now();
+        jTextField2.setText(today.toString());
+        
+        try {
+            // Get current user - this will throw exception if not logged in
+            UserData currentUser = CurrentUser.get();
+            System.out.println("Current user ID: " + currentUser.getId());
+        } catch (IllegalStateException e) {
+            // If we get here, it means no user is logged in
+            JOptionPane.showMessageDialog(this, "Please log in first");
+            this.dispose();
+            return;
+        }
     }
     
 
@@ -248,8 +247,9 @@ public class AddWorkout extends javax.swing.JFrame {
         int sets = Integer.parseInt(jTextField6.getText().trim());
         int weight = Integer.parseInt(jTextField5.getText().trim());
         
-        // 4. Create and add workout
-        WorkoutData workout = new WorkoutData(
+        // 4. Create and add workout using controller
+        WorkoutController controller = new WorkoutController(null); // We don't need the table here
+        boolean success = controller.addWorkout(
             currentUser.getId(),
             workoutDate,
             workoutName,
@@ -258,11 +258,16 @@ public class AddWorkout extends javax.swing.JFrame {
             weight
         );
         
-        WorkoutDAO dao = new WorkoutDAO();
-        boolean success = dao.addWorkout(workout);
-        
         if (success) {
             JOptionPane.showMessageDialog(this, "Workout added!");
+            // Clear all fields after successful submission
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            // Reset date to current date
+            java.time.LocalDate today = java.time.LocalDate.now();
+            jTextField2.setText(today.toString());
         } else {
             JOptionPane.showMessageDialog(this, "Failed to add workout");
         }
