@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Dashboard.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/TrainerDashboardadmin.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/UserDashboard.java</file>
@@ -13,6 +14,20 @@
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/AddWorkout.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/test/dao/UserDaoTest.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/controller/SignUpController.java</file>
+=======
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ZenFit_Group5_37A/src/controller/UserDashboardController.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/AddWorkout.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ZenFit_Group5_37A/src/database/MySqlConnection.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/AddTrainer.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Dashboard.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/SignUp.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/UsercardNoRemove.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/UserDashboard.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Login.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ZenFit_Group5_37A/src/controller/LoginController.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/WindowManager.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Usercard.java</file>
+>>>>>>> 75c3268162d30777707380084ae6a01c45f1f07f
         </group>
     </open-files>
 </project-private>

@@ -56,7 +56,7 @@ public class LoginController {
                 if (loginSuccessful) {
                     // Fetch user data from DB
                     UserData userData = userDao.getUserByUsername(username);
-                    // model.CurrentUser.set(userData);
+                    model.CurrentUser.set(userData);  // Set the current user
                     JOptionPane.showMessageDialog(userView, "Login successful!",
                             "Success",
                             JOptionPane.INFORMATION_MESSAGE);

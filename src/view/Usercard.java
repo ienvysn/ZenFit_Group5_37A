@@ -23,6 +23,7 @@ public class Usercard extends javax.swing.JFrame {
          */
         public Usercard() {
                 initComponents();
+                WindowManager.registerFrame(this);
         }
 
         public void updateUserData(model.UserData user) {

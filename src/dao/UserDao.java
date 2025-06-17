@@ -100,7 +100,7 @@ public class UserDao {
             ResultSet result = pstmt.executeQuery();
             if (result.next()) {
                 // Construct UserData from result set
-                return new UserData(
+                UserData user = new UserData(
                         result.getString("username"),
                         result.getString("phone"),
                         result.getString("password"),
@@ -109,7 +109,9 @@ public class UserDao {
                         result.getString("membership_type"),
                         result.getString("role"),
                         result.getBytes("image")
-                        );
+                );
+                user.setId(result.getInt("id"));
+                return user;
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);

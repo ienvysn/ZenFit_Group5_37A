@@ -4,6 +4,20 @@
  */
 package view;
 
+//import model.CurrentUser;
+//import model.UserData;  // You'll need this class
+//import dao.WorkoutDAO;
+//import controller.WorkoutController;
+//import java.sql.Date;
+//import java.sql.Connection;
+//import javax.swing.JOptionPane;
+import model.CurrentUser;
+import model.UserData;
+import dao.WorkoutDAO;
+import controller.WorkoutController;
+import java.sql.Date;
+import javax.swing.JOptionPane;
+import model.WorkoutData;
 /**
  *
  * @author Acer
@@ -15,7 +29,22 @@ public class AddWorkout extends javax.swing.JFrame {
      */
     public AddWorkout() {
         initComponents();
+        // Set current date in YYYY-MM-DD format
+        java.time.LocalDate today = java.time.LocalDate.now();
+        jTextField2.setText(today.toString());
+        
+        try {
+            // Get current user - this will throw exception if not logged in
+            UserData currentUser = CurrentUser.get();
+            System.out.println("Current user ID: " + currentUser.getId());
+        } catch (IllegalStateException e) {
+            // If we get here, it means no user is logged in
+            JOptionPane.showMessageDialog(this, "Please log in first");
+            this.dispose();
+            return;
+        }
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -24,7 +53,7 @@ public class AddWorkout extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         photobtn = new javax.swing.JPanel();
@@ -37,7 +66,7 @@ public class AddWorkout extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        Submit = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
 
@@ -96,10 +125,10 @@ public class AddWorkout extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Weight:");
 
-        jButton2.setText("Submit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Submit.setText("Submit");
+        Submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                SubmitActionPerformed(evt);
             }
         });
 
@@ -122,107 +151,138 @@ public class AddWorkout extends javax.swing.JFrame {
         javax.swing.GroupLayout photobtnLayout = new javax.swing.GroupLayout(photobtn);
         photobtn.setLayout(photobtnLayout);
         photobtnLayout.setHorizontalGroup(
-                photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(photobtnLayout.createSequentialGroup()
-                                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(photobtnLayout.createSequentialGroup()
-                                                .addGap(148, 148, 148)
-                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 187,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(photobtnLayout.createSequentialGroup()
-                                                .addGroup(photobtnLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(photobtnLayout.createSequentialGroup()
-                                                                .addGap(90, 90, 90)
-                                                                .addGroup(photobtnLayout.createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                        .addComponent(jLabel6)
-                                                                        .addComponent(jLabel7)
-                                                                        .addComponent(jLabel4)
-                                                                        .addComponent(jLabel3))
-                                                                .addGap(26, 26, 26))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                                                photobtnLayout.createSequentialGroup()
-                                                                        .addContainerGap()
-                                                                        .addComponent(jLabel5)
-                                                                        .addGap(18, 18, 18)))
-                                                .addGroup(photobtnLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jButton2)
-                                                        .addGroup(photobtnLayout
-                                                                .createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.TRAILING,
-                                                                        false)
-                                                                .addComponent(jTextField2,
-                                                                        javax.swing.GroupLayout.Alignment.LEADING,
-                                                                        javax.swing.GroupLayout.DEFAULT_SIZE, 116,
-                                                                        Short.MAX_VALUE)
-                                                                .addComponent(jTextField3,
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(jTextField4,
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(jTextField6,
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(jTextField5,
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)))))
-                                .addGap(122, 158, Short.MAX_VALUE)));
+            photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(photobtnLayout.createSequentialGroup()
+                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(photobtnLayout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(photobtnLayout.createSequentialGroup()
+                        .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(photobtnLayout.createSequentialGroup()
+                                .addGap(90, 90, 90)
+                                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3))
+                                .addGap(26, 26, 26))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, photobtnLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)))
+                        .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Submit)
+                            .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)))))
+                .addGap(122, 158, Short.MAX_VALUE))
+        );
         photobtnLayout.setVerticalGroup(
-                photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(photobtnLayout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
-                                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
-                                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5))
-                                .addGap(27, 27, 27)
-                                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
-                                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50,
-                                        Short.MAX_VALUE)
-                                .addComponent(jButton2)
-                                .addGap(37, 37, 37)));
+            photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(photobtnLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(27, 27, 27)
+                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(Submit)
+                .addGap(37, 37, 37))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(photobtn, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(photobtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(photobtn, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(photobtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
+ 
+    try {
+        // 1. Get current user
+        UserData currentUser = CurrentUser.get();
+        
+        // 2. Get date as String (no parsing needed)
+        String workoutDate = jTextField2.getText().trim();
+        
+        // Simple format validation
+        if (!workoutDate.matches("\\d{4}-\\d{2}-\\d{2}")) {
+            JOptionPane.showMessageDialog(this, 
+                "Please enter date in YYYY-MM-DD format");
+            return;
+        }
+        
+        // 3. Get other fields
+        String workoutName = jTextField3.getText().trim();
+        int reps = Integer.parseInt(jTextField4.getText().trim());
+        int sets = Integer.parseInt(jTextField6.getText().trim());
+        int weight = Integer.parseInt(jTextField5.getText().trim());
+        
+        // 4. Create and add workout using controller
+        WorkoutController controller = new WorkoutController(null); // We don't need the table here
+        boolean success = controller.addWorkout(
+            currentUser.getId(),
+            workoutDate,
+            workoutName,
+            reps,
+            sets,
+            weight
+        );
+        
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Workout added!");
+            // Clear all fields after successful submission
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            // Reset date to current date
+            java.time.LocalDate today = java.time.LocalDate.now();
+            jTextField2.setText(today.toString());
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to add workout");
+        }
+        
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Reps/Sets/Weight must be numbers");
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+    }
+
+    }//GEN-LAST:event_SubmitActionPerformed
+
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
+        
     }// GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField3ActionPerformed
@@ -294,7 +354,7 @@ public class AddWorkout extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Submit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
