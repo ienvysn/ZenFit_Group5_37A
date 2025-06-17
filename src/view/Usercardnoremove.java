@@ -5,11 +5,13 @@
 package view;
 
 import java.awt.Image;
+import java.awt.Window;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
@@ -239,9 +241,16 @@ public void updateUserData(model.UserData user) {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.dispose(); 
-        Login loginForm = new Login(); 
+        Login loginForm = new Login();
         loginForm.setVisible(true);
+
+
+        for (Window window : Window.getWindows()) {
+            if (window instanceof JFrame && window != loginForm) {
+                window.dispose();
+            }
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
