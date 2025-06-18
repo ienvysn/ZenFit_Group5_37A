@@ -465,6 +465,11 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField2FocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField2FocusLost"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -485,15 +490,19 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField3FocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField3FocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBox1">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+                <StringItem index="0" value="Trainer issue"/>
+                <StringItem index="1" value="Equipment issue"/>
+                <StringItem index="2" value="Member issue"/>
+                <StringItem index="3" value="Others"/>
               </StringArray>
             </Property>
           </Properties>

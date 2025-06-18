@@ -13,7 +13,7 @@ public class Feedback extends javax.swing.JFrame {
     /**
      * Creates new form Feedback
      */
-    public Feedback() {
+    public Feedback(String typee, String sue, String suggestion) {
         initComponents();
     }
 
@@ -183,14 +183,35 @@ public class Feedback extends javax.swing.JFrame {
         jLabel4.setText("Issue:");
 
         jTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField2FocusLost(evt);
+            }
+        });
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Suggestion:");
 
         jTextField3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField3FocusLost(evt);
+            }
+        });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trainer issue", "Equipment issue", "Member issue", "Others" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -376,6 +397,35 @@ public class Feedback extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+         jTextField3.requestFocusInWindow();
+         jTextField2.setText("");
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+          if (jTextField2.getText().equals("Enter your name...")) {
+        jTextField2.setText("");
+          }
+    }//GEN-LAST:event_jTextField2FocusGained
+
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+            if (jTextField2.getText().isEmpty()) {
+        jTextField2.setText("Enter the issue..");
+    }
+    }//GEN-LAST:event_jTextField2FocusLost
+
+    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+              if (jTextField3.getText().equals("suggest what can be done")) {
+        jTextField3.setText("");
+          }
+    }//GEN-LAST:event_jTextField3FocusGained
+
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+          if (jTextField3.getText().isEmpty()) {
+        jTextField3.setText("suggest what can be done..");
+    }
+    }//GEN-LAST:event_jTextField3FocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -404,18 +454,23 @@ public class Feedback extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Feedback().setVisible(true);
-            }
-        });
+// Assuming Feedback is a JFrame form created in NetBeans
+java.awt.EventQueue.invokeLater(new Runnable() {
+    public void run() {
+        // Initialize with default values if parameters are not available
+        String typee = "General";       // Example default value
+        String issue = "No issue";     // Example default value
+        String suggestion = "None";    // Example default value
+        
+        // Create and display the form
+        new Feedback(typee, issue, suggestion).setVisible(true);
+    }
+});
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Equipment;
     private javax.swing.JButton Feedback;
-    private javax.swing.JButton Members;
-    private javax.swing.JLabel MembersText;
     private javax.swing.JLabel MembersText1;
     private javax.swing.JButton Profilebtn;
     private javax.swing.JButton Trainer;
@@ -424,15 +479,10 @@ public class Feedback extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -445,4 +495,15 @@ public class Feedback extends javax.swing.JFrame {
     private java.awt.Label label4;
     private java.awt.Label label5;
     // End of variables declaration//GEN-END:variables
+
+    public String getTypee() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    public String getIssue() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String getSuggestion() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
