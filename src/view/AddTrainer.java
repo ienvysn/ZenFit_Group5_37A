@@ -70,6 +70,7 @@ public class AddTrainer extends javax.swing.JFrame {
         jTextField2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jTextField2.setText("enter name ");
         jTextField2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextField2.setVerifyInputWhenFocusTarget(false);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
