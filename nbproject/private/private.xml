@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Feedback.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Reusablepannel.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Equipmentuser.java</file>
@@ -12,6 +13,21 @@
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/dao/TrainerDao.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/dao/WorkoutDAO.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/controller/FeedbackController.java</file>
+=======
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/database/MySqlConnection.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/AddEquipment.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/AddTrainer.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/model/CurrentUser.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/dao/WorkoutDAO.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/model/WorkoutData.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/database/Database.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/model/EquipmentData.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/dao/EquipmentDao.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/controller/EquipmentController.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Dashboard.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Equipmentadmin.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Equipmentuser.java</file>
+>>>>>>> 4da774ee1daf4a4531bcd66d84e39f6762324e9d
         </group>
     </open-files>
 </project-private>
