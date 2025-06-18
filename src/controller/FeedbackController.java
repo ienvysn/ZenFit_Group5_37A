@@ -14,8 +14,8 @@ import view.Feedback;
 public class FeedbackController {
     private final FeedbackDao dao = new FeedbackDao();
 
-    public boolean submitFeedback(String type, String issue, String suggestion) {
-        Feedback feedback = new Feedback(type, issue, suggestion);
+    public boolean submitFeedback(String typee, String issue, String suggestion) {
+        Feedback feedback = new Feedback(typee, issue, suggestion);
         return dao.addFeedback(feedback);
     }
 }

@@ -9,19 +9,19 @@ package model;
  * @author Salifa
  */
 public class Feedback {
-    private String type;
+    private String typee;
     private String issue;
     private String suggestion;
 
-    public Feedback(String type, String issue, String suggestion) {
-        this.type = type;
+    public Feedback(String typee, String issue, String suggestion) {
+        this.typee = typee;
         this.issue = issue;
         this.suggestion = suggestion;
     }
 
     // Getters
-    public String getType() {
-        return type;
+    public String getTypee() {
+        return typee;
     }
 
     public String getIssue() {

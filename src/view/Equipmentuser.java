@@ -10,6 +10,8 @@ package view;
  */
 public class Equipmentuser extends javax.swing.JFrame {
 
+    private Object view;
+
     /**
      * Creates new form Equipmentuser
      */
@@ -206,7 +208,9 @@ public class Equipmentuser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MembersActionPerformed
-        // TODO add your handling code here:
+       view.UserDashboard dashboard = new view.UserDashboard();
+       dashboard.setVisible(true);
+       this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_MembersActionPerformed
 
     private void TrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrainerActionPerformed
@@ -215,11 +219,15 @@ public class Equipmentuser extends javax.swing.JFrame {
     }//GEN-LAST:event_TrainerActionPerformed
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
-        // TODO add your handling code here:
+        view.Equipmentuser dashboard = new view.Equipmentuser();
+       dashboard.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_EquipmentActionPerformed
 
     private void FeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackActionPerformed
-        // TODO add your handling code here:
+       view.Feedback dashboard = new view.Feedback();
+       dashboard.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_FeedbackActionPerformed
 
     private void ProfilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfilebtnActionPerformed

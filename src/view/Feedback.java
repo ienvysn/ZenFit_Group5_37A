@@ -17,6 +17,10 @@ public class Feedback extends javax.swing.JFrame {
         initComponents();
     }
 
+    Feedback() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -374,15 +378,21 @@ public class Feedback extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrainerActionPerformed
-        // TODO add your handling code here:
+                                     
+        TrainerDashboardadmin trainerPage = new TrainerDashboardadmin();
+        trainerPage.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_TrainerActionPerformed
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
-        // TODO add your handling code here:
+       view.Equipmentuser dashboard = new view.Equipmentuser();
+       dashboard.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_EquipmentActionPerformed
 
     private void FeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackActionPerformed
-        // TODO add your handling code here:
+       view.Feedback dashboard = new view.Feedback();
+       dashboard.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_FeedbackActionPerformed
 
     private void ProfilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfilebtnActionPerformed
@@ -390,7 +400,9 @@ public class Feedback extends javax.swing.JFrame {
     }//GEN-LAST:event_ProfilebtnActionPerformed
 
     private void WorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WorkoutActionPerformed
-        // TODO add your handling code here:
+       view.Workout dashboard = new view.Workout();
+       dashboard.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_WorkoutActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
