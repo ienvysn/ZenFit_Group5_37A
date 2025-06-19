@@ -20,7 +20,7 @@ public class EquipmentController {
         equipmentDao = new EquipmentDao();
     }
 
-    public boolean addEquipment(String name, String type, String quantityStr, String purchaseDate) {
+    public boolean addEquipment(String name, String type, String quantityStr, String purchaseDate,byte[] imageData) {
         // Validation
         if (name.isEmpty() || type.isEmpty() || quantityStr.isEmpty() || purchaseDate.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -29,7 +29,7 @@ public class EquipmentController {
 
         try {
             int quantity = Integer.parseInt(quantityStr);
-            EquipmentData equipment = new EquipmentData(name, type, quantity, purchaseDate);
+            EquipmentData equipment = new EquipmentData(name, type, quantity, purchaseDate,imageData);
             return equipmentDao.addEquipment(equipment);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Quantity must be a number!", "Error", JOptionPane.ERROR_MESSAGE);

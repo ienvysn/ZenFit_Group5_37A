@@ -27,7 +27,7 @@ public class EquipmentDao {
     }
 
     public boolean addEquipment(EquipmentData equipment) {
-        String query = "INSERT INTO equipment (name, type, quantity, purchaseDate) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO equipment (name, type, quantity, purchaseDate,image) VALUES (?, ?, ?, ?,?)";
         
         try (Connection conn = db.openConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -36,6 +36,7 @@ public class EquipmentDao {
             pstmt.setString(2, equipment.getType());
             pstmt.setInt(3, equipment.getQuantity());
             pstmt.setString(4, equipment.getPurchaseDate());
+            pstmt.setBytes(5, equipment.getImage());
             
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;
@@ -59,7 +60,8 @@ public class EquipmentDao {
                     rs.getString("name"),
                     rs.getString("type"),
                     rs.getInt("quantity"),
-                    rs.getString("purchaseDate")
+                    rs.getString("purchaseDate"),
+                    rs.getBytes("image")
                 );
                 equipmentList.add(equipment);
             }
