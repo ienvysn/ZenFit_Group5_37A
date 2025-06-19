@@ -419,7 +419,9 @@ public class TrainerDashboardadmin extends javax.swing.JFrame implements Trainer
     }// GEN-LAST:event_SearchActionPerformed
 
     private void TrainerActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_TrainerActionPerformed
-        // TODO add your handling code here:
+        view.TrainerDashboardadmin dashboard = new view.TrainerDashboardadmin();
+        dashboard.setVisible(true);
+        this.dispose();
     }// GEN-LAST:event_TrainerActionPerformed
 
     private void AddnewActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_AddnewActionPerformed
