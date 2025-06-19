@@ -14,13 +14,16 @@ public class EquipmentData {
     private String type;
     private int quantity;
     private String purchaseDate;
+    private byte[] image;
 
     // Constructor
-    public EquipmentData(String name, String type, int quantity, String purchaseDate) {
+    public EquipmentData(String name, String type, int quantity, String purchaseDate,byte[] image)  {
         this.name = name;
         this.type = type;
         this.quantity = quantity;
         this.purchaseDate = purchaseDate;
+        this.image = image;
+        
     }
 
     // Getters and Setters
@@ -35,4 +38,12 @@ public class EquipmentData {
     
     public String getPurchaseDate() { return purchaseDate; }
     public void setPurchaseDate(String purchaseDate) { this.purchaseDate = purchaseDate; }
+    
+     public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 }

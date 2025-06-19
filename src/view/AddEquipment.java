@@ -7,6 +7,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import controller.EquipmentController;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.Image;
 
 /**
  *
@@ -15,6 +22,8 @@ import controller.EquipmentController;
 public class AddEquipment extends javax.swing.JFrame {
     
     private final EquipmentController equipmentController;
+    private javax.swing.JLabel imageLabel;  // To display the selected image
+    private byte[] imageData;
 
     /**
      * Creates new form AddEquipment
@@ -26,6 +35,18 @@ public class AddEquipment extends javax.swing.JFrame {
         equipmentName.setText("Enter equipment name");
         equipmentQuantity.setText("Enter quantity");
         equipmentPurchaseDate.setText("YYYY-MM-DD");
+        // Image display label
+imageLabel = new javax.swing.JLabel();
+imageLabel.setPreferredSize(new java.awt.Dimension(150, 150));
+imageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+// Configure the select button properly
+jSelectButton.setText("Select Image");
+jSelectButton.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jSelectButtonActionPerformed(evt);
+    }
+});
         
     }
 
@@ -55,6 +76,8 @@ public class AddEquipment extends javax.swing.JFrame {
         equipmentPurchaseDate = new javax.swing.JTextField();
         equipmentType = new javax.swing.JComboBox<>();
         jProgressBar1 = new javax.swing.JProgressBar();
+        jLabel6 = new javax.swing.JLabel();
+        jSelectButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,10 +153,20 @@ public class AddEquipment extends javax.swing.JFrame {
             }
         });
 
-        equipmentType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Machiene ", "weight ", " " }));
+        equipmentType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Machine", "weight", "" }));
         equipmentType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 equipmentTypeActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Image");
+
+        jSelectButton.setText("jButton1");
+        jSelectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSelectButtonActionPerformed(evt);
             }
         });
 
@@ -144,29 +177,35 @@ public class AddEquipment extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(207, 207, 207)
-                                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(equipmentType, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(equipmentName, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(equipmentQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(equipmentPurchaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(135, 135, 135)
                         .addComponent(jLabel1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(jaddEquipment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(91, 91, 91)
+                        .addComponent(jaddEquipment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jSelectButton))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(207, 207, 207)
+                                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(equipmentType, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(equipmentName, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(equipmentQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(equipmentPurchaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -194,9 +233,13 @@ public class AddEquipment extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(equipmentPurchaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jSelectButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jaddEquipment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -213,7 +256,7 @@ public class AddEquipment extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         pack();
@@ -234,44 +277,129 @@ public class AddEquipment extends javax.swing.JFrame {
     private void jaddEquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jaddEquipmentActionPerformed
         // TODO add your handling code here:
         // 1. Get all input values
-    String name = equipmentName.getText().trim();
+//    String name = equipmentName.getText().trim();
+//    String type = (String) equipmentType.getSelectedItem();
+//    String quantityStr = equipmentQuantity.getText().trim();
+//    String date = equipmentPurchaseDate.getText().trim();
+//    
+//    // 2. Validate inputs
+//    if (name.isEmpty() || type.isEmpty() || quantityStr.isEmpty() || date.isEmpty()) {
+//        JOptionPane.showMessageDialog(this, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
+//        return;
+//    }
+//    
+//    try {
+//        // 3. Convert quantity to number
+//        int quantity = Integer.parseInt(quantityStr);
+//        
+//        // 4. Call controller to add equipment
+//        boolean success = equipmentController.addEquipment(name, type, quantityStr, date);
+//        
+//        // 5. Handle result
+//        if (success) {
+//            JOptionPane.showMessageDialog(this, 
+//                "Equipment added successfully!", 
+//                "Success", 
+//                JOptionPane.INFORMATION_MESSAGE);
+//            // Clear form
+//            equipmentName.setText("");
+//            equipmentQuantity.setText("");
+//            equipmentPurchaseDate.setText("");
+//            equipmentType.setSelectedIndex(0);
+//        } else {
+//            JOptionPane.showMessageDialog(this, 
+//                "Failed to add equipment", 
+//                "Error", 
+//                JOptionPane.ERROR_MESSAGE);
+//        }
+//    } catch (NumberFormatException e) {
+//        JOptionPane.showMessageDialog(this, 
+//            "Quantity must be a number", 
+//            "Error", 
+//            JOptionPane.ERROR_MESSAGE);
+//    }
+String name = equipmentName.getText().trim();
     String type = (String) equipmentType.getSelectedItem();
     String quantityStr = equipmentQuantity.getText().trim();
     String date = equipmentPurchaseDate.getText().trim();
     
-    // 2. Validate inputs
-    if (name.isEmpty() || type.isEmpty() || quantityStr.isEmpty() || date.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
+    // 2. Validate all required fields are filled
+    if (name.isEmpty() || name.equals("Enter equipment name")) {
+        JOptionPane.showMessageDialog(this, "Please enter equipment name", "Error", JOptionPane.ERROR_MESSAGE);
+        equipmentName.requestFocus();
         return;
     }
     
+    if (type.isEmpty() || type.trim().equals("")) {
+        JOptionPane.showMessageDialog(this, "Please select equipment type", "Error", JOptionPane.ERROR_MESSAGE);
+        equipmentType.requestFocus();
+        return;
+    }
+    
+    if (quantityStr.isEmpty() || quantityStr.equals("Enter quantity")) {
+        JOptionPane.showMessageDialog(this, "Please enter quantity", "Error", JOptionPane.ERROR_MESSAGE);
+        equipmentQuantity.requestFocus();
+        return;
+    }
+    
+    if (date.isEmpty() || date.equals("YYYY-MM-DD")) {
+        JOptionPane.showMessageDialog(this, "Please enter purchase date", "Error", JOptionPane.ERROR_MESSAGE);
+        equipmentPurchaseDate.requestFocus();
+        return;
+    }
+    
+    // 3. Validate image was selected
+    if (imageData == null || imageData.length == 0) {
+        JOptionPane.showMessageDialog(this, "Please select an image for the equipment", "Error", JOptionPane.ERROR_MESSAGE);
+        jSelectButton.requestFocus();
+        return;
+    }
+    
+    // 4. Validate quantity is a positive number
+    int quantity;
     try {
-        // 3. Convert quantity to number
-        int quantity = Integer.parseInt(quantityStr);
-        
-        // 4. Call controller to add equipment
-        boolean success = equipmentController.addEquipment(name, type, quantityStr, date);
-        
-        // 5. Handle result
-        if (success) {
-            JOptionPane.showMessageDialog(this, 
-                "Equipment added successfully!", 
-                "Success", 
-                JOptionPane.INFORMATION_MESSAGE);
-            // Clear form
-            equipmentName.setText("");
-            equipmentQuantity.setText("");
-            equipmentPurchaseDate.setText("");
-            equipmentType.setSelectedIndex(0);
-        } else {
-            JOptionPane.showMessageDialog(this, 
-                "Failed to add equipment", 
-                "Error", 
-                JOptionPane.ERROR_MESSAGE);
+        quantity = Integer.parseInt(quantityStr);
+        if (quantity <= 0) {
+            JOptionPane.showMessageDialog(this, "Quantity must be greater than 0", "Error", JOptionPane.ERROR_MESSAGE);
+            equipmentQuantity.requestFocus();
+            return;
         }
     } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Quantity must be a valid number", "Error", JOptionPane.ERROR_MESSAGE);
+        equipmentQuantity.requestFocus();
+        return;
+    }
+    
+    // 5. Validate date format (basic validation)
+    if (!date.matches("\\d{4}-\\d{2}-\\d{2}")) {
+        JOptionPane.showMessageDialog(this, "Please enter date in YYYY-MM-DD format", "Error", JOptionPane.ERROR_MESSAGE);
+        equipmentPurchaseDate.requestFocus();
+        return;
+    }
+    
+    // 6. Call controller to add equipment with all data including image
+    boolean success = equipmentController.addEquipment(name, type, quantityStr, date, imageData);
+    
+    // 7. Handle the result
+    if (success) {
         JOptionPane.showMessageDialog(this, 
-            "Quantity must be a number", 
+            "Equipment added successfully!", 
+            "Success", 
+            JOptionPane.INFORMATION_MESSAGE);
+        
+        // Clear the form for new entry
+        equipmentName.setText("Enter equipment name");
+        equipmentQuantity.setText("Enter quantity");
+        equipmentPurchaseDate.setText("YYYY-MM-DD");
+        equipmentType.setSelectedIndex(0);
+        imageLabel.setIcon(null);
+        imageData = null;
+        
+        // Set focus back to first field
+        equipmentName.requestFocus();
+    } else {
+        JOptionPane.showMessageDialog(this, 
+            "Failed to add equipment. Please try again.", 
             "Error", 
             JOptionPane.ERROR_MESSAGE);
     }
@@ -319,6 +447,55 @@ public class AddEquipment extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_equipmentPurchaseDateFocusLost
 
+    private void jSelectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSelectButtonActionPerformed
+     
+            JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setDialogTitle("Select Equipment Image");
+    
+    // Filter for image files only
+    FileNameExtensionFilter filter = new FileNameExtensionFilter(
+        "Image files", "jpg", "jpeg", "png", "gif");
+    fileChooser.setFileFilter(filter);
+    
+    int result = fileChooser.showOpenDialog(this);
+    if (result == JFileChooser.APPROVE_OPTION) {
+        try {
+            File selectedFile = fileChooser.getSelectedFile();
+            // Read the image file into byte array
+            imageData = Files.readAllBytes(selectedFile.toPath());
+            
+            // Display preview - use fixed dimensions for scaling
+            ImageIcon icon = new ImageIcon(imageData);
+            
+            // Set default dimensions if they're not set
+            int width = imageLabel.getWidth() > 0 ? imageLabel.getWidth() : 150;
+            int height = imageLabel.getHeight() > 0 ? imageLabel.getHeight() : 150;
+            
+            // Scale the image to fit the label
+            Image img = icon.getImage().getScaledInstance(
+                width, 
+                height, 
+                Image.SCALE_SMOOTH);
+            imageLabel.setIcon(new ImageIcon(img));
+            
+            // Add the label to your panel if not already added
+            if (imageLabel.getParent() == null) {
+                // Create a panel for the image if needed
+                JPanel imagePanel = new JPanel();
+                imagePanel.add(imageLabel);
+                jPanel2.add(imagePanel);
+                jPanel2.revalidate();
+                jPanel2.repaint();
+            }
+            
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, 
+                "Error loading image: " + ex.getMessage(), 
+                "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }                                          
+    }//GEN-LAST:event_jSelectButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -364,8 +541,10 @@ public class AddEquipment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JButton jSelectButton;
     private javax.swing.JButton jaddEquipment;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,6 +10,10 @@
             <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Dashboard.java</file>
             <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/TrainerDashboardadmin.java</file>
             <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/AddEquipment.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/model/WorkoutData.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/model/EquipmentData.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/dao/EquipmentDao.java</file>
+            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/controller/EquipmentController.java</file>
         </group>
     </open-files>
 </project-private>
