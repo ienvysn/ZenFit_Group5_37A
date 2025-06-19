@@ -352,7 +352,9 @@ public class TrainerDashboardadmin extends javax.swing.JFrame implements Trainer
     }// GEN-LAST:event_MembersActionPerformed
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_EquipmentActionPerformed
-        // TODO add your handling code here:
+        view.Equipmentadmin dashboard = new view.Equipmentadmin();
+        dashboard.setVisible(true);
+        this.dispose();  // TODO add your handling code here:
     }// GEN-LAST:event_EquipmentActionPerformed
 
     private void FeedbackActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_FeedbackActionPerformed
