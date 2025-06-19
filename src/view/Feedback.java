@@ -4,6 +4,9 @@
  */
 package view;
 
+import controller.FeedbackController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Salifa
@@ -13,9 +16,10 @@ public class Feedback extends javax.swing.JFrame {
     /**
      * Creates new form Feedback
      */
-    public Feedback(String typee, String sue, String suggestion) {
-        initComponents();
-    }
+public Feedback(String typee, String sue, String suggestion) {
+    initComponents();
+}
+
 
     Feedback() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -53,8 +57,8 @@ public class Feedback extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Submit = new javax.swing.JButton();
+        Reset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -222,9 +226,14 @@ public class Feedback extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Submit");
+        Submit.setText("Submit");
+        Submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Reset");
+        Reset.setText("Reset");
 
         javax.swing.GroupLayout addnewtextLayout = new javax.swing.GroupLayout(addnewtext);
         addnewtext.setLayout(addnewtextLayout);
@@ -261,9 +270,9 @@ public class Feedback extends javax.swing.JFrame {
                             .addComponent(jComboBox1, 0, 315, Short.MAX_VALUE)))
                     .addGroup(addnewtextLayout.createSequentialGroup()
                         .addGap(146, 146, 146)
-                        .addComponent(jButton1)
+                        .addComponent(Submit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(Reset)))
                 .addGap(19, 19, 19)
                 .addGroup(addnewtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addnewtextLayout.createSequentialGroup()
@@ -329,8 +338,8 @@ public class Feedback extends javax.swing.JFrame {
                                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addGroup(addnewtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jButton1)
-                                            .addComponent(jButton2))
+                                            .addComponent(Submit)
+                                            .addComponent(Reset))
                                         .addGap(0, 15, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addnewtextLayout.createSequentialGroup()
                                 .addContainerGap()
@@ -438,6 +447,28 @@ public class Feedback extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_jTextField3FocusLost
 
+    private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
+    // 1. Get values from the components
+    String typee = jComboBox1.getSelectedItem().toString();
+    String issue = jTextField2.getText();
+    String suggestion = jTextField3.getText();
+
+    // 2. Pass values to the controller
+    FeedbackController controller = new FeedbackController();
+    boolean success = controller.submitFeedback(typee, issue, suggestion);
+
+    // 3. Show result
+    if (success) {
+        JOptionPane.showMessageDialog(this, "Feedback submitted successfully!");
+        jComboBox1.setSelectedIndex(0);
+        jTextField2.setText("");
+        jTextField3.setText("");
+    } else {
+        JOptionPane.showMessageDialog(this, "Failed to submit feedback. Please try again.");
+    }
+
+    }//GEN-LAST:event_SubmitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -485,11 +516,11 @@ java.awt.EventQueue.invokeLater(new Runnable() {
     private javax.swing.JButton Feedback;
     private javax.swing.JLabel MembersText1;
     private javax.swing.JButton Profilebtn;
+    private javax.swing.JButton Reset;
+    private javax.swing.JButton Submit;
     private javax.swing.JButton Trainer;
     private javax.swing.JButton Workout;
     private javax.swing.JPanel addnewtext;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -519,3 +550,4 @@ java.awt.EventQueue.invokeLater(new Runnable() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
+

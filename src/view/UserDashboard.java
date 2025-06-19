@@ -265,11 +265,15 @@ public class UserDashboard extends javax.swing.JFrame implements TrainerPanelCon
     }// </editor-fold>//GEN-END:initComponents
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
-        // TODO add your handling code here:
+        view.Equipmentuser dashboard = new view.Equipmentuser();
+        dashboard.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_EquipmentActionPerformed
 
     private void FeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackActionPerformed
-        // TODO add your handling code here:
+        view.Feedback feedbackdashboard = new view.Feedback();
+        feedbackdashboard.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_FeedbackActionPerformed
 
     private void ProfilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfilebtnActionPerformed

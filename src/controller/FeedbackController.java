@@ -5,7 +5,8 @@
 package controller;
 
 import dao.FeedbackDao;
-import view.Feedback;
+import model.Feedback;
+
 
 /**
  *

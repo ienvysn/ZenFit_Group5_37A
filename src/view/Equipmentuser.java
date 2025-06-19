@@ -225,8 +225,8 @@ public class Equipmentuser extends javax.swing.JFrame {
     }//GEN-LAST:event_EquipmentActionPerformed
 
     private void FeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackActionPerformed
-       view.Feedback dashboard = new view.Feedback();
-       dashboard.setVisible(true);
+       view.Feedback feedbackdashboard = new view.Feedback();
+       feedbackdashboard.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_FeedbackActionPerformed
 
