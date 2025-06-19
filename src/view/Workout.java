@@ -263,7 +263,7 @@ public class Workout extends javax.swing.JFrame {
     }//GEN-LAST:event_TrainerActionPerformed
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
-       view.Equipmentuser dashboard = new view.Equipmentuser();
+       view.Equipmentadmin dashboard = new view.Equipmentadmin();
        dashboard.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_EquipmentActionPerformed

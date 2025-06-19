@@ -390,7 +390,7 @@ public class Dashboard extends javax.swing.JFrame {
     }// GEN-LAST:event_FeedbackActionPerformed
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_EquipmentActionPerformed
-        view.Equipmentadmin dashboard = new view.Equipmentadmin();
+        view.Equipmentuser dashboard = new view.Equipmentuser();
         dashboard.setVisible(true);
         this.dispose();
     }// GEN-LAST:event_EquipmentActionPerformed

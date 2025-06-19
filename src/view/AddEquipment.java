@@ -23,6 +23,9 @@ public class AddEquipment extends javax.swing.JFrame {
         initComponents();
         equipmentController = new EquipmentController(); // Add this line
         equipmentName.requestFocus(); // Set focus to first field
+        equipmentName.setText("Enter equipment name");
+        equipmentQuantity.setText("Enter quantity");
+        equipmentPurchaseDate.setText("YYYY-MM-DD");
         
     }
 
@@ -60,22 +63,22 @@ public class AddEquipment extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Add new Equipment ");
+        jLabel1.setText("Add New Equipment ");
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Equipment name :");
+        jLabel2.setText("Name");
         jLabel2.setPreferredSize(new java.awt.Dimension(145, 35));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Equipment type:");
+        jLabel3.setText("Type");
         jLabel3.setPreferredSize(new java.awt.Dimension(145, 35));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Equipment quantity:");
+        jLabel4.setText("Quantity");
         jLabel4.setPreferredSize(new java.awt.Dimension(145, 35));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Equipment purchase date:");
+        jLabel5.setText("Purchase Date");
         jLabel5.setPreferredSize(new java.awt.Dimension(145, 35));
 
         jaddEquipment.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
@@ -88,6 +91,14 @@ public class AddEquipment extends javax.swing.JFrame {
         });
 
         equipmentName.setText("enter name");
+        equipmentName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                equipmentNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                equipmentNameFocusLost(evt);
+            }
+        });
         equipmentName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 equipmentNameActionPerformed(evt);
@@ -95,6 +106,14 @@ public class AddEquipment extends javax.swing.JFrame {
         });
 
         equipmentQuantity.setText("enter quantit");
+        equipmentQuantity.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                equipmentQuantityFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                equipmentQuantityFocusLost(evt);
+            }
+        });
         equipmentQuantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 equipmentQuantityActionPerformed(evt);
@@ -102,6 +121,14 @@ public class AddEquipment extends javax.swing.JFrame {
         });
 
         equipmentPurchaseDate.setText("enter date");
+        equipmentPurchaseDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                equipmentPurchaseDateFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                equipmentPurchaseDateFocusLost(evt);
+            }
+        });
 
         equipmentType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Machiene ", "weight ", " " }));
         equipmentType.addActionListener(new java.awt.event.ActionListener() {
@@ -118,30 +145,29 @@ public class AddEquipment extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(43, 43, 43)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(equipmentName, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(equipmentType, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(equipmentQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(equipmentPurchaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(197, 197, 197)
+                                .addGap(207, 207, 207)
                                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(121, 121, 121)
-                                .addComponent(jaddEquipment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(equipmentType, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(equipmentName, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(equipmentQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(equipmentPurchaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(135, 135, 135)
-                        .addComponent(jLabel1)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(jaddEquipment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,9 +178,10 @@ public class AddEquipment extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(equipmentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(equipmentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(equipmentType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,7 +194,7 @@ public class AddEquipment extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(equipmentPurchaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(jaddEquipment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(78, Short.MAX_VALUE))
         );
@@ -178,15 +205,15 @@ public class AddEquipment extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(187, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         pack();
@@ -249,6 +276,48 @@ public class AddEquipment extends javax.swing.JFrame {
             JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_jaddEquipmentActionPerformed
+
+    private void equipmentNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_equipmentNameFocusGained
+        // TODO add your handling code here:
+         if (equipmentName.getText().equals("Enter equipment name")) {
+         equipmentName.setText("");
+    }
+    }//GEN-LAST:event_equipmentNameFocusGained
+
+    private void equipmentNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_equipmentNameFocusLost
+        // TODO add your handling code here:
+        if (equipmentName.getText().isEmpty()) {
+        equipmentName.setText("Enter equipment name");
+    }
+    }//GEN-LAST:event_equipmentNameFocusLost
+
+    private void equipmentQuantityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_equipmentQuantityFocusGained
+        // TODO add your handling code here:
+        if (equipmentQuantity.getText().equals("Enter quantity")) {
+        equipmentQuantity.setText("");
+    }
+    }//GEN-LAST:event_equipmentQuantityFocusGained
+
+    private void equipmentQuantityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_equipmentQuantityFocusLost
+        // TODO add your handling code here:
+        if (equipmentQuantity.getText().isEmpty()) {
+        equipmentQuantity.setText("Enter quantity");
+    }
+    }//GEN-LAST:event_equipmentQuantityFocusLost
+
+    private void equipmentPurchaseDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_equipmentPurchaseDateFocusGained
+        // TODO add your handling code here:
+         if (equipmentPurchaseDate.getText().equals("YYYY-MM-DD")) {
+         equipmentPurchaseDate.setText("");
+    }
+    }//GEN-LAST:event_equipmentPurchaseDateFocusGained
+
+    private void equipmentPurchaseDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_equipmentPurchaseDateFocusLost
+        // TODO add your handling code here:
+        if (equipmentPurchaseDate.getText().isEmpty()) {
+        equipmentPurchaseDate.setText("YYYY-MM-DD");
+    }
+    }//GEN-LAST:event_equipmentPurchaseDateFocusLost
 
     /**
      * @param args the command line arguments

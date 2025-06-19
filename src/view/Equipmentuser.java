@@ -10,10 +10,8 @@ package view;
  */
 public class Equipmentuser extends javax.swing.JFrame {
 
-    private Object view;
-
     /**
-     * Creates new form Equipmentuser
+     * Creates new form Equipment
      */
     public Equipmentuser() {
         initComponents();
@@ -34,10 +32,11 @@ public class Equipmentuser extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        Members = new javax.swing.JButton();
+        Workout = new javax.swing.JButton();
         Trainer = new javax.swing.JButton();
         Equipment = new javax.swing.JButton();
         Feedback = new javax.swing.JButton();
+        Addnew = new java.awt.Button();
         Profilebtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -90,12 +89,12 @@ public class Equipmentuser extends javax.swing.JFrame {
             .addGap(0, 541, Short.MAX_VALUE)
         );
 
-        Members.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        Members.setText("Members");
-        Members.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Members.addActionListener(new java.awt.event.ActionListener() {
+        Workout.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        Workout.setText("Workout");
+        Workout.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Workout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MembersActionPerformed(evt);
+                WorkoutActionPerformed(evt);
             }
         });
 
@@ -126,6 +125,15 @@ public class Equipmentuser extends javax.swing.JFrame {
             }
         });
 
+        Addnew.setActionCommand("Add new");
+        Addnew.setBackground(new java.awt.Color(255, 255, 204));
+        Addnew.setLabel("Add new");
+        Addnew.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AddnewKeyPressed(evt);
+            }
+        });
+
         Profilebtn.setBackground(new java.awt.Color(153, 204, 255));
         Profilebtn.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         Profilebtn.setText("Profile");
@@ -142,49 +150,57 @@ public class Equipmentuser extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(Members, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Trainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Equipment, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                    .addComponent(Feedback, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Profilebtn)
-                        .addGap(32, 32, 32)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel1)
+                        .addComponent(Trainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Equipment, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                        .addComponent(Feedback, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(Profilebtn)
+                            .addGap(32, 32, 32)))
+                    .addComponent(Workout, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(239, 239, 239)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(106, 106, 106)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(MembersText)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 372, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(106, 106, 106)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(MembersText)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 390, Short.MAX_VALUE)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(Addnew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(6, 6, 6))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2))
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Addnew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(MembersText)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(35, 35, 35)
-                .addComponent(Members)
-                .addGap(47, 47, 47)
+                .addGap(41, 41, 41)
                 .addComponent(Trainer)
-                .addGap(47, 47, 47)
+                .addGap(36, 36, 36)
                 .addComponent(Equipment)
-                .addGap(47, 47, 47)
+                .addGap(42, 42, 42)
+                .addComponent(Workout)
+                .addGap(57, 57, 57)
                 .addComponent(Feedback)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Profilebtn)
@@ -207,11 +223,11 @@ public class Equipmentuser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void MembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MembersActionPerformed
-       view.UserDashboard dashboard = new view.UserDashboard();
-       dashboard.setVisible(true);
-       this.dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_MembersActionPerformed
+    private void WorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WorkoutActionPerformed
+        view.Workout dashboard = new view.Workout();
+        dashboard.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_WorkoutActionPerformed
 
     private void TrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrainerActionPerformed
         TrainerDashboardadmin trainerPage = new TrainerDashboardadmin();
@@ -220,15 +236,19 @@ public class Equipmentuser extends javax.swing.JFrame {
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
         view.Equipmentuser dashboard = new view.Equipmentuser();
-       dashboard.setVisible(true);
-       this.dispose();
+        dashboard.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_EquipmentActionPerformed
 
     private void FeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackActionPerformed
-       view.Feedback feedbackdashboard = new view.Feedback();
+        view.Feedback feedbackdashboard = new view.Feedback();
        feedbackdashboard.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_FeedbackActionPerformed
+
+    private void AddnewKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AddnewKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddnewKeyPressed
 
     private void ProfilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfilebtnActionPerformed
         // TODO add your handling code here:
@@ -260,6 +280,13 @@ public class Equipmentuser extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Equipmentuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -270,12 +297,13 @@ public class Equipmentuser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button Addnew;
     private javax.swing.JButton Equipment;
     private javax.swing.JButton Feedback;
-    private javax.swing.JButton Members;
     private javax.swing.JLabel MembersText;
     private javax.swing.JButton Profilebtn;
     private javax.swing.JButton Trainer;
+    private javax.swing.JButton Workout;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
