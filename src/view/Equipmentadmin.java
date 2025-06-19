@@ -223,7 +223,9 @@ public class Equipmentadmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MembersActionPerformed
-        // TODO add your handling code here:
+        view.Dashboard dashboard = new view.Dashboard();
+        dashboard.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_MembersActionPerformed
 
     private void TrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrainerActionPerformed
@@ -232,7 +234,9 @@ public class Equipmentadmin extends javax.swing.JFrame {
     }//GEN-LAST:event_TrainerActionPerformed
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
-        // TODO add your handling code here:
+        view.Equipmentadmin dashboard = new view.Equipmentadmin();
+        dashboard.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_EquipmentActionPerformed
 
     private void FeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackActionPerformed
