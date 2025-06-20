@@ -306,7 +306,7 @@ public class TrainerDashboardadmin extends javax.swing.JFrame implements Trainer
     }// GEN-LAST:event_MembersActionPerformed
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_EquipmentActionPerformed
-        view.Equipmentuser dashboard = new view.Equipmentuser();
+        view.Equipmentadmin dashboard = new view.Equipmentadmin();
         dashboard.setVisible(true);
         this.dispose();  // TODO add your handling code here:
     }// GEN-LAST:event_EquipmentActionPerformed

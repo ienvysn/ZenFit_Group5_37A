@@ -16,8 +16,12 @@ public class Feedback extends javax.swing.JFrame {
     /**
      * Creates new form Feedback
      */
-public Feedback(String typee, String sue, String suggestion) {
+    public Feedback(String typee, String sue, String suggestion) {
     initComponents();
+    
+    // Set initial placeholder text
+    jTextField2.setText("Enter the issue...");
+    jTextField3.setText("Suggest what can be done...");
 }
 
 
@@ -412,31 +416,31 @@ public Feedback(String typee, String sue, String suggestion) {
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
          jTextField3.requestFocusInWindow();
-         jTextField2.setText("");
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
-          if (jTextField2.getText().equals("Enter your name...")) {
+          if (jTextField2.getText().equals("Enter the issue...")) {
         jTextField2.setText("");
           }
     }//GEN-LAST:event_jTextField2FocusGained
 
     private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
-            if (jTextField2.getText().isEmpty()) {
-        jTextField2.setText("Enter the issue..");
+            if (jTextField2.getText().trim().isEmpty()) {
+        jTextField2.setText("Enter the issue...");
     }
     }//GEN-LAST:event_jTextField2FocusLost
 
     private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
-              if (jTextField3.getText().equals("suggest what can be done")) {
+              if (jTextField3.getText().equals("Suggest what can be done...")) {
         jTextField3.setText("");
           }
     }//GEN-LAST:event_jTextField3FocusGained
 
     private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
-          if (jTextField3.getText().isEmpty()) {
-        jTextField3.setText("suggest what can be done..");
-    }
+          if (jTextField3.getText().trim().isEmpty()) {
+        jTextField3.setText("Suggest what can be done...");
+          }
+
     }//GEN-LAST:event_jTextField3FocusLost
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed

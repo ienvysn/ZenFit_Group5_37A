@@ -64,6 +64,7 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCheckBox1 = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -78,6 +79,8 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
         jProgressBar1 = new javax.swing.JProgressBar();
         jLabel6 = new javax.swing.JLabel();
         jSelectButton = new javax.swing.JButton();
+
+        jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -536,6 +539,7 @@ String name = equipmentName.getText().trim();
     private javax.swing.JTextField equipmentPurchaseDate;
     private javax.swing.JTextField equipmentQuantity;
     private javax.swing.JComboBox<String> equipmentType;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
