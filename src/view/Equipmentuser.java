@@ -230,7 +230,7 @@ public class Equipmentuser extends javax.swing.JFrame {
     }//GEN-LAST:event_WorkoutActionPerformed
 
     private void TrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrainerActionPerformed
-        TrainerDashboardadmin trainerPage = new TrainerDashboardadmin();
+        UserDashboard trainerPage = new UserDashboard();
         trainerPage.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_TrainerActionPerformed
 

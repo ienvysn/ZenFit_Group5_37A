@@ -269,7 +269,7 @@ public class Workout extends javax.swing.JFrame {
     }//GEN-LAST:event_EquipmentActionPerformed
 
     private void FeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackActionPerformed
-       view.Workout dashboard = new view.Workout();
+       view.Feedback dashboard = new view.Feedback();
        dashboard.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_FeedbackActionPerformed
