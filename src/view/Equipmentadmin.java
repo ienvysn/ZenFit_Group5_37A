@@ -117,6 +117,11 @@ public class Equipmentadmin extends javax.swing.JFrame {
         Feedback.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         Feedback.setText("Feedback");
         Feedback.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Feedback.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FeedbackMouseClicked(evt);
+            }
+        });
         Feedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FeedbackActionPerformed(evt);
@@ -228,6 +233,13 @@ public class Equipmentadmin extends javax.swing.JFrame {
     private void ProfilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfilebtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ProfilebtnActionPerformed
+
+    private void FeedbackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FeedbackMouseClicked
+        // TODO add your handling code here:
+        view.AdminFeedback admin = new view.AdminFeedback();
+        admin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_FeedbackMouseClicked
 
     /**
      * @param args the command line arguments

@@ -131,6 +131,11 @@ public class TrainerDashboardadmin extends javax.swing.JFrame implements Trainer
         Feedback.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         Feedback.setText("Feedback");
         Feedback.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Feedback.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FeedbackMouseClicked(evt);
+            }
+        });
         Feedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FeedbackActionPerformed(evt);
@@ -298,6 +303,13 @@ public class TrainerDashboardadmin extends javax.swing.JFrame implements Trainer
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void FeedbackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FeedbackMouseClicked
+        // TODO add your handling code here:
+        view.AdminFeedback admin = new view.AdminFeedback();
+        admin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_FeedbackMouseClicked
 
     private void MembersActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MembersActionPerformed
         view.Dashboard memberdashboard = new view.Dashboard();

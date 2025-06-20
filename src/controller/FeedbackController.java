@@ -5,19 +5,27 @@
 package controller;
 
 import dao.FeedbackDao;
-import model.Feedback;
-
+import model.FeedbackData;
+import java.util.List;
 
 /**
  *
  * @author Salifa
  */
 public class FeedbackController {
-    private final FeedbackDao dao = new FeedbackDao();
+    private final FeedbackDao feedbackDao;
 
-    public boolean submitFeedback(String typee, String issue, String suggestion) {
-        Feedback feedback = new Feedback(typee, issue, suggestion);
-        return dao.addFeedback(feedback);
+    public FeedbackController() {
+        this.feedbackDao = new FeedbackDao();
+    }
+
+    public List<FeedbackData> getAllFeedback() {
+        return feedbackDao.getAllFeedback();
+    }
+
+    public boolean submitFeedback(String type, String issue, String suggestion) {
+        FeedbackData feedback = new FeedbackData(type, issue, suggestion);
+        return feedbackDao.addFeedback(feedback);
     }
 }
 
