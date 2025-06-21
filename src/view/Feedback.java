@@ -17,8 +17,8 @@ public class Feedback extends javax.swing.JFrame {
      * Creates new form Feedback
      */
     public Feedback() {
-        initComponents();
-    }
+    initComponents();
+}
 
     public Feedback(String typee, String sue, String suggestion) {
         initComponents();
@@ -498,11 +498,11 @@ public class Feedback extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+java.awt.EventQueue.invokeLater(new Runnable() {
+    public void run() {
                 new Feedback().setVisible(true);
-            }
-        });
+    }
+});
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
