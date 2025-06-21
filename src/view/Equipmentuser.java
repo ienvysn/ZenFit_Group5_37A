@@ -251,7 +251,18 @@ public class Equipmentuser extends javax.swing.JFrame {
     }//GEN-LAST:event_AddnewKeyPressed
 
     private void ProfilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfilebtnActionPerformed
-        // TODO add your handling code here:
+        try {
+            // Get current user
+            model.UserData currentUser = model.CurrentUser.get();
+            
+            // Create and show user profile card
+            view.UsercardNoRemove userCard = new view.UsercardNoRemove();
+            userCard.updateUserData(currentUser);
+            userCard.setVisible(true);
+            
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error loading profile: " + e.getMessage());
+        }
     }//GEN-LAST:event_ProfilebtnActionPerformed
 
     /**
