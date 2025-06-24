@@ -99,6 +99,21 @@ public class Reusablepannel extends javax.swing.JPanel {
         }
     }
 
+    public void updateEquipmentData(model.EquipmentData equipment) {
+        jLabel1.setText(equipment.getName()); // Set equipment name
+        if (equipment.getImage() != null) {
+            try {
+                java.awt.Image img = javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream(equipment.getImage()));
+                imageLabel.setIcon(
+                        new javax.swing.ImageIcon(img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH)));
+            } catch (Exception e) {
+                System.out.println("Error loading equipment image: " + e.getMessage());
+            }
+        } else {
+            imageLabel.setIcon(null); // Or set a default icon
+        }
+    }
+
     public String getUsername() {
         return username;
     }

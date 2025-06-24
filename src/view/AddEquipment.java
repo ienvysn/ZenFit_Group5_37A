@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import controller.EquipmentController;
+
+import java.awt.Color;
+import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,6 +17,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.Image;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -22,7 +28,7 @@ import java.awt.Image;
 public class AddEquipment extends javax.swing.JFrame {
     
     private final EquipmentController equipmentController;
-    private javax.swing.JLabel imageLabel;  // To display the selected image
+    private final javax.swing.JLabel imageLabel;  // To display the selected image
     private byte[] imageData;
 
     /**
@@ -32,22 +38,38 @@ public class AddEquipment extends javax.swing.JFrame {
         initComponents();
         equipmentController = new EquipmentController(); // Add this line
         equipmentName.requestFocus(); // Set focus to first field
-        equipmentName.setText("Enter equipment name");
+        equipmentName.setText("Enter Name");
         equipmentQuantity.setText("Enter quantity");
-        equipmentPurchaseDate.setText("YYYY-MM-DD");
+//        equipmentPurchaseDate.setToolTipText("Click to select purchase date");
+        equipmentPurchaseDate.setDate(null);
+//        showDatePlaceholder();
+        setupDatePlaceholder();
+//        showToolTip();
+        setupDateChooser();
+        
+        
         // Image display label
 imageLabel = new javax.swing.JLabel();
 imageLabel.setPreferredSize(new java.awt.Dimension(150, 150));
 imageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
 // Configure the select button properly
-jSelectButton.setText("Select Image");
+jSelectButton.setText("Choose Photo");
 jSelectButton.addActionListener(new java.awt.event.ActionListener() {
+    @Override
     public void actionPerformed(java.awt.event.ActionEvent evt) {
         jSelectButtonActionPerformed(evt);
     }
+    
+    
 });
         
+    }
+    
+    private void setupDateChooser() {
+        java.util.Calendar maxDate = java.util.Calendar.getInstance();
+        equipmentPurchaseDate.setMaxSelectableDate(maxDate.getTime());
+        equipmentPurchaseDate.setToolTipText("Select date (cannot be in the future)");
     }
 
     /**
@@ -74,48 +96,55 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
         jaddEquipment = new javax.swing.JButton();
         equipmentName = new javax.swing.JTextField();
         equipmentQuantity = new javax.swing.JTextField();
-        equipmentPurchaseDate = new javax.swing.JTextField();
         equipmentType = new javax.swing.JComboBox<>();
         jProgressBar1 = new javax.swing.JProgressBar();
         jLabel6 = new javax.swing.JLabel();
         jSelectButton = new javax.swing.JButton();
+        equipmentPurchaseDate = new com.toedter.calendar.JDateChooser();
+
+        jCheckBox1.setText("jCheckBox1");
 
         jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(4, 39, 56));
+        jPanel2.setForeground(new java.awt.Color(4, 39, 56));
+        jPanel2.setPreferredSize(new java.awt.Dimension(494, 498));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Add New Equipment ");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Name");
-        jLabel2.setPreferredSize(new java.awt.Dimension(145, 35));
+        jLabel2.setPreferredSize(new java.awt.Dimension(145, 25));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Type");
-        jLabel3.setPreferredSize(new java.awt.Dimension(145, 35));
+        jLabel3.setPreferredSize(new java.awt.Dimension(145, 25));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Quantity");
-        jLabel4.setPreferredSize(new java.awt.Dimension(145, 35));
+        jLabel4.setPreferredSize(new java.awt.Dimension(145, 25));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Purchase Date");
-        jLabel5.setPreferredSize(new java.awt.Dimension(145, 35));
+        jLabel5.setPreferredSize(new java.awt.Dimension(145, 25));
 
-        jaddEquipment.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jaddEquipment.setText("Add");
-        jaddEquipment.setPreferredSize(new java.awt.Dimension(73, 23));
         jaddEquipment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jaddEquipmentActionPerformed(evt);
             }
         });
 
+        equipmentName.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         equipmentName.setText("enter name");
         equipmentName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -131,7 +160,8 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
             }
         });
 
-        equipmentQuantity.setText("enter quantit");
+        equipmentQuantity.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        equipmentQuantity.setText("enter quantity");
         equipmentQuantity.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 equipmentQuantityFocusGained(evt);
@@ -146,16 +176,7 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
             }
         });
 
-        equipmentPurchaseDate.setText("enter date");
-        equipmentPurchaseDate.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                equipmentPurchaseDateFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                equipmentPurchaseDateFocusLost(evt);
-            }
-        });
-
+        equipmentType.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         equipmentType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Machine", "weight", "" }));
         equipmentType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,10 +184,13 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Image");
 
-        jSelectButton.setText("jButton1");
+        jSelectButton.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jSelectButton.setText("Choose photo");
+        jSelectButton.setPreferredSize(new java.awt.Dimension(103, 22));
         jSelectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSelectButtonActionPerformed(evt);
@@ -180,69 +204,75 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
+                        .addGap(145, 145, 145)
                         .addComponent(jLabel1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jaddEquipment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jSelectButton))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(207, 207, 207)
-                                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(equipmentType, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(equipmentName, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(equipmentQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(equipmentPurchaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(134, 134, 134)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jSelectButton, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(equipmentType, javax.swing.GroupLayout.Alignment.TRAILING, 0, 126, Short.MAX_VALUE)
+                                .addComponent(equipmentQuantity, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                                .addComponent(equipmentName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
+                            .addComponent(equipmentPurchaseDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(357, 357, 357)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addComponent(jaddEquipment)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(47, 47, 47)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(equipmentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(19, 19, 19)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(equipmentType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(equipmentQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(equipmentPurchaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(equipmentName)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(equipmentType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(equipmentQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(equipmentPurchaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jSelectButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jaddEquipment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                    .addComponent(jSelectButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(jaddEquipment)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -251,7 +281,7 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(187, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -259,7 +289,7 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
@@ -267,14 +297,20 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
 
     private void equipmentTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equipmentTypeActionPerformed
         // TODO add your handling code here:
+         equipmentQuantity.requestFocus();
+        
     }//GEN-LAST:event_equipmentTypeActionPerformed
 
     private void equipmentNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equipmentNameActionPerformed
         // TODO add your handling code here:
+        equipmentType.requestFocus(); 
     }//GEN-LAST:event_equipmentNameActionPerformed
 
     private void equipmentQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equipmentQuantityActionPerformed
         // TODO add your handling code here:
+        equipmentPurchaseDate.requestFocusInWindow();
+        
+        
     }//GEN-LAST:event_equipmentQuantityActionPerformed
 
     private void jaddEquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jaddEquipmentActionPerformed
@@ -324,7 +360,7 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
 String name = equipmentName.getText().trim();
     String type = (String) equipmentType.getSelectedItem();
     String quantityStr = equipmentQuantity.getText().trim();
-    String date = equipmentPurchaseDate.getText().trim();
+//    String date = equipmentPurchaseDate.getText().trim();
     
     // 2. Validate all required fields are filled
     if (name.isEmpty() || name.equals("Enter equipment name")) {
@@ -345,11 +381,23 @@ String name = equipmentName.getText().trim();
         return;
     }
     
-    if (date.isEmpty() || date.equals("YYYY-MM-DD")) {
-        JOptionPane.showMessageDialog(this, "Please enter purchase date", "Error", JOptionPane.ERROR_MESSAGE);
-        equipmentPurchaseDate.requestFocus();
-        return;
-    }
+//    if (date.isEmpty() || date.equals("YYYY-MM-DD")) {
+//        JOptionPane.showMessageDialog(this, "Please enter purchase date", "Error", JOptionPane.ERROR_MESSAGE);
+//        equipmentPurchaseDate.requestFocus();
+//        return;
+//    }
+    // Get date from JDateChooser
+if (equipmentPurchaseDate.getDate() == null) {
+    JOptionPane.showMessageDialog(this, 
+        "Please select purchase date", 
+        "Error", 
+        JOptionPane.ERROR_MESSAGE);
+    equipmentPurchaseDate.requestFocusInWindow();
+    return;
+}
+
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+String date = sdf.format(equipmentPurchaseDate.getDate());
     
     // 3. Validate image was selected
     if (imageData == null || imageData.length == 0) {
@@ -374,11 +422,11 @@ String name = equipmentName.getText().trim();
     }
     
     // 5. Validate date format (basic validation)
-    if (!date.matches("\\d{4}-\\d{2}-\\d{2}")) {
-        JOptionPane.showMessageDialog(this, "Please enter date in YYYY-MM-DD format", "Error", JOptionPane.ERROR_MESSAGE);
-        equipmentPurchaseDate.requestFocus();
-        return;
-    }
+//    if (!date.matches("\\d{4}-\\d{2}-\\d{2}")) {
+//        JOptionPane.showMessageDialog(this, "Please enter date in YYYY-MM-DD format", "Error", JOptionPane.ERROR_MESSAGE);
+//        equipmentPurchaseDate.requestFocus();
+//        return;
+//    }
     
     // 6. Call controller to add equipment with all data including image
     boolean success = equipmentController.addEquipment(name, type, quantityStr, date, imageData);
@@ -393,7 +441,8 @@ String name = equipmentName.getText().trim();
         // Clear the form for new entry
         equipmentName.setText("Enter equipment name");
         equipmentQuantity.setText("Enter quantity");
-        equipmentPurchaseDate.setText("YYYY-MM-DD");
+//        equipmentPurchaseDate.setText("YYYY-MM-DD");
+        equipmentPurchaseDate.setDate(null);
         equipmentType.setSelectedIndex(0);
         imageLabel.setIcon(null);
         imageData = null;
@@ -410,7 +459,7 @@ String name = equipmentName.getText().trim();
 
     private void equipmentNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_equipmentNameFocusGained
         // TODO add your handling code here:
-         if (equipmentName.getText().equals("Enter equipment name")) {
+         if (equipmentName.getText().equals("Enter Name")) {
          equipmentName.setText("");
     }
     }//GEN-LAST:event_equipmentNameFocusGained
@@ -418,7 +467,7 @@ String name = equipmentName.getText().trim();
     private void equipmentNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_equipmentNameFocusLost
         // TODO add your handling code here:
         if (equipmentName.getText().isEmpty()) {
-        equipmentName.setText("Enter equipment name");
+        equipmentName.setText("Enter Name");
     }
     }//GEN-LAST:event_equipmentNameFocusLost
 
@@ -435,20 +484,6 @@ String name = equipmentName.getText().trim();
         equipmentQuantity.setText("Enter quantity");
     }
     }//GEN-LAST:event_equipmentQuantityFocusLost
-
-    private void equipmentPurchaseDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_equipmentPurchaseDateFocusGained
-        // TODO add your handling code here:
-         if (equipmentPurchaseDate.getText().equals("YYYY-MM-DD")) {
-         equipmentPurchaseDate.setText("");
-    }
-    }//GEN-LAST:event_equipmentPurchaseDateFocusGained
-
-    private void equipmentPurchaseDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_equipmentPurchaseDateFocusLost
-        // TODO add your handling code here:
-        if (equipmentPurchaseDate.getText().isEmpty()) {
-        equipmentPurchaseDate.setText("YYYY-MM-DD");
-    }
-    }//GEN-LAST:event_equipmentPurchaseDateFocusLost
 
     private void jSelectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSelectButtonActionPerformed
      
@@ -496,9 +531,106 @@ String name = equipmentName.getText().trim();
                 "Error loading image: " + ex.getMessage(), 
                 "Error", JOptionPane.ERROR_MESSAGE);
         }
+        jaddEquipment.requestFocus();
     }                                          
     }//GEN-LAST:event_jSelectButtonActionPerformed
 
+    private void equipmentPurchaseDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_equipmentPurchaseDateFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_equipmentPurchaseDateFocusGained
+
+    private void equipmentPurchaseDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_equipmentPurchaseDateFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_equipmentPurchaseDateFocusLost
+    
+    // Place this with your other private methods
+
+//    private void setupDatePlaceholder() {
+//    JTextField dateText = ((JTextField)equipmentPurchaseDate.getDateEditor().getUiComponent());
+//    dateText.setText("Select date");
+//    dateText.setForeground(Color.GRAY);
+//    dateText.setFont(dateText.getFont().deriveFont(Font.ITALIC));
+//    
+//    dateText.addFocusListener(new FocusAdapter() {
+//        @Override
+//        public void focusGained(FocusEvent e) {
+//            if (equipmentPurchaseDate.getDate() == null) {
+//                dateText.setText("");
+//                dateText.setForeground(Color.BLACK);
+//                dateText.setFont(dateText.getFont().deriveFont(Font.PLAIN));
+//            }
+//            hideToolTip();
+//        }
+//        
+//        @Override
+//        public void focusLost(FocusEvent e) {
+//            if (equipmentPurchaseDate.getDate() == null) {
+//                dateText.setText("Select date");
+//                dateText.setForeground(Color.GRAY);
+//                dateText.setFont(dateText.getFont().deriveFont(Font.ITALIC));
+//            }
+//            showToolTip();
+//        }
+//    });
+//}
+//
+//private void showToolTip() {
+//    equipmentPurchaseDate.setToolTipText("Click to select purchase date");
+//}
+//
+//private void hideToolTip() {
+//    equipmentPurchaseDate.setToolTipText(null);
+//}
+    
+   private void setupDatePlaceholder() {
+    JTextField dateText = ((JTextField)equipmentPurchaseDate.getDateEditor().getUiComponent());
+    
+    // Set placeholder styling to match other fields
+    dateText.setText("Select date");
+    dateText.setForeground(new Color(153, 153, 153)); // Light gray like other placeholders
+    dateText.setFont(new Font("Segoe UI", Font.ITALIC, 12)); // Match your other fields' font
+    
+    // Set initial tooltip
+    equipmentPurchaseDate.setToolTipText("Click to select purchase date");
+    
+    dateText.addFocusListener(new FocusAdapter() {
+        @Override
+        public void focusGained(FocusEvent e) {
+            if (equipmentPurchaseDate.getDate() == null) {
+                dateText.setText("");
+                dateText.setForeground(Color.BLACK); // Normal text color when typing
+                dateText.setFont(new Font("Segoe UI", Font.PLAIN, 12)); // Normal font when focused
+            }
+            // Hide tooltip when focused
+            equipmentPurchaseDate.setToolTipText(null);
+        }
+        
+        @Override
+        public void focusLost(FocusEvent e) {
+            if (equipmentPurchaseDate.getDate() == null) {
+                dateText.setText("Select date");
+                dateText.setForeground(new Color(153, 153, 153)); // Light gray placeholder
+                dateText.setFont(new Font("Segoe UI", Font.ITALIC, 12)); // Italic placeholder
+            }
+            // Show tooltip when focus is lost
+            equipmentPurchaseDate.setToolTipText("Click to select purchase date");
+        }
+    });
+    
+    // Handle date changes
+    equipmentPurchaseDate.addPropertyChangeListener("date", evt -> {
+        if (equipmentPurchaseDate.getDate() != null) {
+            dateText.setForeground(Color.BLACK);
+            dateText.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        } else {
+            dateText.setForeground(new Color(153, 153, 153));
+            dateText.setFont(new Font("Segoe UI", Font.ITALIC, 12));
+            dateText.setText("Select date");
+        }
+    });
+}
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -536,7 +668,7 @@ String name = equipmentName.getText().trim();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField equipmentName;
-    private javax.swing.JTextField equipmentPurchaseDate;
+    private com.toedter.calendar.JDateChooser equipmentPurchaseDate;
     private javax.swing.JTextField equipmentQuantity;
     private javax.swing.JComboBox<String> equipmentType;
     private javax.swing.JCheckBox jCheckBox1;
@@ -551,4 +683,6 @@ String name = equipmentName.getText().trim();
     private javax.swing.JButton jSelectButton;
     private javax.swing.JButton jaddEquipment;
     // End of variables declaration//GEN-END:variables
+
+
 }

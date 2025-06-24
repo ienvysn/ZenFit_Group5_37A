@@ -15,8 +15,17 @@ public class Feedback extends javax.swing.JFrame {
 
     /**
      * Creates new form Feedback
+     * @param typee
      */
+
     public Feedback(String typee, String sue, String suggestion) {
+
+    }
+
+    /**
+     *
+     */
+    public Feedback(){
     initComponents();
     
     // Set initial placeholder text
@@ -24,10 +33,6 @@ public class Feedback extends javax.swing.JFrame {
     jTextField3.setText("Suggest what can be done...");
 }
 
-
-    Feedback() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -383,25 +388,34 @@ public class Feedback extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrainerActionPerformed
-                                     
-        TrainerDashboardadmin trainerPage = new TrainerDashboardadmin();
-        trainerPage.setVisible(true);        // TODO add your handling code here:
+        view.UserDashboard trainerPage = new view.UserDashboard();
+        trainerPage.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_TrainerActionPerformed
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
-       view.Equipmentadmin dashboard = new view.Equipmentadmin();
+       view.Equipmentuser dashboard = new view.Equipmentuser();
        dashboard.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_EquipmentActionPerformed
 
     private void FeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackActionPerformed
-       view.Feedback dashboard = new view.Feedback();
-       dashboard.setVisible(true);
-       this.dispose();
+       // Stay on the same page since this is the feedback page
     }//GEN-LAST:event_FeedbackActionPerformed
 
     private void ProfilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfilebtnActionPerformed
-        // TODO add your handling code here:
+        try {
+            // Get current user
+            model.UserData currentUser = model.CurrentUser.get();
+            
+            // Create and show user profile card
+            view.UsercardNoRemove userCard = new view.UsercardNoRemove();
+            userCard.updateUserData(currentUser);
+            userCard.setVisible(true);
+            
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error loading profile: " + e.getMessage());
+        }
     }//GEN-LAST:event_ProfilebtnActionPerformed
 
     private void WorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WorkoutActionPerformed
@@ -493,18 +507,9 @@ public class Feedback extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-// Assuming Feedback is a JFrame form created in NetBeans
-java.awt.EventQueue.invokeLater(new Runnable() {
-    public void run() {
-        // Initialize with default values if parameters are not available
-        String typee = "General";       // Example default value
-        String issue = "No issue";     // Example default value
-        String suggestion = "None";    // Example default value
-        
-        // Create and display the form
-        new Feedback(typee, issue, suggestion).setVisible(true);
-    }
-});
+java.awt.EventQueue.invokeLater(() -> {
+    new Feedback().setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -535,14 +540,15 @@ java.awt.EventQueue.invokeLater(new Runnable() {
     // End of variables declaration//GEN-END:variables
 
     public String getTypee() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return jComboBox1.getSelectedItem().toString();
     }
+    
     public String getIssue() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return jTextField2.getText();
     }
 
     public String getSuggestion() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return jTextField3.getText();
     }
 }
 

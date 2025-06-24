@@ -30,8 +30,8 @@ public class AddWorkout extends javax.swing.JFrame {
     public AddWorkout() {
         initComponents();
         // Set current date in YYYY-MM-DD format
-        java.time.LocalDate today = java.time.LocalDate.now();
-        jTextField2.setText(today.toString());
+//        java.time.LocalDate today = java.time.LocalDate.now();
+//        jDate.setText(today.toString());
         
         try {
             // Get current user - this will throw exception if not logged in
@@ -59,16 +59,16 @@ public class AddWorkout extends javax.swing.JFrame {
         photobtn = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jworkout = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jReps = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         Submit = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        jWeight = new javax.swing.JTextField();
+        jSets = new javax.swing.JTextField();
+        JDate = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,23 +85,15 @@ public class AddWorkout extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Date:");
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jTextField2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Workout:");
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jTextField3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jworkout.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jworkout.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jworkout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jworkoutActionPerformed(evt);
             }
         });
 
@@ -109,11 +101,11 @@ public class AddWorkout extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Reps:");
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jTextField4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        jReps.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jReps.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jReps.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                jRepsActionPerformed(evt);
             }
         });
 
@@ -132,19 +124,19 @@ public class AddWorkout extends javax.swing.JFrame {
             }
         });
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jTextField5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        jWeight.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jWeight.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jWeight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                jWeightActionPerformed(evt);
             }
         });
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jTextField6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        jSets.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jSets.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jSets.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                jSetsActionPerformed(evt);
             }
         });
 
@@ -171,15 +163,14 @@ public class AddWorkout extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)))
-                        .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Submit)
-                            .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)))))
-                .addGap(122, 158, Short.MAX_VALUE))
+                            .addComponent(jworkout, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                            .addComponent(jReps)
+                            .addComponent(jSets)
+                            .addComponent(jWeight)
+                            .addComponent(JDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         photobtnLayout.setVerticalGroup(
             photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,26 +178,26 @@ public class AddWorkout extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jworkout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jReps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(27, 27, 27)
                 .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSets, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                    .addComponent(jWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(Submit)
                 .addGap(37, 37, 37))
         );
@@ -227,28 +218,113 @@ public class AddWorkout extends javax.swing.JFrame {
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
  
-    try {
+// 
+//     
+//       try {
+//        // 1. Get current user
+//        UserData currentUser = CurrentUser.get();
+//        
+//        // 2. Get and validate date
+//        String workoutDate = jDate.getText().trim();
+//        if (workoutDate.isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Date cannot be empty");
+//            return;
+//        }
+//        
+//        // 3. Get and validate workout name
+//        String workoutName = jworkout.getText().trim();
+//        if (workoutName.isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Workout name cannot be empty");
+//            return;
+//        }
+//        
+//        // 4. Validate numeric fields
+//        int reps, sets, weight;
+//        try {
+//            reps = Integer.parseInt(jReps.getText().trim());
+//            sets = Integer.parseInt(jSets.getText().trim());
+//            weight = Integer.parseInt(jWeight.getText().trim());
+//            
+//            if (reps <= 0 || sets <= 0 || weight <= 0) {
+//                JOptionPane.showMessageDialog(this, "Reps, sets and weight must be positive numbers");
+//                return;
+//            }
+//        } catch (NumberFormatException e) {
+//            JOptionPane.showMessageDialog(this, "Reps, sets and weight must be valid numbers");
+//            return;
+//        }
+//        
+//        // 5. Create and add workout using controller
+//        WorkoutController controller = new WorkoutController(null);
+//        boolean success = controller.addWorkout(
+//            currentUser.getId(),
+//            workoutDate,
+//            workoutName,
+//            reps,
+//            sets,
+//            weight
+//        );
+//        
+//        if (success) {
+//            JOptionPane.showMessageDialog(this, "Workout added successfully!");
+//            // Clear all fields after successful submission
+//            jworkout.setText("");
+//            jReps.setText("");
+//            jSets.setText("");
+//            jWeight.setText("");
+//            // Reset date to current date
+//            java.time.LocalDate today = java.time.LocalDate.now();
+//            jDate.setText(today.toString());
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Failed to add workout. Please try again.");
+//        }
+//        
+//    } catch (IllegalStateException e) {
+//        JOptionPane.showMessageDialog(this, "No user logged in. Please log in first.");
+//        this.dispose();
+//    } catch (Exception e) {
+//        JOptionPane.showMessageDialog(this, "An unexpected error occurred: " + e.getMessage());
+//        e.printStackTrace();
+//    }
+ try {
         // 1. Get current user
         UserData currentUser = CurrentUser.get();
         
-        // 2. Get date as String (no parsing needed)
-        String workoutDate = jTextField2.getText().trim();
-        
-        // Simple format validation
-        if (!workoutDate.matches("\\d{4}-\\d{2}-\\d{2}")) {
-            JOptionPane.showMessageDialog(this, 
-                "Please enter date in YYYY-MM-DD format");
+        // 2. Get and validate date from JDateChooser
+        if (JDate.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Please select a date");
             return;
         }
         
-        // 3. Get other fields
-        String workoutName = jTextField3.getText().trim();
-        int reps = Integer.parseInt(jTextField4.getText().trim());
-        int sets = Integer.parseInt(jTextField6.getText().trim());
-        int weight = Integer.parseInt(jTextField5.getText().trim());
+        // Convert Date to SQL Date and then to string in YYYY-MM-DD format
+        java.util.Date selectedDate = JDate.getDate();
+        String workoutDate = new java.sql.Date(selectedDate.getTime()).toString();
         
-        // 4. Create and add workout using controller
-        WorkoutController controller = new WorkoutController(null); // We don't need the table here
+        // 3. Get and validate workout name
+        String workoutName = jworkout.getText().trim();
+        if (workoutName.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Workout name cannot be empty");
+            return;
+        }
+        
+        // 4. Validate numeric fields
+        int reps, sets, weight;
+        try {
+            reps = Integer.parseInt(jReps.getText().trim());
+            sets = Integer.parseInt(jSets.getText().trim());
+            weight = Integer.parseInt(jWeight.getText().trim());
+            
+            if (reps <= 0 || sets <= 0 || weight <= 0) {
+                JOptionPane.showMessageDialog(this, "Reps, sets and weight must be positive numbers");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Reps, sets and weight must be valid numbers");
+            return;
+        }
+        
+        // 5. Create and add workout using controller
+        WorkoutController controller = new WorkoutController(null);
         boolean success = controller.addWorkout(
             currentUser.getId(),
             workoutDate,
@@ -259,46 +335,58 @@ public class AddWorkout extends javax.swing.JFrame {
         );
         
         if (success) {
-            JOptionPane.showMessageDialog(this, "Workout added!");
+            JOptionPane.showMessageDialog(this, "Workout added successfully!");
             // Clear all fields after successful submission
-            jTextField3.setText("");
-            jTextField4.setText("");
-            jTextField5.setText("");
-            jTextField6.setText("");
+            jworkout.setText("");
+            jReps.setText("");
+            jSets.setText("");
+            jWeight.setText("");
             // Reset date to current date
-            java.time.LocalDate today = java.time.LocalDate.now();
-            jTextField2.setText(today.toString());
+            JDate.setDate(new java.util.Date());
         } else {
-            JOptionPane.showMessageDialog(this, "Failed to add workout");
+            JOptionPane.showMessageDialog(this, "Failed to add workout. Please try again.");
         }
         
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Reps/Sets/Weight must be numbers");
+    } catch (IllegalStateException e) {
+        JOptionPane.showMessageDialog(this, "No user logged in. Please log in first.");
+        this.dispose();
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        JOptionPane.showMessageDialog(this, "An unexpected error occurred: " + e.getMessage());
+        e.printStackTrace();
     }
-
     }//GEN-LAST:event_SubmitActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField2ActionPerformed
+    private void jworkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jworkoutActionPerformed
         // TODO add your handling code here:
-        
-    }// GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jworkoutActionPerformed
+    // GEN-FIRST:event_jTextField2ActionPerformed
+    // TODO add your handling code here:
+    // GEN-LAST:event_jTextField2ActionPerformed
+
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
-    }// GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_jTextField4ActionPerformed
+    }
+    // GEN-FIRST:event_jTextField4ActionPerformed
+    // TODO add your handling code here:
+    // GEN-LAST:event_jTextField4ActionPerformed
+    // GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
-        String date = jTextField2.getText();
-        String workout = jTextField3.getText();
-        String reps = jTextField4.getText();
-        String sets = jTextField6.getText();
-        String weight = jTextField5.getText();
+//        String date = jDate.getText();
+//        String workout = jworkout.getText();
+//        String reps = jReps.getText();
+//        String sets = jSets.getText();
+//        String weight = jWeight.getText();
+ if (JDate.getDate() == null) {
+        // Handle null date case
+        return;
+    }
+//    String date = new java.sql.Date(JDate.getDate().getTime()).toString();
+//    String workout = jworkout.getText();
+//    String reps = jReps.getText();
+//    String sets = jSets.getText();
+//    String weight = jWeight.getText();
 
     }// GEN-LAST:event_jButton2ActionPerformed
 
@@ -347,6 +435,7 @@ public class AddWorkout extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AddWorkout().setVisible(true);
             }
@@ -354,6 +443,7 @@ public class AddWorkout extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser JDate;
     private javax.swing.JButton Submit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -361,11 +451,10 @@ public class AddWorkout extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jReps;
+    private javax.swing.JTextField jSets;
+    private javax.swing.JTextField jWeight;
+    private javax.swing.JTextField jworkout;
     private javax.swing.JPanel photobtn;
     // End of variables declaration//GEN-END:variables
 }

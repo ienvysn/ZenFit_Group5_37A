@@ -140,6 +140,11 @@ public class UserDashboard extends javax.swing.JFrame implements TrainerPanelCon
         Feedback.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         Feedback.setText("Feedback");
         Feedback.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Feedback.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FeedbackMouseClicked(evt);
+            }
+        });
         Feedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FeedbackActionPerformed(evt);
@@ -289,9 +294,8 @@ public class UserDashboard extends javax.swing.JFrame implements TrainerPanelCon
     }//GEN-LAST:event_ProfilebtnActionPerformed
 
     private void TrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrainerActionPerformed
-       view.UserDashboard trainerdashboard = new view.UserDashboard();
-       trainerdashboard.setVisible(true);
-       this.dispose();
+       // Stay on the same page since this is the trainer dashboard
+       // The trainer panels are already loaded in the constructor
     }//GEN-LAST:event_TrainerActionPerformed
 
     private void WorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WorkoutActionPerformed
@@ -299,6 +303,12 @@ public class UserDashboard extends javax.swing.JFrame implements TrainerPanelCon
        workoutdashboard.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_WorkoutActionPerformed
+
+    private void FeedbackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FeedbackMouseClicked
+        view.Feedback feedbackdashboard = new view.Feedback();
+        feedbackdashboard.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_FeedbackMouseClicked
 
     public javax.swing.JPanel getTrainerPanelContainer() {
         return jPanel6; // Return jPanel6 instead of jPanel5
