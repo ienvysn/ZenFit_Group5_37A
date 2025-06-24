@@ -29,6 +29,8 @@ public class AddWorkout extends javax.swing.JFrame {
      */
     public AddWorkout() {
         initComponents();
+        jSets.setText("enter sets");
+        jWeight.setText("enter weight");
         // Set current date in YYYY-MM-DD format
 //        java.time.LocalDate today = java.time.LocalDate.now();
 //        jDate.setText(today.toString());
@@ -90,7 +92,16 @@ public class AddWorkout extends javax.swing.JFrame {
         jLabel4.setText("Workout:");
 
         jworkout.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jworkout.setText("enter workout");
         jworkout.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jworkout.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jworkoutFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jworkoutFocusLost(evt);
+            }
+        });
         jworkout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jworkoutActionPerformed(evt);
@@ -102,7 +113,16 @@ public class AddWorkout extends javax.swing.JFrame {
         jLabel5.setText("Reps:");
 
         jReps.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jReps.setText("enter reps");
         jReps.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jReps.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jRepsFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jRepsFocusLost(evt);
+            }
+        });
         jReps.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRepsActionPerformed(evt);
@@ -125,7 +145,16 @@ public class AddWorkout extends javax.swing.JFrame {
         });
 
         jWeight.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jWeight.setText("enter weight ");
         jWeight.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jWeight.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jWeightFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jWeightFocusLost(evt);
+            }
+        });
         jWeight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jWeightActionPerformed(evt);
@@ -133,7 +162,16 @@ public class AddWorkout extends javax.swing.JFrame {
         });
 
         jSets.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jSets.setText("enter sets ");
         jSets.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jSets.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jSetsFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jSetsFocusLost(evt);
+            }
+        });
         jSets.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSetsActionPerformed(evt);
@@ -359,6 +397,70 @@ public class AddWorkout extends javax.swing.JFrame {
     private void jworkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jworkoutActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jworkoutActionPerformed
+
+    private void jworkoutFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jworkoutFocusGained
+        // TODO add your handling code here:
+        if (jworkout.getText().equals("enter workout")) {
+        jworkout.setText("");
+        jworkout.setFont(new java.awt.Font("Segoe UI", 0, 12)); // Regular font
+    }
+    }//GEN-LAST:event_jworkoutFocusGained
+
+    private void jworkoutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jworkoutFocusLost
+        // TODO add your handling code here:
+        if (jworkout.getText().isEmpty()) {
+        jworkout.setText("enter workout");
+        jworkout.setFont(new java.awt.Font("Segoe UI", 2, 12)); // Italic font
+    }
+    }//GEN-LAST:event_jworkoutFocusLost
+
+    private void jRepsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jRepsFocusGained
+        // TODO add your handling code here:
+        if (jReps.getText().equals("enter reps")) {
+        jReps.setText("");
+        jReps.setFont(new java.awt.Font("Segoe UI", 0, 12)); // Regular font
+    }
+    }//GEN-LAST:event_jRepsFocusGained
+
+    private void jRepsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jRepsFocusLost
+        // TODO add your handling code here:
+        if (jReps.getText().isEmpty()) {
+        jReps.setText("enter reps");
+        jReps.setFont(new java.awt.Font("Segoe UI", 2, 12)); // Italic font
+    }
+    }//GEN-LAST:event_jRepsFocusLost
+
+    private void jSetsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jSetsFocusGained
+        // TODO add your handling code here:
+        if (jSets.getText().equals("enter sets")) {
+        jSets.setText("");
+        jSets.setFont(new java.awt.Font("Segoe UI", 0, 12)); // Regular font
+    }
+    }//GEN-LAST:event_jSetsFocusGained
+
+    private void jSetsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jSetsFocusLost
+        // TODO add your handling code here:
+        if (jSets.getText().isEmpty()) {
+        jSets.setText("enter sets");
+        jSets.setFont(new java.awt.Font("Segoe UI", 2, 12)); // Italic font
+    }
+    }//GEN-LAST:event_jSetsFocusLost
+
+    private void jWeightFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jWeightFocusGained
+        // TODO add your handling code here:
+        if (jWeight.getText().equals("enter weight")) {
+        jWeight.setText("");
+        jWeight.setFont(new java.awt.Font("Segoe UI", 0, 12)); // Regular font
+    }
+    }//GEN-LAST:event_jWeightFocusGained
+
+    private void jWeightFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jWeightFocusLost
+        // TODO add your handling code here:
+         if (jWeight.getText().isEmpty()) {
+        jWeight.setText("enter weight");
+        jWeight.setFont(new java.awt.Font("Segoe UI", 2, 12)); // Italic font
+    }
+    }//GEN-LAST:event_jWeightFocusLost
     // GEN-FIRST:event_jTextField2ActionPerformed
     // TODO add your handling code here:
     // GEN-LAST:event_jTextField2ActionPerformed
@@ -418,27 +520,17 @@ public class AddWorkout extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddWorkout.class.getName()).log(java.util.logging.Level.SEVERE, null,
-                    ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddWorkout.class.getName()).log(java.util.logging.Level.SEVERE, null,
-                    ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddWorkout.class.getName()).log(java.util.logging.Level.SEVERE, null,
-                    ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AddWorkout.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         }
         // </editor-fold>
+        
+        // </editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new AddWorkout().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new AddWorkout().setVisible(true);
         });
     }
 
