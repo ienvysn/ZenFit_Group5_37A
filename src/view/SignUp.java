@@ -9,6 +9,12 @@ import javax.swing.*;
 import java.io.File;
 import controller.LoginController;
 import controller.SignUpController;
+import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+
+
+
 
 /**
  *
@@ -22,8 +28,70 @@ public class SignUp extends javax.swing.JFrame {
      */
     public SignUp() {
         initComponents();
+        setupPlaceholders();
 
     }
+
+    private void setupPlaceholders() {
+    // Username placeholder
+    usernameText.setText("Enter your name");
+    usernameText.setForeground(Color.GRAY);
+    usernameText.addFocusListener(new FocusAdapter() {
+        public void focusGained(FocusEvent e) {
+            if (usernameText.getText().equals("Enter your name")) {
+                usernameText.setText("");
+                usernameText.setForeground(Color.BLACK);
+            }
+        }
+        public void focusLost(FocusEvent e) {
+            if (usernameText.getText().isEmpty()) {
+                usernameText.setForeground(Color.GRAY);
+                usernameText.setText("Enter your name");
+            }
+        }
+    });
+
+    // Phone placeholder
+    phoneText.setText("Enter phone number");
+    phoneText.setForeground(Color.GRAY);
+    phoneText.addFocusListener(new FocusAdapter() {
+        public void focusGained(FocusEvent e) {
+            if (phoneText.getText().equals("Enter phone number")) {
+                phoneText.setText("");
+                phoneText.setForeground(Color.BLACK);
+            }
+        }
+        public void focusLost(FocusEvent e) {
+            if (phoneText.getText().isEmpty()) {
+                phoneText.setForeground(Color.GRAY);
+                phoneText.setText("Enter phone number");
+            }
+        }
+    });
+
+    // Password placeholder
+    passwordText.setEchoChar((char)0);  // show text instead of dots initially
+    passwordText.setText("Enter your password");
+    passwordText.setForeground(Color.GRAY);
+    passwordText.addFocusListener(new FocusAdapter() {
+        public void focusGained(FocusEvent e) {
+            String pwd = new String(passwordText.getPassword());
+            if (pwd.equals("Enter your password")) {
+                passwordText.setText("");
+                passwordText.setEchoChar('\u2022');  // bullet char
+                passwordText.setForeground(Color.BLACK);
+            }
+        }
+        public void focusLost(FocusEvent e) {
+            String pwd = new String(passwordText.getPassword());
+            if (pwd.isEmpty()) {
+                passwordText.setEchoChar((char)0);
+                passwordText.setText("Enter your password");
+                passwordText.setForeground(Color.GRAY);
+            }
+        }
+    });
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
