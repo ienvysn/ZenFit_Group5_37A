@@ -1,25 +1,46 @@
+package view;
+
+import dao.UserDao;
+import model.UserData;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
 
 /**
  *
  * @author Salifa
  */
 public class Update extends javax.swing.JFrame {
+    
+    private String currentUsername;
 
     /**
      * Creates new form Update
      */
     public Update() {
         initComponents();
-       Number.setText("Enter phone");
-       Address.setText("Enter address");
-       Joineddate.setText("yyyy-MM-dd");
-       ExpiryDate.setText("yyyy-MM-dd");
-  
+        // Default placeholders will be set when user data is loaded
+    }
+    
+    public void setCurrentUsername(String username) {
+        this.currentUsername = username;
+        loadCurrentUserData();
+    }
+    
+    private void loadCurrentUserData() {
+        if (currentUsername != null && !currentUsername.isEmpty()) {
+            UserDao userDao = new UserDao();
+            UserData currentUser = userDao.getUserByUsername(currentUsername);
+            
+            if (currentUser != null) {
+                Name.setText(currentUser.getUsername());
+                Number.setText(currentUser.getPhone());
+                Address.setText("••••••••"); // Hidden password with dots
+            }
+        }
     }
 
     /**
@@ -36,17 +57,14 @@ public class Update extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         usercardpanel = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         Number = new javax.swing.JTextField();
         Address = new javax.swing.JTextField();
-        Joineddate = new javax.swing.JTextField();
-        ExpiryDate = new javax.swing.JTextField();
+        Name = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Variable", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -68,36 +86,17 @@ public class Update extends javax.swing.JFrame {
 
         usercardpanel.setBackground(new java.awt.Color(4, 39, 56));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 63, Short.MAX_VALUE)
-        );
-
         jLabel4.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Number");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Address");
+        jLabel6.setText("Password");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Joined date");
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Expiry Date");
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI Variable", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Ram Sharma");
+        jLabel10.setText("Name");
 
         jButton2.setText("Update");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +120,7 @@ public class Update extends javax.swing.JFrame {
             }
         });
 
-        Address.setText("enter address");
+        Address.setText("••••••••");
         Address.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 AddressFocusGained(evt);
@@ -136,91 +135,65 @@ public class Update extends javax.swing.JFrame {
             }
         });
 
-        Joineddate.setText("yyyy-MM-dd");
-        Joineddate.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                JoineddateFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                JoineddateFocusLost(evt);
-            }
-        });
-        Joineddate.addActionListener(new java.awt.event.ActionListener() {
+        Name.setText("enter name");
+        Name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JoineddateActionPerformed(evt);
+                NameActionPerformed(evt);
             }
         });
 
-        ExpiryDate.setText("yyyy-MM-dd");
-        ExpiryDate.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                ExpiryDateFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                ExpiryDateFocusLost(evt);
-            }
-        });
-        ExpiryDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExpiryDateActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel1.setText("CHNAGE YOUR INFORMATRION");
 
         javax.swing.GroupLayout usercardpanelLayout = new javax.swing.GroupLayout(usercardpanel);
         usercardpanel.setLayout(usercardpanelLayout);
         usercardpanelLayout.setHorizontalGroup(
             usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usercardpanelLayout.createSequentialGroup()
+                .addGap(0, 36, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(31, 31, 31))
             .addGroup(usercardpanelLayout.createSequentialGroup()
                 .addGroup(usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(usercardpanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(usercardpanelLayout.createSequentialGroup()
-                                .addGroup(usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Number)
-                                    .addComponent(jLabel8)
-                                    .addComponent(Joineddate, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(87, 87, 87)
-                                .addGroup(usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel11)
-                                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(ExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(Address, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(usercardpanelLayout.createSequentialGroup()
                         .addGap(107, 107, 107)
-                        .addComponent(jButton2)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(jButton2))
+                    .addGroup(usercardpanelLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addGroup(usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(Name, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Address, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Number, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         usercardpanelLayout.setVerticalGroup(
             usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(usercardpanelLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(Number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addGap(10, 10, 10)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(usercardpanelLayout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(jLabel6))
+                    .addGroup(usercardpanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)))
                 .addComponent(Address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Joineddate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -237,75 +210,90 @@ public class Update extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-              new controller.UpdateController(this).updateUserFromForm();
-            }
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void AddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddressActionPerformed
+
+    private void AddressFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AddressFocusGained
+        if (Address.getText().equals("••••••••")) {
+            Address.setText("");
+        }
+    }//GEN-LAST:event_AddressFocusGained
+
+    private void AddressFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AddressFocusLost
+        if (Address.getText().isEmpty()) {
+            Address.setText("••••••••");
+        }
+    }//GEN-LAST:event_AddressFocusLost
 
     private void NumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NumberActionPerformed
 
-    private void AddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AddressActionPerformed
-
-    private void JoineddateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JoineddateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JoineddateActionPerformed
-
-    private void ExpiryDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpiryDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ExpiryDateActionPerformed
-
-    private void NumberFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NumberFocusGained
-       if (Number.getText().equals("Enter phone")) {
-        Number.setText("");
-    }
-    }//GEN-LAST:event_NumberFocusGained
-
     private void NumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NumberFocusLost
-       if (Number.getText().isEmpty()) {
-        Number.setText("Enter phone");
-    }
+        if (Number.getText().isEmpty()) {
+            Number.setText("Enter phone");
+        }
     }//GEN-LAST:event_NumberFocusLost
 
-    private void AddressFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AddressFocusGained
-       if (Address.getText().equals("Enter address")) {
-        Address.setText("");
-    }
-    }//GEN-LAST:event_AddressFocusGained
+    private void NumberFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NumberFocusGained
+        if (Number.getText().equals("Enter phone")) {
+            Number.setText("");
+        }
+    }//GEN-LAST:event_NumberFocusGained
 
-    private void AddressFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AddressFocusLost
-       if (Address.getText().isEmpty()) {
-        Address.setText("Enter address");
-    }
-    }//GEN-LAST:event_AddressFocusLost
+    private void NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NameActionPerformed
 
-    private void JoineddateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JoineddateFocusGained
-        if (Joineddate.getText().equals("yyyy-MM-dd")) {
-         Joineddate.setText("");
-    }
-    }//GEN-LAST:event_JoineddateFocusGained
-
-    private void JoineddateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JoineddateFocusLost
-          if (Joineddate.getText().isEmpty()) {
-        Joineddate.setText("yyyy-MM-dd");
-    }
-    }//GEN-LAST:event_JoineddateFocusLost
-
-    private void ExpiryDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ExpiryDateFocusGained
-       if (ExpiryDate.getText().equals("yyyy-MM-dd")) {
-         ExpiryDate.setText("");
-    }
-    }//GEN-LAST:event_ExpiryDateFocusGained
-
-    private void ExpiryDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ExpiryDateFocusLost
-         if (ExpiryDate.getText().isEmpty()) {
-           ExpiryDate.setText("yyyy-MM-dd");
-    }
-    }//GEN-LAST:event_ExpiryDateFocusLost
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (currentUsername == null || currentUsername.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Error: No current user selected!");
+            return;
+        }
+        
+        String newUsername = Name.getText().trim();
+        String phone = Number.getText().trim();
+        String password = Address.getText().trim(); // Using Address field for password
+        
+        // Validate input
+        if (newUsername.isEmpty() || newUsername.equals("enter name")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid name!");
+            return;
+        }
+        
+        if (phone.isEmpty() || phone.equals("Enter phone")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid phone number!");
+            return;
+        }
+        
+        // If password field still shows dots, don't update password
+        if (password.equals("••••••••")) {
+            // Get the current user's actual password from database
+            UserDao userDao = new UserDao();
+            UserData currentUser = userDao.getUserByUsername(currentUsername);
+            if (currentUser != null) {
+                password = currentUser.getPassword(); // Use existing password
+            } else {
+                JOptionPane.showMessageDialog(this, "Error: Could not retrieve current user data!");
+                return;
+            }
+        }
+        
+        try {
+            UserDao userDao = new UserDao();
+            boolean success = userDao.updateUser(currentUsername, newUsername, phone, password);
+            
+            if (success) {
+                JOptionPane.showMessageDialog(this, "User updated successfully!");
+                this.dispose(); // Close the update form
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to update user. Please try again.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error updating user: " + e.getMessage());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -344,40 +332,18 @@ public class Update extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Address;
-    private javax.swing.JTextField ExpiryDate;
-    private javax.swing.JTextField Joineddate;
+    private javax.swing.JTextField Name;
     private javax.swing.JTextField Number;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel usercardpanel;
     // End of variables declaration//GEN-END:variables
-
-public UserData getUserData() {
-    return this.userData;
-}
-
-public JTextField getPhoneField() {
-    return Number;
-}
-
-public JTextField getUsernameField() {
-    return Address;
-}
-
-public JTextField getJoinedDateField() {
-    return Joineddate;
-}
-
-public JTextField getExpiryDateField() {
-    return ExpiryDate;
 }
 

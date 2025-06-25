@@ -191,24 +191,22 @@ public class UserDao {
         }
     }
     
-    public boolean updateUser(UserData user) {
-    Connection conn = mysql.openConnection();
-    String sql = "UPDATE users SET phone = ?, joined_date = ?, expiry_date = ?, membership_type = ?, image = ? WHERE username = ?";
-    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-        pstmt.setString(1, user.getPhone());
-        pstmt.setDate(2, new java.sql.Date(user.getJoinedDate().getTime()));
-        pstmt.setDate(3, new java.sql.Date(user.getExpiryDate().getTime()));
-        pstmt.setString(4, user.getMembershipType());
-        pstmt.setBytes(5, user.getImage()); // or null if not updating image
-        pstmt.setString(6, user.getUsername());
+    public boolean updateUser(String username, String newUsername, String phone, String password) {
+        Connection conn = mysql.openConnection();
+        String sql = "UPDATE users SET username = ?, phone = ?, password = ? WHERE username = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, newUsername);
+            pstmt.setString(2, phone);
+            pstmt.setString(3, password);
+            pstmt.setString(4, username);
 
-        int affectedRows = pstmt.executeUpdate();
-        return affectedRows > 0;
-    } catch (SQLException ex) {
-        Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
-        return false;
-    } finally {
-        mysql.CloseConnection(conn);
+            int affectedRows = pstmt.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        } finally {
+            mysql.CloseConnection(conn);
+        }
     }
-}
 }
