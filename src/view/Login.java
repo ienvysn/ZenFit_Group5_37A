@@ -13,6 +13,13 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import controller.LoginController;
 import controller.SignUpController;
+import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import javax.swing.SwingUtilities;
+
+
+
 
 public class Login extends javax.swing.JFrame {
 
@@ -20,8 +27,57 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login_Application
      */
     public Login() {
-        initComponents();
-    }
+    initComponents();
+    setupPlaceholders();
+    SwingUtilities.invokeLater(() -> {
+        this.getRootPane().requestFocusInWindow();
+    });
+}
+private void setupPlaceholders() {
+    // --- Username Field ---
+    usernameText.setText("Enter your username");
+    usernameText.setForeground(Color.GRAY);
+    usernameText.addFocusListener(new FocusAdapter() {
+        public void focusGained(FocusEvent e) {
+            if (usernameText.getText().equals("Enter your username")) {
+                usernameText.setText("");
+                usernameText.setForeground(Color.BLACK);
+            }
+        }
+
+        public void focusLost(FocusEvent e) {
+            if (usernameText.getText().isEmpty()) {
+                usernameText.setText("Enter your username");
+                usernameText.setForeground(Color.GRAY);
+            }
+        }
+    });
+
+    // --- Password Field ---
+    passwordText.setEchoChar((char) 0);
+    passwordText.setText("Enter your password");
+    passwordText.setForeground(Color.GRAY);
+    passwordText.addFocusListener(new FocusAdapter() {
+        public void focusGained(FocusEvent e) {
+            String pwd = new String(passwordText.getPassword());
+            if (pwd.equals("Enter your password")) {
+                passwordText.setText("");
+                passwordText.setEchoChar('\u2022');
+                passwordText.setForeground(Color.BLACK);
+            }
+        }
+
+        public void focusLost(FocusEvent e) {
+            String pwd = new String(passwordText.getPassword());
+            if (pwd.isEmpty()) {
+                passwordText.setEchoChar((char) 0);
+                passwordText.setText("Enter your password");
+                passwordText.setForeground(Color.GRAY);
+            }
+        }
+    });
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.

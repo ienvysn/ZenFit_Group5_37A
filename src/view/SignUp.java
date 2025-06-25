@@ -12,6 +12,7 @@ import controller.SignUpController;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import javax.swing.SwingUtilities;
 
 
 
@@ -26,14 +27,18 @@ public class SignUp extends javax.swing.JFrame {
     /**
      * Creates new form SignUp
      */
+    
     public SignUp() {
-        initComponents();
-        setupPlaceholders();
+    initComponents();
+    setupPlaceholders();
+    SwingUtilities.invokeLater(() -> {
+        this.getRootPane().requestFocusInWindow();
+    });
+}
 
-    }
 
-    private void setupPlaceholders() {
-    // Username placeholder
+private void setupPlaceholders() {
+    // --- Name Field ---
     usernameText.setText("Enter your name");
     usernameText.setForeground(Color.GRAY);
     usernameText.addFocusListener(new FocusAdapter() {
@@ -43,15 +48,16 @@ public class SignUp extends javax.swing.JFrame {
                 usernameText.setForeground(Color.BLACK);
             }
         }
+
         public void focusLost(FocusEvent e) {
             if (usernameText.getText().isEmpty()) {
-                usernameText.setForeground(Color.GRAY);
                 usernameText.setText("Enter your name");
+                usernameText.setForeground(Color.GRAY);
             }
         }
     });
 
-    // Phone placeholder
+    // --- Phone Field ---
     phoneText.setText("Enter phone number");
     phoneText.setForeground(Color.GRAY);
     phoneText.addFocusListener(new FocusAdapter() {
@@ -61,16 +67,17 @@ public class SignUp extends javax.swing.JFrame {
                 phoneText.setForeground(Color.BLACK);
             }
         }
+
         public void focusLost(FocusEvent e) {
             if (phoneText.getText().isEmpty()) {
-                phoneText.setForeground(Color.GRAY);
                 phoneText.setText("Enter phone number");
+                phoneText.setForeground(Color.GRAY);
             }
         }
     });
 
-    // Password placeholder
-    passwordText.setEchoChar((char)0);  // show text instead of dots initially
+    // --- Password Field ---
+    passwordText.setEchoChar((char) 0);
     passwordText.setText("Enter your password");
     passwordText.setForeground(Color.GRAY);
     passwordText.addFocusListener(new FocusAdapter() {
@@ -78,14 +85,15 @@ public class SignUp extends javax.swing.JFrame {
             String pwd = new String(passwordText.getPassword());
             if (pwd.equals("Enter your password")) {
                 passwordText.setText("");
-                passwordText.setEchoChar('\u2022');  // bullet char
+                passwordText.setEchoChar('\u2022');
                 passwordText.setForeground(Color.BLACK);
             }
         }
+
         public void focusLost(FocusEvent e) {
             String pwd = new String(passwordText.getPassword());
             if (pwd.isEmpty()) {
-                passwordText.setEchoChar((char)0);
+                passwordText.setEchoChar((char) 0);
                 passwordText.setText("Enter your password");
                 passwordText.setForeground(Color.GRAY);
             }
@@ -93,6 +101,8 @@ public class SignUp extends javax.swing.JFrame {
     });
 }
 
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

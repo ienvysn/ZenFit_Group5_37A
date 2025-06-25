@@ -3,16 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/controller/UpdateController.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Update.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/ZenFit_Group5_37A/src/dao/UserDao.java</file>
-=======
-            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/AddWorkout.java</file>
-            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/zenfit_group5_37a/ZenFit_Group5_37A.java</file>
-            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/AddEquipment.java</file>
-            <file>file:/C:/Users/HP.DESKTOP-Q2SU90E/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/AddTrainer.java</file>
->>>>>>> 134a7d7c8e399bb94f0f1e339f9b7b2c111f56d9
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/Login.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ZenFit_Group5_37A/src/view/SignUp.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ZenFit_Group5_37A/src/zenfit_group5_37a/ZenFit_Group5_37A.java</file>
         </group>
     </open-files>
 </project-private>
