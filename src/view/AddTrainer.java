@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import controller.TrainerDashboardController;
+import java.awt.Font;
 
 /**
  *
@@ -25,6 +26,15 @@ public class AddTrainer extends javax.swing.JFrame {
     public AddTrainer() {
         initComponents();
         controller = new TrainerDashboardController();
+        jTextField2.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
+     jTextField2.setText("enter name");
+
+     jTextField3.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
+     jTextField3.setText("enter phone number");
+
+     jTextField4.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
+     jTextField4.setText("enter address");
+
     }
 
     /**
@@ -71,6 +81,14 @@ public class AddTrainer extends javax.swing.JFrame {
         jTextField2.setText("enter name ");
         jTextField2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTextField2.setVerifyInputWhenFocusTarget(false);
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField2FocusLost(evt);
+            }
+        });
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -84,6 +102,14 @@ public class AddTrainer extends javax.swing.JFrame {
         jTextField3.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jTextField3.setText("enter phone number");
         jTextField3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField3FocusLost(evt);
+            }
+        });
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -97,6 +123,14 @@ public class AddTrainer extends javax.swing.JFrame {
         jTextField4.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jTextField4.setText("enter address");
         jTextField4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField4FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField4FocusLost(evt);
+            }
+        });
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -112,6 +146,14 @@ public class AddTrainer extends javax.swing.JFrame {
         jLabel7.setText("Sepeciality:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "6AM-10AM", "10AM-3PM", "3PM-8PM", "5pm-10PM" }));
+        jComboBox1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBox1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBox1FocusLost(evt);
+            }
+        });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yoga", "Zumba", "Weight Lifting", "Power Lifting" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -303,6 +345,62 @@ public class AddTrainer extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error reading image file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        // TODO add your handling code here:
+        if (jTextField2.getText().equals("enter name")) {
+        jTextField2.setText("");
+        jTextField2.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 12));
+    }
+    }//GEN-LAST:event_jTextField2FocusGained
+
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+        // TODO add your handling code here:
+        if (jTextField2.getText().trim().isEmpty()) {
+        jTextField2.setText("enter name");
+        jTextField2.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
+    }
+    }//GEN-LAST:event_jTextField2FocusLost
+
+    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        // TODO add your handling code here:
+        if (jTextField3.getText().equals("enter phone number")) {
+        jTextField3.setText("");
+        jTextField3.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 12));
+    }
+    }//GEN-LAST:event_jTextField3FocusGained
+
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+        // TODO add your handling code here:
+        if (jTextField3.getText().trim().isEmpty()) {
+        jTextField3.setText("enter phone number");
+        jTextField3.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
+    }
+    }//GEN-LAST:event_jTextField3FocusLost
+
+    private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
+        // TODO add your handling code here:
+        if (jTextField4.getText().equals("enter address")) {
+        jTextField4.setText("");
+        jTextField4.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 12));
+    }
+    }//GEN-LAST:event_jTextField4FocusGained
+
+    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
+        // TODO add your handling code here:
+         if (jTextField4.getText().trim().isEmpty()) {
+        jTextField4.setText("enter address");
+        jTextField4.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
+    }
+    }//GEN-LAST:event_jTextField4FocusLost
+
+    private void jComboBox1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1FocusGained
+
+    private void jComboBox1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1FocusLost
 
     /**
      * @param args the command line arguments
