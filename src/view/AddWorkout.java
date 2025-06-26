@@ -4,13 +4,7 @@
  */
 package view;
 
-//import model.CurrentUser;
-//import model.UserData;  // You'll need this class
-//import dao.WorkoutDAO;
-//import controller.WorkoutController;
-//import java.sql.Date;
-//import java.sql.Connection;
-//import javax.swing.JOptionPane;
+
 import model.CurrentUser;
 import model.UserData;
 import dao.WorkoutDAO;
@@ -18,6 +12,8 @@ import controller.WorkoutController;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 import model.WorkoutData;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyAdapter;
 
 /**
  *
@@ -32,9 +28,63 @@ public class AddWorkout extends javax.swing.JFrame {
         initComponents();
         jSets.setText("enter sets");
         jWeight.setText("enter weight");
-        // Set current date in YYYY-MM-DD format
-        // java.time.LocalDate today = java.time.LocalDate.now();
-        // jDate.setText(today.toString());
+        
+        
+        
+        JDate.getDateEditor().getUiComponent().addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                jworkout.requestFocus();
+            }
+        }
+    });
+        
+        
+     
+        jworkout.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                jReps.requestFocus();
+            }
+        }
+    });
+        
+
+    jReps.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                jSets.requestFocus();
+            }
+        }
+    });
+
+    jSets.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                jWeight.requestFocus();
+            }
+        }
+    });
+
+    jWeight.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                Submit.doClick(); // Submit the form
+            }
+        }
+        
+    
+     
+    });
+    
+    JDate.getDateEditor().getUiComponent().requestFocus();
+    
+    
 
         try {
             // Get current user - this will throw exception if not logged in
@@ -56,7 +106,7 @@ public class AddWorkout extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         photobtn = new javax.swing.JPanel();
@@ -99,7 +149,6 @@ public class AddWorkout extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jworkoutFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jworkoutFocusLost(evt);
             }
@@ -121,9 +170,13 @@ public class AddWorkout extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jRepsFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jRepsFocusLost(evt);
+            }
+        });
+        jReps.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRepsActionPerformed(evt);
             }
         });
 
@@ -149,9 +202,13 @@ public class AddWorkout extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jWeightFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jWeightFocusLost(evt);
+            }
+        });
+        jWeight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jWeightActionPerformed(evt);
             }
         });
 
@@ -162,182 +219,105 @@ public class AddWorkout extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jSetsFocusGained(evt);
             }
-
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jSetsFocusLost(evt);
+            }
+        });
+        jSets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSetsActionPerformed(evt);
+            }
+        });
+
+        JDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JDateMouseClicked(evt);
             }
         });
 
         javax.swing.GroupLayout photobtnLayout = new javax.swing.GroupLayout(photobtn);
         photobtn.setLayout(photobtnLayout);
         photobtnLayout.setHorizontalGroup(
-                photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(photobtnLayout.createSequentialGroup()
-                                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(photobtnLayout.createSequentialGroup()
-                                                .addGap(148, 148, 148)
-                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 187,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(photobtnLayout.createSequentialGroup()
-                                                .addGroup(photobtnLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(photobtnLayout.createSequentialGroup()
-                                                                .addGap(90, 90, 90)
-                                                                .addGroup(photobtnLayout.createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                        .addComponent(jLabel6)
-                                                                        .addComponent(jLabel7)
-                                                                        .addComponent(jLabel4)
-                                                                        .addComponent(jLabel3))
-                                                                .addGap(26, 26, 26))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                                                photobtnLayout.createSequentialGroup()
-                                                                        .addContainerGap()
-                                                                        .addComponent(jLabel5)
-                                                                        .addGap(18, 18, 18)))
-                                                .addGroup(photobtnLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING,
-                                                                false)
-                                                        .addComponent(Submit)
-                                                        .addComponent(jworkout, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                116, Short.MAX_VALUE)
-                                                        .addComponent(jReps)
-                                                        .addComponent(jSets)
-                                                        .addComponent(jWeight)
-                                                        .addComponent(JDate, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                Short.MAX_VALUE))))
-                                .addContainerGap(158, Short.MAX_VALUE)));
-        photobtnLayout.setVerticalGroup(
-                photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(photobtnLayout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
+            photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(photobtnLayout.createSequentialGroup()
+                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(photobtnLayout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(photobtnLayout.createSequentialGroup()
+                        .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(photobtnLayout.createSequentialGroup()
+                                .addGap(90, 90, 90)
                                 .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(JDate, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
-                                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jworkout, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
-                                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jReps, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5))
-                                .addGap(27, 27, 27)
-                                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jSets, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
-                                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jWeight, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51,
-                                        Short.MAX_VALUE)
-                                .addComponent(Submit)
-                                .addGap(37, 37, 37)));
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3))
+                                .addGap(26, 26, 26))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, photobtnLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)))
+                        .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Submit)
+                            .addComponent(jworkout, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                            .addComponent(jReps)
+                            .addComponent(jSets)
+                            .addComponent(jWeight)
+                            .addComponent(JDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(158, Short.MAX_VALUE))
+        );
+        photobtnLayout.setVerticalGroup(
+            photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(photobtnLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(JDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jworkout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jReps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(27, 27, 27)
+                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jSets, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(Submit)
+                .addGap(37, 37, 37))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(photobtn, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(photobtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(photobtn, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(photobtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void JDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JDateMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JDateMouseClicked
+
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_SubmitActionPerformed
 
-        //
-        //
-        // try {
-        // // 1. Get current user
-        // UserData currentUser = CurrentUser.get();
-        //
-        // // 2. Get and validate date
-        // String workoutDate = jDate.getText().trim();
-        // if (workoutDate.isEmpty()) {
-        // JOptionPane.showMessageDialog(this, "Date cannot be empty");
-        // return;
-        // }
-        //
-        // // 3. Get and validate workout name
-        // String workoutName = jworkout.getText().trim();
-        // if (workoutName.isEmpty()) {
-        // JOptionPane.showMessageDialog(this, "Workout name cannot be empty");
-        // return;
-        // }
-        //
-        // // 4. Validate numeric fields
-        // int reps, sets, weight;
-        // try {
-        // reps = Integer.parseInt(jReps.getText().trim());
-        // sets = Integer.parseInt(jSets.getText().trim());
-        // weight = Integer.parseInt(jWeight.getText().trim());
-        //
-        // if (reps <= 0 || sets <= 0 || weight <= 0) {
-        // JOptionPane.showMessageDialog(this, "Reps, sets and weight must be positive
-        // numbers");
-        // return;
-        // }
-        // } catch (NumberFormatException e) {
-        // JOptionPane.showMessageDialog(this, "Reps, sets and weight must be valid
-        // numbers");
-        // return;
-        // }
-        //
-        // // 5. Create and add workout using controller
-        // WorkoutController controller = new WorkoutController(null);
-        // boolean success = controller.addWorkout(
-        // currentUser.getId(),
-        // workoutDate,
-        // workoutName,
-        // reps,
-        // sets,
-        // weight
-        // );
-        //
-        // if (success) {
-        // JOptionPane.showMessageDialog(this, "Workout added successfully!");
-        // // Clear all fields after successful submission
-        // jworkout.setText("");
-        // jReps.setText("");
-        // jSets.setText("");
-        // jWeight.setText("");
-        // // Reset date to current date
-        // java.time.LocalDate today = java.time.LocalDate.now();
-        // jDate.setText(today.toString());
-        // } else {
-        // JOptionPane.showMessageDialog(this, "Failed to add workout. Please try
-        // again.");
-        // }
-        //
-        // } catch (IllegalStateException e) {
-        // JOptionPane.showMessageDialog(this, "No user logged in. Please log in
-        // first.");
-        // this.dispose();
-        // } catch (Exception e) {
-        // JOptionPane.showMessageDialog(this, "An unexpected error occurred: " +
-        // e.getMessage());
-        // e.printStackTrace();
-        // }
+        
         try {
             // 1. Get current user
             UserData currentUser = CurrentUser.get();
@@ -410,6 +390,20 @@ public class AddWorkout extends javax.swing.JFrame {
     private void jworkoutActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jworkoutActionPerformed
         // TODO add your handling code here:
     }// GEN-LAST:event_jworkoutActionPerformed
+    
+                                  
+
+private void jRepsActionPerformed(java.awt.event.ActionEvent evt) {                                      
+    jSets.requestFocus(); // Move focus to sets field when Enter is pressed
+}                                     
+
+private void jSetsActionPerformed(java.awt.event.ActionEvent evt) {                                      
+    jWeight.requestFocus(); // Move focus to weight field when Enter is pressed
+}                                     
+
+private void jWeightActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    Submit.doClick(); // Submit the form when Enter is pressed in weight field
+} 
 
     private void jworkoutFocusGained(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_jworkoutFocusGained
         // TODO add your handling code here:
@@ -466,6 +460,13 @@ public class AddWorkout extends javax.swing.JFrame {
             jWeight.setFont(new java.awt.Font("Segoe UI", 0, 12)); // Regular font
         }
     }// GEN-LAST:event_jWeightFocusGained
+// GEN-LAST:event_jWeightFocusGained
+// GEN-LAST:event_jWeightFocusGained
+// GEN-LAST:event_jWeightFocusGained
+// GEN-LAST:event_jWeightFocusGained
+// GEN-LAST:event_jWeightFocusGained
+// GEN-LAST:event_jWeightFocusGained
+// GEN-LAST:event_jWeightFocusGained
 
     private void jWeightFocusLost(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_jWeightFocusLost
         // TODO add your handling code here:
@@ -473,44 +474,8 @@ public class AddWorkout extends javax.swing.JFrame {
             jWeight.setText("enter weight");
             jWeight.setFont(new java.awt.Font("Segoe UI", 2, 12)); // Italic font
         }
-    }// GEN-LAST:event_jWeightFocusLost
-     // GEN-FIRST:event_jTextField2ActionPerformed
-     // TODO add your handling code here:
-     // GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
     }
-    // GEN-FIRST:event_jTextField4ActionPerformed
-    // TODO add your handling code here:
-    // GEN-LAST:event_jTextField4ActionPerformed
-    // GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
-        // String date = jDate.getText();
-        // String workout = jworkout.getText();
-        // String reps = jReps.getText();
-        // String sets = jSets.getText();
-        // String weight = jWeight.getText();
-        if (JDate.getDate() == null) {
-            // Handle null date case
-            return;
-        }
-        // String date = new java.sql.Date(JDate.getDate().getTime()).toString();
-        // String workout = jworkout.getText();
-        // String reps = jReps.getText();
-        // String sets = jSets.getText();
-        // String weight = jWeight.getText();
-
-    }// GEN-LAST:event_jButton2ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_jTextField6ActionPerformed
+   
 
     /**
      * @param args the command line arguments

@@ -11,6 +11,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import controller.TrainerDashboardController;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -26,14 +27,33 @@ public class AddTrainer extends javax.swing.JFrame {
     public AddTrainer() {
         initComponents();
         controller = new TrainerDashboardController();
-        jTextField2.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
-     jTextField2.setText("enter name");
+        jName.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
+     jName.setText("enter name");
 
-     jTextField3.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
-     jTextField3.setText("enter phone number");
+     jNumber.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
+     jNumber.setText("enter phone number");
 
-     jTextField4.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
-     jTextField4.setText("enter address");
+     jAddress.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
+     jAddress.setText("enter address");
+     
+     
+     jName.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jNameActionPerformed(evt);
+    }
+});
+
+jNumber.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jNumberActionPerformed(evt);
+    }
+});
+
+jAddress.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jAddressActionPerformed(evt);
+    }
+});
 
     }
 
@@ -49,17 +69,17 @@ public class AddTrainer extends javax.swing.JFrame {
         photobtn = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jNumber = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jAddress = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jShift = new javax.swing.JComboBox<>();
+        jSpeciality = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jPhoto = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,21 +97,21 @@ public class AddTrainer extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Name:");
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jTextField2.setText("enter name ");
-        jTextField2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField2.setVerifyInputWhenFocusTarget(false);
-        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+        jName.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jName.setText("enter name ");
+        jName.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jName.setVerifyInputWhenFocusTarget(false);
+        jName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField2FocusGained(evt);
+                jNameFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField2FocusLost(evt);
+                jNameFocusLost(evt);
             }
         });
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jNameActionPerformed(evt);
             }
         });
 
@@ -99,20 +119,20 @@ public class AddTrainer extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Number:");
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jTextField3.setText("enter phone number");
-        jTextField3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+        jNumber.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jNumber.setText("enter phone number");
+        jNumber.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField3FocusGained(evt);
+                jNumberFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField3FocusLost(evt);
+                jNumberFocusLost(evt);
             }
         });
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jNumberActionPerformed(evt);
             }
         });
 
@@ -120,20 +140,20 @@ public class AddTrainer extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("    Address: ");
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jTextField4.setText("enter address");
-        jTextField4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+        jAddress.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jAddress.setText("enter address");
+        jAddress.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jAddress.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField4FocusGained(evt);
+                jAddressFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField4FocusLost(evt);
+                jAddressFocusLost(evt);
             }
         });
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        jAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                jAddressActionPerformed(evt);
             }
         });
 
@@ -145,20 +165,30 @@ public class AddTrainer extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Sepeciality:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "6AM-10AM", "10AM-3PM", "3PM-8PM", "5pm-10PM" }));
-        jComboBox1.addFocusListener(new java.awt.event.FocusAdapter() {
+        jShift.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "6AM-10AM", "10AM-3PM", "3PM-8PM", "5pm-10PM" }));
+        jShift.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jComboBox1FocusGained(evt);
+                jShiftFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jComboBox1FocusLost(evt);
+                jShiftFocusLost(evt);
+            }
+        });
+        jShift.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jShiftKeyPressed(evt);
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yoga", "Zumba", "Weight Lifting", "Power Lifting" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        jSpeciality.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yoga", "Zumba", "Weight Lifting", "Power Lifting" }));
+        jSpeciality.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                jSpecialityActionPerformed(evt);
+            }
+        });
+        jSpeciality.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jSpecialityKeyPressed(evt);
             }
         });
 
@@ -166,10 +196,15 @@ public class AddTrainer extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Photo:");
 
-        jButton1.setText("Chose Photo");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPhoto.setText("Chose Photo");
+        jPhoto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                jPhotoMouseClicked(evt);
+            }
+        });
+        jPhoto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPhotoKeyPressed(evt);
             }
         });
 
@@ -205,12 +240,12 @@ public class AddTrainer extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)))
                         .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jNumber, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jAddress, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jShift, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSpeciality, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPhoto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(photobtnLayout.createSequentialGroup()
                         .addGap(180, 180, 180)
                         .addComponent(jButton2)))
@@ -224,27 +259,27 @@ public class AddTrainer extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(27, 27, 27)
                 .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jShift, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSpeciality, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jButton1))
+                    .addComponent(jPhoto))
                 .addGap(42, 42, 42)
                 .addComponent(jButton2)
                 .addGap(0, 49, Short.MAX_VALUE))
@@ -264,19 +299,24 @@ public class AddTrainer extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+        jNumber.requestFocusInWindow();
+    }//GEN-LAST:event_jNameActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void jAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+         
+          jShift.requestFocusInWindow();
+    }//GEN-LAST:event_jAddressActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNumberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+       
+        jAddress.requestFocusInWindow();
+    }//GEN-LAST:event_jNumberActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void jPhotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPhotoMouseClicked
  JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Images", "jpg", "png", "jpeg"));
 
@@ -286,18 +326,18 @@ public class AddTrainer extends javax.swing.JFrame {
                 System.out.println("Image path: " + selectedFile.getAbsolutePath());
             }
             // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_jPhotoMouseClicked
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void jSpecialityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSpecialityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_jSpecialityActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String name = jTextField2.getText();
-        String phone = jTextField3.getText();
-        String address = jTextField4.getText();
-        String shift = (String) jComboBox1.getSelectedItem();
-        String speciality = (String) jComboBox2.getSelectedItem();
+        String name = jName.getText();
+        String phone = jNumber.getText();
+        String address = jAddress.getText();
+        String shift = (String) jShift.getSelectedItem();
+        String speciality = (String) jSpeciality.getSelectedItem();
         
         if (name.equals("enter name ") || name.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter a valid name", "Error", JOptionPane.ERROR_MESSAGE);
@@ -329,10 +369,10 @@ public class AddTrainer extends javax.swing.JFrame {
             
             if (success) {
                 JOptionPane.showMessageDialog(this, "Trainer added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                jTextField2.setText("enter name ");
-                jTextField4.setText("enter address");
-                jComboBox1.setSelectedIndex(0);
-                jComboBox2.setSelectedIndex(0);
+                jName.setText("enter name ");
+                jAddress.setText("enter address");
+                jShift.setSelectedIndex(0);
+                jSpeciality.setSelectedIndex(0);
                 selectedFile = null;
                 
                 TrainerDashboardadmin trainerDashboard = new TrainerDashboardadmin();
@@ -346,61 +386,79 @@ public class AddTrainer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+    private void jNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jNameFocusGained
         // TODO add your handling code here:
-        if (jTextField2.getText().equals("enter name")) {
-        jTextField2.setText("");
-        jTextField2.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 12));
+        if (jName.getText().equals("enter name")) {
+        jName.setText("");
+        jName.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 12));
     }
-    }//GEN-LAST:event_jTextField2FocusGained
+    }//GEN-LAST:event_jNameFocusGained
 
-    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+    private void jNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jNameFocusLost
         // TODO add your handling code here:
-        if (jTextField2.getText().trim().isEmpty()) {
-        jTextField2.setText("enter name");
-        jTextField2.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
+        if (jName.getText().trim().isEmpty()) {
+        jName.setText("enter name");
+        jName.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
     }
-    }//GEN-LAST:event_jTextField2FocusLost
+    }//GEN-LAST:event_jNameFocusLost
 
-    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+    private void jNumberFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jNumberFocusGained
         // TODO add your handling code here:
-        if (jTextField3.getText().equals("enter phone number")) {
-        jTextField3.setText("");
-        jTextField3.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 12));
+        if (jNumber.getText().equals("enter phone number")) {
+        jNumber.setText("");
+        jNumber.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 12));
     }
-    }//GEN-LAST:event_jTextField3FocusGained
+    }//GEN-LAST:event_jNumberFocusGained
 
-    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+    private void jNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jNumberFocusLost
         // TODO add your handling code here:
-        if (jTextField3.getText().trim().isEmpty()) {
-        jTextField3.setText("enter phone number");
-        jTextField3.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
+        if (jNumber.getText().trim().isEmpty()) {
+        jNumber.setText("enter phone number");
+        jNumber.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
     }
-    }//GEN-LAST:event_jTextField3FocusLost
+    }//GEN-LAST:event_jNumberFocusLost
 
-    private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
+    private void jAddressFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAddressFocusGained
         // TODO add your handling code here:
-        if (jTextField4.getText().equals("enter address")) {
-        jTextField4.setText("");
-        jTextField4.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 12));
+        if (jAddress.getText().equals("enter address")) {
+        jAddress.setText("");
+        jAddress.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 12));
     }
-    }//GEN-LAST:event_jTextField4FocusGained
+    }//GEN-LAST:event_jAddressFocusGained
 
-    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
+    private void jAddressFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jAddressFocusLost
         // TODO add your handling code here:
-         if (jTextField4.getText().trim().isEmpty()) {
-        jTextField4.setText("enter address");
-        jTextField4.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
+         if (jAddress.getText().trim().isEmpty()) {
+        jAddress.setText("enter address");
+        jAddress.setFont(new java.awt.Font("Segoe UI", Font.ITALIC, 12));
     }
-    }//GEN-LAST:event_jTextField4FocusLost
+    }//GEN-LAST:event_jAddressFocusLost
 
-    private void jComboBox1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusGained
+    private void jShiftFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jShiftFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1FocusGained
+    }//GEN-LAST:event_jShiftFocusGained
 
-    private void jComboBox1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusLost
+    private void jShiftFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jShiftFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1FocusLost
+    }//GEN-LAST:event_jShiftFocusLost
+
+    private void jShiftKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jShiftKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jSpeciality.requestFocusInWindow();
+    }
+    }//GEN-LAST:event_jShiftKeyPressed
+
+    private void jSpecialityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jSpecialityKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jButton2.doClick();
+    }
+    }//GEN-LAST:event_jSpecialityKeyPressed
+
+    private void jPhotoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPhotoKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPhotoKeyPressed
 
     /**
      * @param args the command line arguments
@@ -441,10 +499,8 @@ public class AddTrainer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField jAddress;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -452,9 +508,11 @@ public class AddTrainer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jName;
+    private javax.swing.JTextField jNumber;
+    private javax.swing.JButton jPhoto;
+    private javax.swing.JComboBox<String> jShift;
+    private javax.swing.JComboBox<String> jSpeciality;
     private javax.swing.JPanel photobtn;
     // End of variables declaration//GEN-END:variables
 }
