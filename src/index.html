@@ -1,3 +1,4 @@
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +13,10 @@
         }
 
         header {
-            background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b') no-repeat center center/cover;
+            background: linear-gradient(rgba(25, 42, 86, 0.8), rgba(25, 42, 86, 0.8)), 
+                        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b') no-repeat center center/cover;
             height: 300px;
-            color: red;
+            color: #FF6B6B; /* Updated to a better red/coral color */
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -25,11 +27,15 @@
         header h1 {
             font-size: 42px;
             margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #FFFFFF; /* Changed to white for better contrast */
         }
 
         header p {
             font-size: 20px;
             margin: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            color: #FFD166; /* Changed to a golden yellow for accent */
         }
 
         .container {
@@ -53,18 +59,6 @@
         .section p {
             font-size: 18px;
             line-height: 1.6;
-        }
-
-        .image-box {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .image-box img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            border: 3px solid #2E86C1;
         }
 
         .contact {
@@ -97,10 +91,9 @@
             <p>ZenFit is a modern gym management system designed to simplify your workout life. We connect gym owners and fitness enthusiasts by providing a streamlined platform where members can explore trainers, track workouts, view equipment, and provide valuable feedback — all in one place.</p>
         </div>
 
-        <div class="section image-box">
+        <div class="section">
             <h2>Our Environment</h2>
-            <img src="C:\Users\HP.DESKTOP-Q2SU90E\Desktop" alt="Gym Image">
-            <p style="margin-top: 10px;">Experience the energy, the vibe, and the transformation at ZenFit.</p>
+            <p>Experience the energy, the vibe, and the transformation at ZenFit.</p>
         </div>
 
         <div class="section contact">
@@ -114,6 +107,634 @@
 
     <footer>
         &copy; 2025 ZenFit Gym Management Software. All rights reserved.
+    </footer>
+
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - ZenFit Gym Management</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(rgba(25, 42, 86, 0.85), rgba(25, 42, 86, 0.85)), 
+                        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b') no-repeat center center/cover;
+            height: 350px;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 22px;
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #2E86C1;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #2E86C1;
+            padding-bottom: 8px;
+        }
+
+        .section h3 {
+            color: #2874A6;
+            margin: 25px 0 15px 0;
+            font-size: 22px;
+        }
+
+        .section p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .section ul {
+            padding-left: 25px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+
+        .feature-box {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #2E86C1;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .contact {
+            background: #e8f4fd;
+            padding: 25px;
+            border-left: 5px solid #2E86C1;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+
+        .privacy-section {
+            background: #fff9e6;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid #F1C40F;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #1A5276;
+            color: white;
+            margin-top: 50px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2E86C1;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #1A5276;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to ZenFit</h1>
+        <p>Revolutionizing gym management through technology, community, and innovation</p>
+    </header>
+
+    <div class="container">
+
+        <div class="section">
+            <h2>Our Story</h2>
+            <p>Founded in 2020, ZenFit began as a small startup with a big vision: to transform the fitness industry through cutting-edge technology. Our team of fitness enthusiasts and tech experts came together to create a comprehensive solution that bridges the gap between gym owners and members.</p>
+            
+            <div class="feature-box">
+                <h3>Why Choose ZenFit?</h3>
+                <ul>
+                    <li><strong>Comprehensive Management:</strong> All your gym operations in one platform</li>
+                    <li><strong>Member-Centric Design:</strong> Created with both gym owners and members in mind</li>
+                    <li><strong>Data Security:</strong> Enterprise-grade protection for all your information</li>
+                    <li><strong>Continuous Innovation:</strong> Regular updates with new features</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Our Mission</h2>
+            <p>At ZenFit, we're committed to empowering fitness businesses and enthusiasts by providing:</p>
+            <ul>
+                <li>A seamless digital experience for gym management</li>
+                <li>Tools to enhance member engagement and retention</li>
+                <li>Data-driven insights for business growth</li>
+                <li>A secure platform that respects user privacy</li>
+                <li>Innovative features that stay ahead of industry trends</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Our Environment</h2>
+            <p>ZenFit creates a connected fitness ecosystem where:</p>
+            <ul>
+                <li>Gym owners can manage their business efficiently with real-time analytics</li>
+                <li>Trainers can build their client base and track progress</li>
+                <li>Members can access personalized workout plans and class schedules</li>
+                <li>Receptionists can handle administrative tasks with intuitive tools</li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h2>Privacy & Data Protection</h2>
+            <p>At ZenFit, we take your privacy seriously. Here's how we protect your data:</p>
+            
+            <h3>Data Collection</h3>
+            <p>We collect only necessary information to provide our services, including:</p>
+            <ul>
+                <li>Basic member details (name, contact information)</li>
+                <li>Fitness goals and progress tracking</li>
+                <li>Attendance records</li>
+                <li>Payment information (processed securely through encrypted channels)</li>
+            </ul>
+            
+            <h3>Data Usage</h3>
+            <p>Your data is used exclusively for:</p>
+            <ul>
+                <li>Providing and improving our services</li>
+                <li>Personalizing your fitness experience</li>
+                <li>Communicating important service updates</li>
+                <li>Generating anonymized analytics for business improvement</li>
+            </ul>
+            
+            <h3>Security Measures</h3>
+            <ul>
+                <li>End-to-end encryption for all sensitive data</li>
+                <li>Regular security audits and penetration testing</li>
+                <li>Role-based access control for staff members</li>
+                <li>Compliance with international data protection regulations (GDPR, CCPA)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Terms of Service</h2>
+            
+            <h3>1. Account Responsibilities</h3>
+            <p>Users are responsible for maintaining the confidentiality of their account credentials and all activities under their account.</p>
+            
+            <h3>2. Acceptable Use</h3>
+            <p>The ZenFit platform may not be used for any illegal or unauthorized purpose, including but not limited to:</p>
+            <ul>
+                <li>Harassment of other users</li>
+                <li>Distribution of malicious software</li>
+                <li>Unauthorized commercial activities</li>
+            </ul>
+            
+            <h3>3. Data Ownership</h3>
+            <p>Gym owners retain ownership of all their business data. ZenFit acts only as a processor of this data under the terms of our Data Processing Agreement.</p>
+            
+            <h3>4. Service Availability</h3>
+            <p>We strive for 99.9% uptime but cannot guarantee uninterrupted service due to factors beyond our control.</p>
+            
+            <h3>5. Termination</h3>
+            <p>Accounts may be terminated for violation of these terms with 30 days notice for non-compliance issues.</p>
+        </div>
+
+        <div class="section">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>Alex Johnson</h3>
+                    <p>CEO & Founder</p>
+                    <p>15+ years in fitness tech</p>
+                </div>
+                <div class="team-member">
+                    <h3>Sarah Chen</h3>
+                    <p>CTO</p>
+                    <p>Security & Architecture</p>
+                </div>
+                <div class="team-member">
+                    <h3>Michael Rodriguez</h3>
+                    <p>Head of Product</p>
+                    <p>User Experience</p>
+                </div>
+                <div class="team-member">
+                    <h3>Priya Patel</h3>
+                    <p>Customer Success</p>
+                    <p>Implementation & Support</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section contact">
+            <h2>Get In Touch</h2>
+            <p><strong>Email:</strong> support@zenfit.com</p>
+            <p><strong>Phone:</strong> +1 (800) 555-ZENF</p>
+            <p><strong>Office Hours:</strong> Monday-Friday, 9AM-6PM EST</p>
+            <p><strong>Address:</strong> 123 Fitness Way, Tech City, TC 10001</p>
+            <a href="#" class="cta-button">Schedule a Demo</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ZenFit Gym Management Software. All rights reserved.</p>
+        <p><a href="#" style="color: #AED6F1;">Privacy Policy</a> | <a href="#" style="color: #AED6F1;">Terms of Service</a> | <a href="#" style="color: #AED6F1;">GDPR Compliance</a></p>
+    </footer>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - ZenFit Gym Management</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(rgba(25, 42, 86, 0.85), rgba(25, 42, 86, 0.85)), 
+                        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b') no-repeat center center/cover;
+            height: 350px;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+            font-weight: 700;
+            color: #87CEEB;
+        }
+
+        header p {
+            font-size: 22px;
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #2E86C1;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #2E86C1;
+            padding-bottom: 8px;
+        }
+
+        .section h3 {
+            color: #E74C3C; /* Updated to a vibrant red for subtitles */
+            margin: 25px 0 15px 0;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .section h4 {
+            color: #16A085; /* Teal color for sub-headings */
+            margin: 20px 0 10px 0;
+            font-size: 19px;
+        }
+
+        .section p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .section ul {
+            padding-left: 25px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+
+        .feature-box {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #2E86C1;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member h3 {
+            color: #2C3E50;
+            margin-bottom: 5px;
+        }
+
+        .team-member p {
+            color: #7F8C8D;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .contact {
+            background: #e8f4fd;
+            padding: 25px;
+            border-left: 5px solid #2E86C1;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+
+        .privacy-section {
+            background: #fff9e6;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid #F1C40F;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #1A5276;
+            color: white;
+            margin-top: 50px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #E74C3C;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #C0392B;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .location {
+            margin: 15px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .location:before {
+            content: "📍";
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to ZenFit</h1>
+        <p>Where fitness meets technology - created by Nepali innovators for the world</p>
+    </header>
+
+    <div class="container">
+
+        <div class="section">
+            <h2>Our Story</h2>
+            <p>Born in 2025 from a shared passion for fitness and technology, ZenFit was founded by five visionary Nepali professionals who saw the need for better gym management solutions. What started as late-night coding sessions and countless cups of tea has grown into Nepal's most promising fitness tech startup.</p>
+            
+            <div class="feature-box">
+                <h3>Meet Our Founding Team</h3>
+                <p>ZenFit was brought to life by:</p>
+                <ul>
+                    <li><strong>Krizen Maharjan</strong> - The driving force behind our vision</li>
+                    <li><strong>Lavnik Maharjan</strong> - Our tech wizard and security expert</li>
+                    <li><strong>Niraj Pantha</strong> - The voice that spreads our message</li>
+                    <li><strong>Rejina Mahatra</strong> - The organizer who keeps us on track</li>
+                    <li><strong>Salfa Shrestha</strong> - The operational backbone of our team</li>
+                </ul>
+                <p>Together, we're building more than software - we're creating a fitness revolution.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Our Mission</h2>
+            <p>We're on a mission to make gym management as smooth as your best workout routine. No more paperwork piles, no more membership confusion - just clean, efficient technology that lets you focus on what really matters: fitness.</p>
+        </div>
+
+        <div class="section">
+            <h2>What ZenFit Offers Today</h2>
+            
+            <h3 style="color: #16A085;">For Gym Members</h3>
+            <ul>
+                <li>Browse all available trainers with complete profiles</li>
+                <li>See trainer specialties, certifications, and availability</li>
+                <li>Book sessions with your preferred trainers</li>
+                <li>Track your workout progress and goals</li>
+            </ul>
+            
+            <h3 style="color: #16A085;">Coming Soon!</h3>
+            <p>We're working hard to bring you even more features:</p>
+            <ul>
+                <li>Attendance tracking (launching in version 2.0)</li>
+                <li>Integrated payment systems (coming next quarter)</li>
+                <li>Mobile app with workout reminders</li>
+            </ul>
+            
+            <p>We're growing every day, just like our members!</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2>Your Data is Safe With Us</h2>
+            <p>We treat your information like we'd treat our own - with the utmost care and respect.</p>
+            
+            <h3>What We Collect</h3>
+            <ul>
+                <li>Basic information to create your profile</li>
+                <li>Your fitness preferences to personalize experience</li>
+                <li>Training history to help track progress</li>
+            </ul>
+            
+            <h3>Our Promise</h3>
+            <ul>
+                <li>We'll never sell your data to third parties</li>
+                <li>All information is encrypted and secured</li>
+                <li>You control what information you share</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>The Faces Behind ZenFit</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>Krizen Maharjan</h3>
+                    <p>CEO & Founder</p>
+                    <p>"Building bridges between fitness and tech"</p>
+                </div>
+                <div class="team-member">
+                    <h3>Lavnik Maharjan</h3>
+                    <p>Co-Founder & CTO</p>
+                    <p>"Making sure every byte is secure"</p>
+                </div>
+                <div class="team-member">
+                    <h3>Rejina Mahatra</h3>
+                    <p>Head Manager</p>
+                    <p>"Keeping our operations running smoothly"</p>
+                </div>
+                <div class="team-member">
+                    <h3>Salfa Shrestha</h3>
+                    <p>Head Manager</p>
+                    <p>"Connecting with our community"</p>
+                </div>
+                <div class="team-member">
+                    <h3>Niraj Pantha</h3>
+                    <p>Marketing Manager</p>
+                    <p>"Sharing the ZenFit story"</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section contact">
+            <h2>Come Visit Us</h2>
+            <p>We'd love to meet you! Find us at:</p>
+            
+            <div class="location">
+                <h4>Biratnagar Office</h4>
+                <p>3rd Floor, Fitness Plaza<br>
+                Mahendrachowk, Biratnagar</p>
+            </div>
+            
+            <div class="location">
+                <h4>Kathmandu Headquarters</h4>
+                <p>ZenFit Central<br>
+                Anamnagar, Kathmandu</p>
+            </div>
+            
+            <div class="location">
+                <h4>Bharatpur Branch</h4>
+                <p>Tech Fitness Hub<br>
+                Aaptari, Bharatpur</p>
+            </div>
+            
+            <p><strong>Email:</strong> hello@zenfit.com.np</p>
+            <p><strong>Phone:</strong> +977-9801234567</p>
+            
+            <a href="#" class="cta-button">Book a Meeting</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ZenFit Gym Management. Proudly made in Nepal.</p>
+        <p><a href="#" style="color: #AED6F1;">Privacy Policy</a> | <a href="#" style="color: #AED6F1;">Terms of Service</a> | <a href="#" style="color: #AED6F1;">Careers</a></p>
     </footer>
 
 </body>
