@@ -120,7 +120,7 @@ public class Update extends javax.swing.JFrame {
             }
         });
 
-        Address.setText("••••••••");
+        Address.setText("enter password");
         Address.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 AddressFocusGained(evt);
@@ -144,7 +144,7 @@ public class Update extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("CHNAGE YOUR INFORMATRION");
+        jLabel1.setText("CHANGE YOUR INFORMATION");
 
         javax.swing.GroupLayout usercardpanelLayout = new javax.swing.GroupLayout(usercardpanel);
         usercardpanel.setLayout(usercardpanelLayout);
