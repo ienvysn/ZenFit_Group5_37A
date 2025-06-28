@@ -207,7 +207,7 @@ public void updateUserData(model.UserData user) {
                     .addGroup(usercardpanelLayout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(jButton1)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         usercardpanelLayout.setVerticalGroup(
             usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
