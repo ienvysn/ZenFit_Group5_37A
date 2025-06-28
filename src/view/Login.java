@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import controller.LoginController;
 import controller.SignUpController;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import javax.swing.SwingUtilities;
@@ -330,6 +331,7 @@ public class Login extends javax.swing.JFrame {
         }
 
     }// GEN-LAST:event_jcshowpasswordMouseClicked
+    
 
     /**
      * @param args the command line arguments

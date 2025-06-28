@@ -9,6 +9,10 @@ import dao.TrainerDao;
 import javax.swing.JOptionPane;
 import model.Trainer;
 
+
+import view.TrainerCard;
+
+
 /**
  *
  * @author Salifa
@@ -333,61 +337,45 @@ public class TrainerDashboardadmin extends javax.swing.JFrame implements Trainer
     private void AddnewKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_AddnewKeyPressed
         // TODO add your handling code here:
     }// GEN-LAST:event_AddnewKeyPressed
+// GEN-LAST:event_AddnewKeyPressed
 
     private void ProfilebtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ProfilebtnActionPerformed
         // TODO add your handling code here:
 
-    }// GEN-LAST:event_ProfilebtnActionPerformed
+    }
+    // GEN-LAST:event_SearchbuttonMouseClicked
+    // GEN-LAST:event_ProfilebtnActionPerformed
 
-    private void SearchbuttonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_SearchbuttonMouseClicked
-//        String idText = Search.getText();
-//        if (!idText.equals("Enter Id ")) {
-//            try {
-//                int id = Integer.parseInt(idText);
-//                dao.UserDao userDao = new dao.UserDao();
-//                model.UserData user = userDao.getUserById(id);
-//                if (user != null) {
-//                    Usercard userCard = new Usercard();
-//                    userCard.updateUserData(user);
-//                    userCard.setVisible(true);
-//                } else {
-//                    javax.swing.JOptionPane.showMessageDialog(this,
-//                            "User not found",
-//                            "Search Error",
-//                            javax.swing.JOptionPane.ERROR_MESSAGE);
-//                }
-//            } catch (NumberFormatException e) {
-//                javax.swing.JOptionPane.showMessageDialog(this,
-//                        "Please enter a valid ID number",
-//                        "Invalid Input",
-//                        javax.swing.JOptionPane.ERROR_MESSAGE);
-//            }
-//        }
-    String idText = Search.getText();
-    if (!idText.equals("Enter Id ")) {
+    private void SearchbuttonMouseClicked(java.awt.event.MouseEvent evt) {
+        
+        String idText = Search.getText().trim();
+    
+        if (idText.isEmpty() || idText.equals("Enter Id")) {
+            JOptionPane.showMessageDialog(this, "Please enter a trainer ID");
+            return;
+    }
+
+
         try {
-            int id = Integer.parseInt(idText);
+            int trainerId = Integer.parseInt(idText);
             TrainerDao trainerDao = new TrainerDao();
-            Trainer trainer = trainerDao.getTrainerById(id);
+            Trainer trainer = trainerDao.getTrainerById(trainerId);
+        
             if (trainer != null) {
+            // Open the TrainerCard with this trainer's data
+                
                 TrainerCard trainerCard = new TrainerCard();
                 trainerCard.updateTrainer(trainer);
+                trainerCard.setLocationRelativeTo(this);
+
                 trainerCard.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(this,
-                    "Trainer not found",
-                    "Search Error",
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No trainer found with ID: " + trainerId);
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this,
-                "Please enter a valid ID number",
-                "Invalid Input",
-                JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please enter a valid number for ID");
         }
-    }
-    }// GEN-LAST:event_SearchbuttonMouseClicked
-
+}
     private void SearchbuttonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_SearchbuttonActionPerformed
         // TODO add your handling code here:
     }// GEN-LAST:event_SearchbuttonActionPerformed

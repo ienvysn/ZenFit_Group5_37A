@@ -10,13 +10,14 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import model.Trainer;
 
 /**
  *
  * @author Acer
  */
 public class TrainerCard extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Usercard2
      */
@@ -312,4 +313,8 @@ public class TrainerCard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
+
+    void updateTrainerData(Trainer trainer) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

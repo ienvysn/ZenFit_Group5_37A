@@ -27,6 +27,29 @@ public class TrainerDao {
         db = new MySqlConnection();
         connection = db.openConnection();
     }
+     public Trainer getTrainerById(int id) {
+        String sql = "SELECT * FROM trainers WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                Trainer trainer = new Trainer();
+                trainer.setId(rs.getInt("id"));
+                trainer.setName(rs.getString("name"));
+                trainer.setAddress(rs.getString("address"));
+                trainer.setShift(rs.getString("shift"));
+                trainer.setSpeciality(rs.getString("speciality"));
+                trainer.setImage(rs.getBytes("image"));
+                trainer.setPhone(rs.getString("phone"));
+                return trainer;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     
     // Add new trainer
     public boolean addTrainer(Trainer trainer) {
@@ -72,29 +95,7 @@ public class TrainerDao {
         return trainers;
     }
     
-    // Get trainer by ID
-    public Trainer getTrainerById(int id) {
-        String sql = "SELECT * FROM trainers WHERE id = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-            
-            if (rs.next()) {
-                Trainer trainer = new Trainer();
-                trainer.setId(rs.getInt("id"));
-                trainer.setName(rs.getString("name"));
-                trainer.setAddress(rs.getString("address"));
-                trainer.setShift(rs.getString("shift"));
-                trainer.setSpeciality(rs.getString("speciality"));
-                trainer.setImage(rs.getBytes("image"));
-                trainer.setPhone(rs.getString("phone"));
-                return trainer;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+   
     
     // Update trainer
     public boolean updateTrainer(Trainer trainer) {
