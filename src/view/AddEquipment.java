@@ -42,6 +42,7 @@ public class AddEquipment extends javax.swing.JFrame {
         equipmentQuantity.setText("Enter quantity");
 //        equipmentPurchaseDate.setToolTipText("Click to select purchase date");
         equipmentPurchaseDate.setDate(null);
+        
 //        showDatePlaceholder();
         setupDatePlaceholder();
 //        showToolTip();
@@ -101,6 +102,7 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
         jLabel6 = new javax.swing.JLabel();
         jSelectButton = new javax.swing.JButton();
         equipmentPurchaseDate = new com.toedter.calendar.JDateChooser();
+        jBack = new javax.swing.JButton();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -195,10 +197,27 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
             }
         });
 
+        jBack.setBackground(new java.awt.Color(153, 204, 255));
+        jBack.setText("<<------");
+        jBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(357, 357, 357)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addComponent(jaddEquipment)))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -223,22 +242,18 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
                             .addComponent(equipmentType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(equipmentQuantity)
                             .addComponent(equipmentName)
-                            .addComponent(equipmentPurchaseDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(equipmentPurchaseDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jBack)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(357, 357, 357)
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(jaddEquipment)))
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addContainerGap()
+                .addComponent(jBack, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +280,7 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
                     .addComponent(jSelectButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(jaddEquipment)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addGap(72, 72, 72))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -531,6 +546,23 @@ String date = sdf.format(equipmentPurchaseDate.getDate());
     private void equipmentPurchaseDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_equipmentPurchaseDateFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_equipmentPurchaseDateFocusLost
+
+    private void jBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBackActionPerformed
+        // TODO add your handling code here:
+//        // Get reference to current frame
+//    java.awt.Window currentWindow = javax.swing.SwingUtilities.getWindowAncestor(this);
+//    
+//    // Create and show Equipmentadmin
+//    Equipmentadmin equipmentAdmin = new Equipmentadmin();
+//    equipmentAdmin.setVisible(true);
+//    
+//    // Close current window
+//    currentWindow.dispose();
+    this.dispose();
+    
+    // Open the Equipmentadmin window
+    new Equipmentadmin().setVisible(true);
+    }//GEN-LAST:event_jBackActionPerformed
     
     // Place this with your other private methods
 
@@ -660,6 +692,7 @@ String date = sdf.format(equipmentPurchaseDate.getDate());
     private com.toedter.calendar.JDateChooser equipmentPurchaseDate;
     private javax.swing.JTextField equipmentQuantity;
     private javax.swing.JComboBox<String> equipmentType;
+    private javax.swing.JButton jBack;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

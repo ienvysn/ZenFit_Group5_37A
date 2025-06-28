@@ -5,6 +5,9 @@
 package view;
 
 import controller.TrainerDashboardController;
+import dao.TrainerDao;
+import javax.swing.JOptionPane;
+import model.Trainer;
 
 /**
  *
@@ -337,29 +340,52 @@ public class TrainerDashboardadmin extends javax.swing.JFrame implements Trainer
     }// GEN-LAST:event_ProfilebtnActionPerformed
 
     private void SearchbuttonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_SearchbuttonMouseClicked
-        String idText = Search.getText();
-        if (!idText.equals("Enter Id ")) {
-            try {
-                int id = Integer.parseInt(idText);
-                dao.UserDao userDao = new dao.UserDao();
-                model.UserData user = userDao.getUserById(id);
-                if (user != null) {
-                    Usercard userCard = new Usercard();
-                    userCard.updateUserData(user);
-                    userCard.setVisible(true);
-                } else {
-                    javax.swing.JOptionPane.showMessageDialog(this,
-                            "User not found",
-                            "Search Error",
-                            javax.swing.JOptionPane.ERROR_MESSAGE);
-                }
-            } catch (NumberFormatException e) {
-                javax.swing.JOptionPane.showMessageDialog(this,
-                        "Please enter a valid ID number",
-                        "Invalid Input",
-                        javax.swing.JOptionPane.ERROR_MESSAGE);
+//        String idText = Search.getText();
+//        if (!idText.equals("Enter Id ")) {
+//            try {
+//                int id = Integer.parseInt(idText);
+//                dao.UserDao userDao = new dao.UserDao();
+//                model.UserData user = userDao.getUserById(id);
+//                if (user != null) {
+//                    Usercard userCard = new Usercard();
+//                    userCard.updateUserData(user);
+//                    userCard.setVisible(true);
+//                } else {
+//                    javax.swing.JOptionPane.showMessageDialog(this,
+//                            "User not found",
+//                            "Search Error",
+//                            javax.swing.JOptionPane.ERROR_MESSAGE);
+//                }
+//            } catch (NumberFormatException e) {
+//                javax.swing.JOptionPane.showMessageDialog(this,
+//                        "Please enter a valid ID number",
+//                        "Invalid Input",
+//                        javax.swing.JOptionPane.ERROR_MESSAGE);
+//            }
+//        }
+    String idText = Search.getText();
+    if (!idText.equals("Enter Id ")) {
+        try {
+            int id = Integer.parseInt(idText);
+            TrainerDao trainerDao = new TrainerDao();
+            Trainer trainer = trainerDao.getTrainerById(id);
+            if (trainer != null) {
+                TrainerCard trainerCard = new TrainerCard();
+                trainerCard.updateTrainer(trainer);
+                trainerCard.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this,
+                    "Trainer not found",
+                    "Search Error",
+                    JOptionPane.ERROR_MESSAGE);
             }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this,
+                "Please enter a valid ID number",
+                "Invalid Input",
+                JOptionPane.ERROR_MESSAGE);
         }
+    }
     }// GEN-LAST:event_SearchbuttonMouseClicked
 
     private void SearchbuttonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_SearchbuttonActionPerformed

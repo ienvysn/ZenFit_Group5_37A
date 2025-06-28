@@ -429,9 +429,12 @@ public class Dashboard extends javax.swing.JFrame {
     }// GEN-LAST:event_FeedbackActionPerformed
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_EquipmentActionPerformed
-        view.Equipmentuser dashboard = new view.Equipmentuser();
+//        view.Equipmentuser dashboard = new view.Equipmentuser();
+//        dashboard.setVisible(true);
+//        this.dispose();
+view.Equipmentadmin dashboard = new view.Equipmentadmin();
         dashboard.setVisible(true);
-        this.dispose();
+        this.dispose();  
     }// GEN-LAST:event_EquipmentActionPerformed
 
     private void MembersActionPerformed(java.awt.event.ActionEvent evt) {
@@ -523,3 +526,5 @@ public class Dashboard extends javax.swing.JFrame {
         return userpannel;
     }
 }
+
+

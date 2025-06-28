@@ -122,6 +122,7 @@ public class AddWorkout extends javax.swing.JFrame {
         jWeight = new javax.swing.JTextField();
         jSets = new javax.swing.JTextField();
         JDate = new com.toedter.calendar.JDateChooser();
+        backWorkout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -235,6 +236,14 @@ public class AddWorkout extends javax.swing.JFrame {
             }
         });
 
+        backWorkout.setBackground(new java.awt.Color(153, 204, 255));
+        backWorkout.setText("<<-----");
+        backWorkout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backWorkoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout photobtnLayout = new javax.swing.GroupLayout(photobtn);
         photobtn.setLayout(photobtnLayout);
         photobtnLayout.setHorizontalGroup(
@@ -264,13 +273,15 @@ public class AddWorkout extends javax.swing.JFrame {
                             .addComponent(jReps)
                             .addComponent(jSets)
                             .addComponent(jWeight)
-                            .addComponent(JDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(JDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(backWorkout))
                 .addContainerGap(158, Short.MAX_VALUE))
         );
         photobtnLayout.setVerticalGroup(
             photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(photobtnLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addComponent(backWorkout, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -292,7 +303,7 @@ public class AddWorkout extends javax.swing.JFrame {
                 .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(Submit)
                 .addGap(37, 37, 37))
         );
@@ -314,6 +325,16 @@ public class AddWorkout extends javax.swing.JFrame {
     private void JDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JDateMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_JDateMouseClicked
+
+    private void backWorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backWorkoutActionPerformed
+        // TODO add your handling code here:
+          this.dispose();
+    
+    // Open the Equipmentadmin window
+    new Workout().setVisible(true);
+        
+        
+    }//GEN-LAST:event_backWorkoutActionPerformed
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_SubmitActionPerformed
 
@@ -515,6 +536,7 @@ private void jWeightActionPerformed(java.awt.event.ActionEvent evt) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser JDate;
     private javax.swing.JButton Submit;
+    private javax.swing.JButton backWorkout;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

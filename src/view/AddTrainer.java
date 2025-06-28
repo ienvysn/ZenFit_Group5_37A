@@ -81,6 +81,7 @@ jAddress.addActionListener(new java.awt.event.ActionListener() {
         jLabel2 = new javax.swing.JLabel();
         jPhoto = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        trainerBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -215,6 +216,14 @@ jAddress.addActionListener(new java.awt.event.ActionListener() {
             }
         });
 
+        trainerBack.setBackground(new java.awt.Color(153, 204, 255));
+        trainerBack.setText("<<<------");
+        trainerBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trainerBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout photobtnLayout = new javax.swing.GroupLayout(photobtn);
         photobtn.setLayout(photobtnLayout);
         photobtnLayout.setHorizontalGroup(
@@ -248,13 +257,17 @@ jAddress.addActionListener(new java.awt.event.ActionListener() {
                             .addComponent(jPhoto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(photobtnLayout.createSequentialGroup()
                         .addGap(180, 180, 180)
-                        .addComponent(jButton2)))
+                        .addComponent(jButton2))
+                    .addGroup(photobtnLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(trainerBack)))
                 .addGap(121, 171, Short.MAX_VALUE))
         );
         photobtnLayout.setVerticalGroup(
             photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(photobtnLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addComponent(trainerBack, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addGroup(photobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -282,7 +295,7 @@ jAddress.addActionListener(new java.awt.event.ActionListener() {
                     .addComponent(jPhoto))
                 .addGap(42, 42, 42)
                 .addComponent(jButton2)
-                .addGap(0, 49, Short.MAX_VALUE))
+                .addGap(0, 54, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -460,6 +473,16 @@ jAddress.addActionListener(new java.awt.event.ActionListener() {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPhotoKeyPressed
 
+    private void trainerBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trainerBackActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    
+    // Open the Equipmentadmin window
+    new TrainerDashboardadmin().setVisible(true);
+        
+        
+    }//GEN-LAST:event_trainerBackActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -514,5 +537,6 @@ jAddress.addActionListener(new java.awt.event.ActionListener() {
     private javax.swing.JComboBox<String> jShift;
     private javax.swing.JComboBox<String> jSpeciality;
     private javax.swing.JPanel photobtn;
+    private javax.swing.JButton trainerBack;
     // End of variables declaration//GEN-END:variables
 }
