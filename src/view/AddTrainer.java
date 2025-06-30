@@ -217,7 +217,8 @@ jAddress.addActionListener(new java.awt.event.ActionListener() {
         });
 
         trainerBack.setBackground(new java.awt.Color(153, 204, 255));
-        trainerBack.setText("<<<------");
+        trainerBack.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        trainerBack.setText("Back");
         trainerBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 trainerBackActionPerformed(evt);

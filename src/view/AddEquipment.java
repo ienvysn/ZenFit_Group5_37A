@@ -198,7 +198,8 @@ jSelectButton.addActionListener(new java.awt.event.ActionListener() {
         });
 
         jBack.setBackground(new java.awt.Color(153, 204, 255));
-        jBack.setText("<<------");
+        jBack.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jBack.setText("Back");
         jBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBackActionPerformed(evt);

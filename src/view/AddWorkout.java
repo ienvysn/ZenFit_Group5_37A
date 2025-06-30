@@ -237,7 +237,8 @@ public class AddWorkout extends javax.swing.JFrame {
         });
 
         backWorkout.setBackground(new java.awt.Color(153, 204, 255));
-        backWorkout.setText("<<-----");
+        backWorkout.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        backWorkout.setText("Back");
         backWorkout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backWorkoutActionPerformed(evt);

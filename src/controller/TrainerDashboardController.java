@@ -97,9 +97,18 @@ public class TrainerDashboardController {
             panel.addMouseListener(new java.awt.event.MouseAdapter() {
                 @Override
                 public void mouseClicked(java.awt.event.MouseEvent e) {
+//                    view.TrainercardNoRemove trainerCard = new view.TrainercardNoRemove();
+//                    trainerCard.updateTrainer(trainer);
+//                    trainerCard.setVisible(true);
+                   if (view instanceof TrainerDashboardadmin) { // Admin view
+                    view.TrainerCard trainerCard = new view.TrainerCard();
+                    trainerCard.updateTrainer(trainer);
+                    trainerCard.setVisible(true);
+                } else { // User view
                     view.TrainercardNoRemove trainerCard = new view.TrainercardNoRemove();
                     trainerCard.updateTrainer(trainer);
                     trainerCard.setVisible(true);
+                }
                 }
             });
 
