@@ -5,6 +5,7 @@
 package controller;
 
 import dao.UserDao;
+import java.awt.Component;
 import java.awt.HeadlessException;
 import view.Login;
 import view.Dashboard;
@@ -49,6 +50,9 @@ public class LoginController {
                             JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                
+                
+
 
                 LoginRequest user = new LoginRequest(username, password);
                 boolean loginSuccessful = userDao.checkLogin(user);

@@ -69,6 +69,14 @@ public class SignUpController {
                             JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                if (password.length() < 8) {
+                    JOptionPane.showMessageDialog(userView,
+                        "Password must be at least 8 characters long.",
+                        "Validation Error",
+                        JOptionPane.ERROR_MESSAGE);
+                    return;
+}
+
 
                 Date joinedDate = new Date();
                 Calendar cal = Calendar.getInstance();
