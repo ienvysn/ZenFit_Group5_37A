@@ -4,12 +4,15 @@
  */
 package view;
 
+import java.awt.Component;
 import java.awt.Image;
+import java.awt.Window;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 import model.Trainer;
 
 /**
@@ -49,6 +52,7 @@ public class TrainerCard extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        trainerBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,6 +116,14 @@ public class TrainerCard extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
         jButton1.setText("Remove");
 
+        trainerBack.setBackground(new java.awt.Color(155, 204, 255));
+        trainerBack.setText("back");
+        trainerBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trainerBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -137,9 +149,10 @@ public class TrainerCard extends javax.swing.JFrame {
                                     .addComponent(jLabel12)
                                     .addComponent(jLabel11)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(trainerBack, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
+                        .addGap(99, 99, 99)
                         .addComponent(jButton1)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -173,7 +186,9 @@ public class TrainerCard extends javax.swing.JFrame {
                     .addComponent(jLabel12))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(trainerBack, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -189,6 +204,15 @@ public class TrainerCard extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void trainerBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trainerBackActionPerformed
+        // TODO add your handling code here:
+         Window window = SwingUtilities.getWindowAncestor((Component)evt.getSource());
+    if (window != null) {
+        window.dispose(); // Close the current window
+    }
+        
+    }//GEN-LAST:event_trainerBackActionPerformed
 
     public void updateTrainer(model.Trainer trainer) {
         jLabel3.setText(String.valueOf(trainer.getId())); // Trainer ID
@@ -290,6 +314,7 @@ public class TrainerCard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton trainerBack;
     // End of variables declaration//GEN-END:variables
 
     void updateTrainerData(Trainer trainer) {

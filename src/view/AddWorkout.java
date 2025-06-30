@@ -9,11 +9,16 @@ import model.CurrentUser;
 import model.UserData;
 import dao.WorkoutDAO;
 import controller.WorkoutController;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 import model.WorkoutData;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
+import javax.swing.JTextField;
 
 /**
  *
@@ -28,6 +33,8 @@ public class AddWorkout extends javax.swing.JFrame {
         initComponents();
         jSets.setText("enter sets");
         jWeight.setText("enter weight");
+        setupDateChooser(); 
+    JDate.getDateEditor().getUiComponent().requestFocus();
         
         
         
@@ -497,7 +504,48 @@ private void jWeightActionPerformed(java.awt.event.ActionEvent evt) {
             jWeight.setFont(new java.awt.Font("Segoe UI", 2, 12)); // Italic font
         }
     }
-   
+    
+    private void setupDateChooser() {
+    // 1. Get the text field inside JDateChooser
+    JTextField dateText = ((JTextField) JDate.getDateEditor().getUiComponent());
+    JDate.setDate(new java.util.Date());
+    
+    // 2. Set initial placeholder style (gray italic)
+    dateText.setText("Select date");
+    dateText.setForeground(new Color(153, 153, 153));
+    dateText.setFont(new Font("Segoe UI", Font.ITALIC, 12));
+    
+    JDate.setMaxSelectableDate(new java.util.Date());
+
+    // 3. Focus listeners
+    dateText.addFocusListener(new FocusAdapter() {
+        @Override
+        public void focusGained(FocusEvent e) {
+            if (dateText.getText().equals("Select date")) {
+                dateText.setText("");
+                dateText.setForeground(Color.BLACK);
+                dateText.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+            }
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+            if (JDate.getDate() == null) {
+                dateText.setText("Select date");
+                dateText.setForeground(new Color(153, 153, 153));
+                dateText.setFont(new Font("Segoe UI", Font.ITALIC, 12));
+            }
+        }
+    });
+
+    // 4. Update style when date is selected
+    JDate.addPropertyChangeListener("date", evt -> {
+        if (JDate.getDate() != null) {
+            dateText.setForeground(Color.BLACK);
+            dateText.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        }
+    });
+}
 
     /**
      * @param args the command line arguments

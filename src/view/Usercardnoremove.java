@@ -13,6 +13,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import controller.LoginController;
+import java.awt.Component;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -90,6 +92,7 @@ public void updateUserData(model.UserData user) {
         jLabel12 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        userNoRemoveBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,6 +172,14 @@ public void updateUserData(model.UserData user) {
             }
         });
 
+        userNoRemoveBack.setBackground(new java.awt.Color(155, 205, 255));
+        userNoRemoveBack.setText("back");
+        userNoRemoveBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNoRemoveBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout usercardpanelLayout = new javax.swing.GroupLayout(usercardpanel);
         usercardpanel.setLayout(usercardpanelLayout);
         usercardpanelLayout.setHorizontalGroup(
@@ -207,12 +218,17 @@ public void updateUserData(model.UserData user) {
                     .addGroup(usercardpanelLayout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(jButton1)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usercardpanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(userNoRemoveBack, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         usercardpanelLayout.setVerticalGroup(
             usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(usercardpanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
+                .addComponent(userNoRemoveBack, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
                 .addGroup(usercardpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(usercardpanelLayout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -287,6 +303,14 @@ public void updateUserData(model.UserData user) {
         updateform.setVisible(true);
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void userNoRemoveBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNoRemoveBackActionPerformed
+        // TODO add your handling code here:
+         Window window = SwingUtilities.getWindowAncestor((Component)evt.getSource());
+    if (window != null) {
+        window.dispose(); // Close the current window
+    }
+    }//GEN-LAST:event_userNoRemoveBackActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -352,6 +376,7 @@ public void updateUserData(model.UserData user) {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton userNoRemoveBack;
     private javax.swing.JPanel usercardpanel;
     // End of variables declaration//GEN-END:variables
 }
