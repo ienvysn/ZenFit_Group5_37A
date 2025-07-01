@@ -22,6 +22,7 @@ import java.util.Calendar;
 import view.Dashboard;
 import controller.DashboardController;
 import java.nio.file.Files;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class SignUpController {
     private final UserDao userDao = new UserDao();
@@ -45,7 +46,7 @@ public class SignUpController {
         public void actionPerformed(ActionEvent e) {
             try {
                 String username = userView.getUsernameField().getText().trim();
-                String password = userView.getPasswordField().getText();
+                String password = new String(userView.getPasswordField().getPassword());
                 String membershipType = userView.getSelectedMembership();
                 String phone = userView.getPhone().getText().trim();
                 java.io.File imgFile = userView.getSelectedImageFile();
@@ -113,7 +114,10 @@ public class SignUpController {
                 }
                 Date expiryDate = cal.getTime();
 
-                UserData user = new UserData(username, phone, password, joinedDate, expiryDate, membershipType,
+                // Hash the password before saving
+                String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+
+                UserData user = new UserData(username, phone, hashedPassword, joinedDate, expiryDate, membershipType,
                         "member", image);
 
                 boolean userExists = userDao.checkUser(user);

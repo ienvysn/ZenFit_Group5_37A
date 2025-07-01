@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.LoginRequest;
 import model.UserData;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -50,17 +51,19 @@ public class LoginController {
                             JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                
-                
 
-
-                LoginRequest user = new LoginRequest(username, password);
-                boolean loginSuccessful = userDao.checkLogin(user);
-
-                if (loginSuccessful) {
-                    // Fetch user data from DB
-                    UserData userData = userDao.getUserByUsername(username);
-                    model.CurrentUser.set(userData);  // Set the current user
+                // Fetch user data from DB
+                UserData userData = userDao.getUserByUsername(username);
+                if (userData == null) {
+                    JOptionPane.showMessageDialog(userView,
+                            "Invalid username or password",
+                            "Login Failed",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                String storedHashedPassword = userData.getPassword();
+                if (BCrypt.checkpw(password, storedHashedPassword)) {
+                    model.CurrentUser.set(userData); // Set the current user
                     JOptionPane.showMessageDialog(userView, "Login successful!",
                             "Success",
                             JOptionPane.INFORMATION_MESSAGE);
@@ -80,7 +83,7 @@ public class LoginController {
                         controller.UserDashboardController userController = new controller.UserDashboardController(
                                 userDashboard, username);
                         userController.initializeDashboard(username);
-                        userDashboard.setCurrentUsername(username);  // Set the current username
+                        userDashboard.setCurrentUsername(username); // Set the current username
                         userController.open();
                     }
                 } else {
