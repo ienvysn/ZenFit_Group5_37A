@@ -222,7 +222,7 @@ public class Equipmentuser extends javax.swing.JFrame {
                 .addComponent(Equipment)
                 .addGap(42, 42, 42)
                 .addComponent(Workout)
-                .addGap(57, 57, 57)
+                .addGap(42, 42, 42)
                 .addComponent(Feedback)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Profilebtn)
@@ -276,7 +276,7 @@ public class Equipmentuser extends javax.swing.JFrame {
             model.UserData currentUser = model.CurrentUser.get();
 
             // Create and show user profile card
-            view.UsercardNoRemove userCard = new view.UsercardNoRemove();
+            view.Usercardnoremove userCard = new view.Usercardnoremove();
             userCard.updateUserData(currentUser);
             userCard.setVisible(true);
 

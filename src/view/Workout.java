@@ -281,7 +281,7 @@ public class Workout extends javax.swing.JFrame {
             UserData currentUser = CurrentUser.get();
             
             // Create and show user profile card
-            view.UsercardNoRemove userCard = new view.UsercardNoRemove();
+            view.Usercardnoremove userCard = new view.Usercardnoremove();
             userCard.updateUserData(currentUser);
             userCard.setVisible(true);
             

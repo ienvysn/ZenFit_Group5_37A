@@ -284,7 +284,7 @@ public class UserDashboard extends javax.swing.JFrame implements TrainerPanelCon
             UserDao userDao = new UserDao();
             UserData currentUser = userDao.getUserByUsername(currentUsername);
             if (currentUser != null) {
-                view.UsercardNoRemove userCard = new view.UsercardNoRemove();
+                view.Usercardnoremove userCard = new view.Usercardnoremove();
                 userCard.updateUserData(currentUser);
                 userCard.setVisible(true);
             }

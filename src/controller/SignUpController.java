@@ -29,7 +29,7 @@ public class SignUpController {
 
     public SignUpController(SignUp userView) {
         this.userView = userView;
-        userView.addAddUserListener(new AddUserListener());
+        userView.setSignUpListener(new AddUserListener());
     }
 
     public void open() {
@@ -71,12 +71,27 @@ public class SignUpController {
                 }
                 if (password.length() < 8) {
                     JOptionPane.showMessageDialog(userView,
-                        "Password must be at least 8 characters long.",
-                        "Validation Error",
-                        JOptionPane.ERROR_MESSAGE);
+                            "Password must be at least 8 characters long.",
+                            "Validation Error",
+                            JOptionPane.ERROR_MESSAGE);
                     return;
-}
 
+                }
+                if (!phone.matches("\\d{10}")) {
+                    JOptionPane.showMessageDialog(userView,
+                            "Phone number isnt 10 digits.",
+                            "Validation Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                // Check if phone number already exists
+                if (userDao.checkPhoneExists(phone)) {
+                    JOptionPane.showMessageDialog(userView,
+                            "This phone number is already registered.",
+                            "Registration Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
                 Date joinedDate = new Date();
                 Calendar cal = Calendar.getInstance();
@@ -110,20 +125,15 @@ public class SignUpController {
                 } else {
                     userDao.signup(user);
                     JOptionPane.showMessageDialog(userView,
-                            "Registration successful!",
+                            "Registration successful! Please login.",
                             "Success",
                             JOptionPane.INFORMATION_MESSAGE);
 
-                    view.UserDashboard userDashboard = new view.UserDashboard();
-                    controller.UserDashboardController userController = new controller.UserDashboardController(
-                            userDashboard, username);
-                    userController.initializeDashboard(username);
-
-                    userView.setVisible(false);
                     userView.dispose();
-
-                    // Open dashboard
-                    userController.open();
+                    // Redirect to login after signup
+                    view.Login loginView = new view.Login();
+                    controller.LoginController loginController = new controller.LoginController(loginView);
+                    loginController.open();
                 }
 
             } catch (HeadlessException ex) {

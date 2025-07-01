@@ -301,7 +301,7 @@ public class AdminFeedback extends javax.swing.JFrame {
             // Get current user
             model.UserData currentUser = model.CurrentUser.get();
             // Show user profile card
-            view.UsercardNoRemove userCard = new view.UsercardNoRemove();
+            view.Usercardnoremove userCard = new view.Usercardnoremove();
             userCard.updateUserData(currentUser);
             userCard.setVisible(true);
         } catch (Exception e) {

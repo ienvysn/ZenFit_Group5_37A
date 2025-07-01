@@ -20,10 +20,10 @@ import javax.swing.SwingUtilities;
  *
  * @author Acer
  */
-public class UsercardNoRemove extends javax.swing.JFrame {
+public class Usercardnoremove extends javax.swing.JFrame {
  private String currentUsername;
     
-    public UsercardNoRemove() {
+    public Usercardnoremove() {
         initComponents();
     }
 public void updateUserData(model.UserData user) {
@@ -332,18 +332,26 @@ public void updateUserData(model.UserData user) {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UsercardNoRemove.class.getName()).log(java.util.logging.Level.SEVERE,
+            java.util.logging.Logger.getLogger(Usercardnoremove.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UsercardNoRemove.class.getName()).log(java.util.logging.Level.SEVERE,
+            java.util.logging.Logger.getLogger(Usercardnoremove.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UsercardNoRemove.class.getName()).log(java.util.logging.Level.SEVERE,
+            java.util.logging.Logger.getLogger(Usercardnoremove.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UsercardNoRemove.class.getName()).log(java.util.logging.Level.SEVERE,
+            java.util.logging.Logger.getLogger(Usercardnoremove.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         }
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
         // </editor-fold>
         // </editor-fold>
         // </editor-fold>
@@ -356,7 +364,7 @@ public void updateUserData(model.UserData user) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UsercardNoRemove().setVisible(true);
+                new Usercardnoremove().setVisible(true);
             }
         });
     }

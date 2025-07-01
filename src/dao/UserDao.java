@@ -38,7 +38,6 @@ public class UserDao {
             pstmt.setBytes(7, user.getImage());
             pstmt.setString(8, user.getPhone());
 
-            
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -108,8 +107,7 @@ public class UserDao {
                         result.getDate("expiry_date"),
                         result.getString("membership_type"),
                         result.getString("role"),
-                        result.getBytes("image")
-                );
+                        result.getBytes("image"));
                 user.setId(result.getInt("id"));
                 return user;
             }
@@ -137,8 +135,7 @@ public class UserDao {
                         result.getDate("expiry_date"),
                         result.getString("membership_type"),
                         result.getString("role"),
-                        result.getBytes("image")
-                );
+                        result.getBytes("image"));
                 user.setId(result.getInt("id"));
                 return user;
             }
@@ -158,15 +155,14 @@ public class UserDao {
             ResultSet result = pstmt.executeQuery();
             while (result.next()) {
                 users.add(new UserData(
-                 result.getString("username"),
-                 result.getString("phone"),
-                 result.getString("password"),
-                result.getDate("joined_date"),
-                 result.getDate("expiry_date"),
-                 result.getString("membership_type"),
-                 result.getString("role"),
-                 result.getBytes("image")
-  ));
+                        result.getString("username"),
+                        result.getString("phone"),
+                        result.getString("password"),
+                        result.getDate("joined_date"),
+                        result.getDate("expiry_date"),
+                        result.getString("membership_type"),
+                        result.getString("role"),
+                        result.getBytes("image")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -190,7 +186,7 @@ public class UserDao {
             mysql.CloseConnection(conn);
         }
     }
-    
+
     public boolean updateUser(String username, String newUsername, String phone, String password) {
         Connection conn = mysql.openConnection();
         String sql = "UPDATE users SET username = ?, phone = ?, password = ? WHERE username = ?";
@@ -208,5 +204,21 @@ public class UserDao {
         } finally {
             mysql.CloseConnection(conn);
         }
+    }
+
+    // Returns true if a user with the given phone number exists
+    public boolean checkPhoneExists(String phone) {
+        Connection conn = mysql.openConnection();
+        String sql = "SELECT 1 FROM users WHERE phone = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, phone);
+            ResultSet result = pstmt.executeQuery();
+            return result.next();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            mysql.CloseConnection(conn);
+        }
+        return false;
     }
 }
