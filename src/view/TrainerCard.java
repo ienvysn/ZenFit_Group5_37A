@@ -4,6 +4,7 @@
  */
 package view;
 
+import dao.TrainerDao;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.Window;
@@ -20,6 +21,8 @@ import model.Trainer;
  * @author Acer
  */
 public class TrainerCard extends javax.swing.JFrame {
+    
+    private int currentTrainerId;
     
     /**
      * Creates new form Usercard2
@@ -51,7 +54,7 @@ public class TrainerCard extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Removebtn = new javax.swing.JButton();
         trainerBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -113,8 +116,13 @@ public class TrainerCard extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Yoga");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
-        jButton1.setText("Remove");
+        Removebtn.setFont(new java.awt.Font("Segoe UI Variable", 0, 12)); // NOI18N
+        Removebtn.setText("Remove");
+        Removebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemovebtnActionPerformed(evt);
+            }
+        });
 
         trainerBack.setBackground(new java.awt.Color(155, 204, 255));
         trainerBack.setText("back");
@@ -153,7 +161,7 @@ public class TrainerCard extends javax.swing.JFrame {
                             .addComponent(trainerBack, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(99, 99, 99)
-                        .addComponent(jButton1)))
+                        .addComponent(Removebtn)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -185,7 +193,7 @@ public class TrainerCard extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel12))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(Removebtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(trainerBack, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -214,7 +222,44 @@ public class TrainerCard extends javax.swing.JFrame {
         
     }//GEN-LAST:event_trainerBackActionPerformed
 
+    private void RemovebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemovebtnActionPerformed
+        // TODO add your handling code here:
+        // Confirmation dialog
+    int confirm = javax.swing.JOptionPane.showConfirmDialog(
+        this,
+        "Are you sure you want to remove this trainer?",
+        "Confirm Deletion",
+        javax.swing.JOptionPane.YES_NO_OPTION);
+
+    if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+        // Delete using DAO
+        TrainerDao trainerDao = new TrainerDao();
+        boolean success = trainerDao.deleteTrainer(currentTrainerId);
+        
+        if (success) {
+            javax.swing.JOptionPane.showMessageDialog(
+                this,
+                "Trainer removed successfully!",
+                "Success",
+                javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            
+            // Close the card
+            this.dispose();
+            
+            // Optional: Refresh the trainer dashboard
+            new TrainerDashboardadmin().setVisible(true);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                this,
+                "Failed to remove trainer",
+                "Error",
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    }//GEN-LAST:event_RemovebtnActionPerformed
+
     public void updateTrainer(model.Trainer trainer) {
+        this.currentTrainerId = trainer.getId();
         jLabel3.setText(String.valueOf(trainer.getId())); // Trainer ID
         jLabel10.setText(trainer.getName()); // Name
         jLabel5.setText(trainer.getPhone()); // Placeholder for phone number
@@ -300,7 +345,7 @@ public class TrainerCard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Removebtn;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
